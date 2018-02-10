@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-kg-3bf">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="WKH-ZB-Azv"/>
+                                    <constraint firstAttribute="height" constant="667" id="spP-2k-Pkn"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eVl-kg-3bf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8G5-HQ-MYJ"/>
+                            <constraint firstAttribute="trailing" secondItem="eVl-kg-3bf" secondAttribute="trailing" id="G3X-eg-Ilc"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="eVl-kg-3bf" secondAttribute="bottom" id="Hq8-yj-DaG"/>
+                            <constraint firstItem="eVl-kg-3bf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vA2-id-TKV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="204.64767616191907"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="splash.png" width="1080" height="1920"/>
+    </resources>
+</document>

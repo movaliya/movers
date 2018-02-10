@@ -1,0 +1,87 @@
+//
+//  digitalMarketing.pch
+//  digitalmarketing
+//
+//  Created by Mango SW on 14/05/2017.
+//  Copyright © 2017 jkinfoway. All rights reserved.
+//
+
+
+#import <Availability.h>
+#import "CCKFNavDrawer.h"
+
+#import "AFNetworking.h"
+#import "CommonWS.h"
+#import "KVNProgress.h"
+
+// AFNetworking
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+//AlertView Title
+#define AlertTitle @"Success"
+#define AlertTitleError @""
+
+
+// URL Implement
+
+#define BaseUrl @"http://craftboxtechnology.com/server/digital_marketing_tool/service/service_user.php"
+#define Base_Key @"1226"
+
+
+#define user_login @"2"
+#define user_forget_password @"25"
+#define user_change_password @"22"
+
+#define get_notification @"24"
+
+
+
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+
+//Get Device Height
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+//Get Device Height
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+#define IS_IPHONE_4 (IS_IPHONE && SCREEN_MAX_LENGTH == 480.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+#define SelectedLabel [UIColor whiteColor]
+#define UnSelectedLabel [UIColor colorWithRed:78.0/255.0 green:78.0/255.0 blue:78.0/255.0 alpha:1.0]
+
+//Calender
+#ifdef __IPHONE_8_0
+#define GregorianCalendar NSCalendarIdentifierGregorian
+#else
+#define GregorianCalendar NSGregorianCalendar
+#endif
+
+// Appdegate
+#define KmyappDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
+//Check if iphone5 or iphone 4
+#define isIPhone5 ([UIScreen mainScreen].bounds.size.height == 568.0)
+
+//Get Device height Differenct in iphone4 and iphone 5
+#define SCREEN_HEIGHT_DIFF (568-SCREEN_HEIGHT)
+
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "AppDelegate.h"
+
+#endif
