@@ -97,6 +97,12 @@
 		53523A941EC9F7EE00EE41E9 /* NotificationVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 53523A931EC9F7EE00EE41E9 /* NotificationVW.m */; };
 		53523A991EC9F88700EE41E9 /* Notification_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53523A971EC9F88700EE41E9 /* Notification_Cell.m */; };
 		53523A9A1EC9F88700EE41E9 /* Notification_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53523A981EC9F88700EE41E9 /* Notification_Cell.xib */; };
+		B11BDB41203043D800E97C32 /* JobDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B11BDB40203043D800E97C32 /* JobDetailView.m */; };
+		B11BDB442030609600E97C32 /* ExpenseHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = B11BDB432030609600E97C32 /* ExpenseHistoryView.m */; };
+		B133ECA9202FF512008BC8AE /* JobView.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECA8202FF512008BC8AE /* JobView.m */; };
+		B133ECAD20300192008BC8AE /* TodayJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECAB20300192008BC8AE /* TodayJobCell.m */; };
+		B133ECAE20300192008BC8AE /* TodayJobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B133ECAC20300192008BC8AE /* TodayJobCell.xib */; };
+		B133ECB12030118E008BC8AE /* ExpenseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECB02030118E008BC8AE /* ExpenseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -258,6 +264,17 @@
 		53523A961EC9F88700EE41E9 /* Notification_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification_Cell.h; sourceTree = "<group>"; };
 		53523A971EC9F88700EE41E9 /* Notification_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification_Cell.m; sourceTree = "<group>"; };
 		53523A981EC9F88700EE41E9 /* Notification_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Notification_Cell.xib; sourceTree = "<group>"; };
+		B11BDB3F203043D800E97C32 /* JobDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailView.h; sourceTree = "<group>"; };
+		B11BDB40203043D800E97C32 /* JobDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailView.m; sourceTree = "<group>"; };
+		B11BDB422030609600E97C32 /* ExpenseHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseHistoryView.h; sourceTree = "<group>"; };
+		B11BDB432030609600E97C32 /* ExpenseHistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseHistoryView.m; sourceTree = "<group>"; };
+		B133ECA7202FF512008BC8AE /* JobView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobView.h; sourceTree = "<group>"; };
+		B133ECA8202FF512008BC8AE /* JobView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobView.m; sourceTree = "<group>"; };
+		B133ECAA20300192008BC8AE /* TodayJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayJobCell.h; sourceTree = "<group>"; };
+		B133ECAB20300192008BC8AE /* TodayJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayJobCell.m; sourceTree = "<group>"; };
+		B133ECAC20300192008BC8AE /* TodayJobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayJobCell.xib; sourceTree = "<group>"; };
+		B133ECAF2030118E008BC8AE /* ExpenseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseView.h; sourceTree = "<group>"; };
+		B133ECB02030118E008BC8AE /* ExpenseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseView.m; sourceTree = "<group>"; };
 		B13A6E99202F3D0400058505 /* digitalMarketing.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = digitalMarketing.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +325,14 @@
 				530DC6311EC89BFD000D4CA2 /* HomeVW.m */,
 				53523A921EC9F7EE00EE41E9 /* NotificationVW.h */,
 				53523A931EC9F7EE00EE41E9 /* NotificationVW.m */,
+				B133ECA7202FF512008BC8AE /* JobView.h */,
+				B133ECA8202FF512008BC8AE /* JobView.m */,
+				B11BDB3F203043D800E97C32 /* JobDetailView.h */,
+				B11BDB40203043D800E97C32 /* JobDetailView.m */,
+				B133ECAF2030118E008BC8AE /* ExpenseView.h */,
+				B133ECB02030118E008BC8AE /* ExpenseView.m */,
+				B11BDB422030609600E97C32 /* ExpenseHistoryView.h */,
+				B11BDB432030609600E97C32 /* ExpenseHistoryView.m */,
 				530DC5581EC872C1000D4CA2 /* Main.storyboard */,
 				B13A6E99202F3D0400058505 /* digitalMarketing.pch */,
 				530DC56B1EC879C9000D4CA2 /* Images */,
@@ -617,6 +642,9 @@
 				53523A961EC9F88700EE41E9 /* Notification_Cell.h */,
 				53523A971EC9F88700EE41E9 /* Notification_Cell.m */,
 				53523A981EC9F88700EE41E9 /* Notification_Cell.xib */,
+				B133ECAA20300192008BC8AE /* TodayJobCell.h */,
+				B133ECAB20300192008BC8AE /* TodayJobCell.m */,
+				B133ECAC20300192008BC8AE /* TodayJobCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -697,6 +725,7 @@
 				53523A9A1EC9F88700EE41E9 /* Notification_Cell.xib in Resources */,
 				53523A831EC9DE1600EE41E9 /* dispatch.png in Resources */,
 				530DC55F1EC872C1000D4CA2 /* LaunchScreen.storyboard in Resources */,
+				B133ECAE20300192008BC8AE /* TodayJobCell.xib in Resources */,
 				530DC62A1EC89989000D4CA2 /* DrawerView.xib in Resources */,
 				2968CE342015D2FD006CA19F /* job.png in Resources */,
 				2968CE402015D633006CA19F /* expenseHistry.png in Resources */,
@@ -733,6 +762,7 @@
 				53523A941EC9F7EE00EE41E9 /* NotificationVW.m in Sources */,
 				530DC5931EC88157000D4CA2 /* SDWebImageDownloader.m in Sources */,
 				530DC6141EC88271000D4CA2 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				B11BDB442030609600E97C32 /* ExpenseHistoryView.m in Sources */,
 				530DC5B81EC8816C000D4CA2 /* UIProgressView+AFNetworking.m in Sources */,
 				530DC59B1EC88157000D4CA2 /* UIImageView+WebCache.m in Sources */,
 				530DC5B41EC8816C000D4CA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -746,10 +776,12 @@
 				530DC5BA1EC8816C000D4CA2 /* UIWebView+AFNetworking.m in Sources */,
 				530DC5511EC872C1000D4CA2 /* main.m in Sources */,
 				530DC5921EC88157000D4CA2 /* SDWebImageDecoder.m in Sources */,
+				B133ECB12030118E008BC8AE /* ExpenseView.m in Sources */,
 				530DC5CE1EC8818A000D4CA2 /* AFURLSessionManager.m in Sources */,
 				530DC5B21EC8816C000D4CA2 /* AFAutoPurgingImageCache.m in Sources */,
 				530DC5991EC88157000D4CA2 /* UIImage+MultiFormat.m in Sources */,
 				530DC5D81EC881C0000D4CA2 /* KVNProgress.m in Sources */,
+				B133ECAD20300192008BC8AE /* TodayJobCell.m in Sources */,
 				530DC6111EC88271000D4CA2 /* IQPreviousNextView.m in Sources */,
 				530DC62B1EC89989000D4CA2 /* DrawerView.m in Sources */,
 				530DC62C1EC89989000D4CA2 /* MenuCell.m in Sources */,
@@ -765,6 +797,7 @@
 				2968CE4220161433006CA19F /* CCKFNavDrawer.m in Sources */,
 				530DC5971EC88157000D4CA2 /* UIButton+WebCache.m in Sources */,
 				530DC5961EC88157000D4CA2 /* SDWebImagePrefetcher.m in Sources */,
+				B11BDB41203043D800E97C32 /* JobDetailView.m in Sources */,
 				530DC5B91EC8816C000D4CA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				530DC5B71EC8816C000D4CA2 /* UIImageView+AFNetworking.m in Sources */,
 				530DC61B1EC882A8000D4CA2 /* CommonWS.m in Sources */,
@@ -777,6 +810,7 @@
 				530DC5981EC88157000D4CA2 /* UIImage+GIF.m in Sources */,
 				530DC59C1EC88157000D4CA2 /* UIView+WebCacheOperation.m in Sources */,
 				530DC5E11EC881D3000D4CA2 /* UIColor+KVNContrast.m in Sources */,
+				B133ECA9202FF512008BC8AE /* JobView.m in Sources */,
 				530DC5CD1EC8818A000D4CA2 /* AFURLResponseSerialization.m in Sources */,
 				530DC5E31EC881D3000D4CA2 /* UIImage+KVNImageEffects.m in Sources */,
 				530DC5681EC873AC000D4CA2 /* LogInVW.m in Sources */,
@@ -845,7 +879,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -886,7 +920,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -901,7 +935,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = MisterMovers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkinfoway.misterMovers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -916,7 +950,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = MisterMovers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkinfoway.misterMovers;
 				PRODUCT_NAME = "$(TARGET_NAME)";

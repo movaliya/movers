@@ -9,11 +9,16 @@
 #import "HomeVW.h"
 #import "ProfileVIEW.h"
 #import "NotificationVW.h"
+#import "JobView.h"
+#import "ExpenseView.h"
+#import "ExpenseHistoryView.h"
+
 @interface HomeVW ()
 
 @end
 
 @implementation HomeVW
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -31,7 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)Home_Icon_Method:(id)sender
@@ -44,13 +48,13 @@
     }
     else if (aButton.tag == 2)
     {
-        // Notification
         NotificationVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NotificationVW"];
         [self.navigationController pushViewController:vcr animated:YES];
     }
     else if (aButton.tag == 3)
     {
-        // Create Order
+        JobView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"JobView"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else if (aButton.tag == 4)
     {
@@ -66,29 +70,21 @@
     }
     else if (aButton.tag == 7)
     {
-        // Inward History
+        ExpenseView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ExpenseView"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else if (aButton.tag == 8)
     {
-        // Stock
+        ExpenseHistoryView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ExpenseHistoryView"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else if (aButton.tag == 9)
     {
-        // Dispatch
-    }
-    else if (aButton.tag == 10)
-    {
-        // Dispatch History
-    }
-    else if (aButton.tag == 11)
-    {
-        // Profile Activity
         ProfileVIEW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ProfileVIEW"];
         [self.navigationController pushViewController:vcr animated:YES];
     }
-    else if (aButton.tag == 12)
+    else if (aButton.tag == 10)
     {
-        // Logout
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                         message:@"Are you sure want to Logout?"
                                                        delegate:self
@@ -96,7 +92,9 @@
                                               otherButtonTitles:@"Logout",nil];
         alert.tag=50;
         [alert show];
+        
     }
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
