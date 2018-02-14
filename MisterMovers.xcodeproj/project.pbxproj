@@ -106,6 +106,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2965CC7D2031C66B00F3BCBB /* misterMover.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misterMover.pch; sourceTree = "<group>"; };
 		2968CE2B2015B0E6006CA19F /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
 		2968CE2D2015B571006CA19F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		2968CE2F2015B5BF006CA19F /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
@@ -275,7 +276,6 @@
 		B133ECAC20300192008BC8AE /* TodayJobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayJobCell.xib; sourceTree = "<group>"; };
 		B133ECAF2030118E008BC8AE /* ExpenseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseView.h; sourceTree = "<group>"; };
 		B133ECB02030118E008BC8AE /* ExpenseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseView.m; sourceTree = "<group>"; };
-		B13A6E99202F3D0400058505 /* digitalMarketing.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = digitalMarketing.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,7 +334,7 @@
 				B11BDB422030609600E97C32 /* ExpenseHistoryView.h */,
 				B11BDB432030609600E97C32 /* ExpenseHistoryView.m */,
 				530DC5581EC872C1000D4CA2 /* Main.storyboard */,
-				B13A6E99202F3D0400058505 /* digitalMarketing.pch */,
+				2965CC7D2031C66B00F3BCBB /* misterMover.pch */,
 				530DC56B1EC879C9000D4CA2 /* Images */,
 				530DC55B1EC872C1000D4CA2 /* Assets.xcassets */,
 				530DC55D1EC872C1000D4CA2 /* LaunchScreen.storyboard */,
@@ -680,8 +680,8 @@
 				TargetAttributes = {
 					530DC54B1EC872C1000D4CA2 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 58HM72YBF8;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 7PFD68G63X;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -931,14 +931,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 58HM72YBF8;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7PFD68G63X;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = MisterMovers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jkinfoway.misterMovers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.misterMovers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5dc1edf5-0713-4efa-b629-011736b1f1ba";
+				PROVISIONING_PROFILE_SPECIFIER = MisterMovers_dev;
 			};
 			name = Debug;
 		};
@@ -946,14 +949,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 58HM72YBF8;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7PFD68G63X;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = MisterMovers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jkinfoway.misterMovers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.misterMovers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5dc1edf5-0713-4efa-b629-011736b1f1ba";
+				PROVISIONING_PROFILE_SPECIFIER = MisterMovers_dev;
 			};
 			name = Release;
 		};

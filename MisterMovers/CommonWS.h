@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "digitalMarketing.pch"
+#import "misterMover.pch"
 @interface CommonWS : NSObject
 {
 }

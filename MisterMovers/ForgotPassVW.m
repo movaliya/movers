@@ -8,7 +8,7 @@
 
 #import "ForgotPassVW.h"
 #import <QuartzCore/QuartzCore.h>
-#import "digitalMarketing.pch"
+#import "misterMover.pch"
 
 
 @interface ForgotPassVW ()
@@ -68,10 +68,11 @@
 }
 -(void)CallForgotPass
 {
+    
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:Base_Key  forKey:@"key"];
     [dictParams setObject:user_forget_password  forKey:@"s"];
-    [dictParams setObject:Email_TXT.text  forKey:@"username"];
+    [dictParams setObject:Email_TXT.text  forKey:@"email"];
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {

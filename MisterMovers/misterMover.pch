@@ -1,9 +1,9 @@
 //
-//  digitalMarketing.pch
-//  digitalmarketing
+//  misterMover.pch
+//  MisterMovers
 //
-//  Created by Mango SW on 14/05/2017.
-//  Copyright © 2017 jkinfoway. All rights reserved.
+//  Created by jignesh solanki on 12/02/2018.
+//  Copyright © 2018 jkinfoway. All rights reserved.
 //
 
 
@@ -24,16 +24,18 @@
 
 
 // URL Implement
-
-#define BaseUrl @"http://craftboxtechnology.com/server/digital_marketing_tool/service/service_user.php"
+#define BaseUrl @"http://zconcept99.com/mistermovers/service/service_user.php"
 #define Base_Key @"1226"
 
 
-#define user_login @"2"
-#define user_forget_password @"25"
-#define user_change_password @"22"
+#define user_login @"1"
+#define Update_User_Profile @"5"
 
+#define user_forget_password @"2"
+#define user_change_password @"22"
 #define get_notification @"24"
+
+#define Get_Task @"6"
 
 
 

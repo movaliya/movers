@@ -8,7 +8,7 @@
 
 #import "LogInVW.h"
 #import "ForgotPassVW.h"
-#import "digitalMarketing.pch"
+#import "misterMover.pch"
 #import "HomeVW.h"
 
 @interface LogInVW ()
@@ -60,10 +60,11 @@
 }
 - (IBAction)LogIn_Btn_Action:(id)sender
 {
+     /*
     HomeVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeVW"];
     [self.navigationController pushViewController:vcr animated:YES];
-    
-    /*
+    */
+   
     if ([UserName_TXT.text isEqualToString:@""])
     {
         [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter username" delegate:nil];
@@ -83,7 +84,7 @@
             else
                 [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
         }
-    }*/
+    }
 }
 
 -(void)CallForloging
@@ -92,11 +93,10 @@
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:Base_Key  forKey:@"key"];
     [dictParams setObject:user_login  forKey:@"s"];
-    [dictParams setObject:UserName_TXT.text  forKey:@"username"];
+    [dictParams setObject:UserName_TXT.text  forKey:@"email"];
     [dictParams setObject:Password_TXT.text  forKey:@"password"];
     [dictParams setObject:@"IOS"  forKey:@"imei"];
-    [dictParams setObject:@"fksdfns7f6dsbfds7fs"  forKey:@"refreshToken"];
-    
+    [dictParams setObject:@"fdghjvdjgvdrgturgfhg"  forKey:@"refreshToken"];
     
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)

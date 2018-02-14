@@ -9,6 +9,7 @@
 #import "JobView.h"
 #import "TodayJobCell.h"
 #import "JobDetailView.h"
+#import "misterMover.pch"
 
 #define SelectedLabelColor [UIColor colorWithRed:255.0/255.0 green:175.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define Whitecolortitle [UIColor whiteColor]
@@ -31,9 +32,40 @@
     MainTBL.rowHeight = cell.frame.size.height;
     [MainTBL registerNib:nib forCellReuseIdentifier:@"TodayJobCell"];
     
+    [self GetTodayTask];
     
 }
-
+-(void)GetTodayTask
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Get_Task  forKey:@"s"];
+    
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    
+    [dictParams setObject:@"today"  forKey:@"type"];
+    [dictParams setObject:@"0"  forKey:@"ul"];
+    [dictParams setObject:@"2"  forKey:@"ll"];
+   
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleTodayTaskResponse:response];
+     }];
+}
+- (void)handleTodayTaskResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        TodayTaskDic=[[response valueForKey:@"result"] mutableCopy];
+        [MainTBL reloadData];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -77,7 +109,7 @@
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return TodayTaskDic.count;;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -109,6 +141,14 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     }
+   
+    cell.JobName_LBL.text=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+    
+    cell.JobTitle_LBL.text=[NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_title"] objectAtIndex:indexPath.section]];
+    
+    cell.JobStartdate_LBL.text=[NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_start_date"] objectAtIndex:indexPath.section]];
+    
+    cell.jobEnddate_LBL.text= [NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_end_date"] objectAtIndex:indexPath.section]];
     
     
     

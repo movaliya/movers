@@ -10,5 +10,9 @@
 
 @interface TodayJobCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIView *BakView;
+@property (weak, nonatomic) IBOutlet UILabel *JobTitle_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *JobName_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *JobStartdate_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *jobEnddate_LBL;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "digitalMarketing.pch"
+#import "misterMover.pch"
 
 @interface ForgotPassVW : UIViewController<CCKFNavDrawerDelegate>
 {

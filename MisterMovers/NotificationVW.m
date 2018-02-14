@@ -8,7 +8,7 @@
 
 #import "NotificationVW.h"
 #import "Notification_Cell.h"
-#import "digitalMarketing.pch"
+#import "misterMover.pch"
 
 @interface NotificationVW ()
 

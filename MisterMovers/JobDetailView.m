@@ -7,7 +7,7 @@
 //
 
 #import "JobDetailView.h"
-#import "digitalMarketing.pch"
+#import "misterMover.pch"
 
 
 @interface JobDetailView ()

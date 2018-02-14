@@ -10,7 +10,7 @@
 
 @interface JobView : UIViewController
 {
-    
+    NSMutableDictionary *TodayTaskDic;
 }
 - (IBAction)Back_Click:(id)sender;
 
