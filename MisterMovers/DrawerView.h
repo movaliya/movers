@@ -18,4 +18,5 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *LBL_Trailing;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *LogoLBLGap;
 @property (weak, nonatomic) IBOutlet UILabel *Username_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *NumberEmp_LBL;
 @end

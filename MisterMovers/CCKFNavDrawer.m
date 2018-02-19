@@ -99,7 +99,8 @@
     if ([KmyappDelegate isUserLoggedIn] == YES)
     {
         NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
-        self.drawerView.Username_LBL.text=[UserSaveData valueForKey:@"username"];
+        self.drawerView.Username_LBL.text=[UserSaveData valueForKey:@"first_name"];
+         self.drawerView.NumberEmp_LBL.text=[UserSaveData valueForKey:@"phone"];
     }
 
 }
@@ -411,8 +412,8 @@
     }
     if (indexPath.section==0)
     {
-        cell.IconWidth.constant=19;
-        cell.IconHeight.constant=15;
+        cell.IconWidth.constant=20;
+        cell.IconHeight.constant=20;
        // cell.IconX.constant=8;
         //cell.ImgLblGap.constant=16;
         

@@ -53,12 +53,14 @@
 {
     if ([Email_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter username" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Email" delegate:nil];
+    }
+    else if (![AppDelegate IsValidEmail:Email_TXT.text])
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter valid email" delegate:nil];
     }
     else
     {
-        
-        
         BOOL internet=[AppDelegate connectedToNetwork];
         if (internet)
             [self CallForgotPass];

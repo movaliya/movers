@@ -36,6 +36,7 @@
 #define get_notification @"24"
 
 #define Get_Task @"6"
+#define Get_Detail_Task @"11"
 
 
 

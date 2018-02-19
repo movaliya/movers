@@ -1536,7 +1536,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKe-AQ-qfQ">
                                                         <rect key="frame" x="146" y="37" width="155" height="18"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1741,7 +1741,7 @@
                                                         <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimul Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewp-P6-eVs">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewp-P6-eVs">
                                                         <rect key="frame" x="8" y="102" width="130" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="130" id="26k-ZZ-O4R"/>
@@ -2027,10 +2027,31 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="868"/>
                     <connections>
+                        <outlet property="Address1_LBL" destination="3mD-dh-e1G" id="P7N-mt-J4T"/>
+                        <outlet property="Address2_LBL" destination="HxK-EI-RQE" id="lmT-SP-QQL"/>
+                        <outlet property="CustomerEmail_LBL" destination="P0w-XL-C9S" id="1GH-8o-DFI"/>
+                        <outlet property="CustomerNumber_LBL" destination="cgO-a1-T9d" id="1mv-jU-Rv7"/>
+                        <outlet property="CutomerName_LBL" destination="cXn-I2-zji" id="O2A-Ed-v1e"/>
+                        <outlet property="DiscountAmount_LBL" destination="8dT-3x-SrA" id="RwZ-wx-yw7"/>
+                        <outlet property="DropAddress_LBL" destination="frZ-As-O4x" id="rL0-Ff-ZNC"/>
+                        <outlet property="DurationHours_LBL" destination="Ne6-86-bcQ" id="IUI-LL-fYa"/>
+                        <outlet property="EndDate_LBL" destination="kKe-AQ-qfQ" id="QoA-AJ-wG7"/>
                         <outlet property="FirstView" destination="WOs-D0-GBQ" id="WH8-yp-pZW"/>
+                        <outlet property="GrandTotal_LBL" destination="KE9-pK-FEw" id="hoC-nO-Z5R"/>
+                        <outlet property="HelperName_LBL" destination="YGU-2L-oPs" id="iUe-nY-Vf2"/>
+                        <outlet property="HelperNumber_LBL" destination="d7W-eJ-yuX" id="211-Ob-kid"/>
+                        <outlet property="JobTitle_LBL" destination="z9A-Vz-VG3" id="3KB-CI-nve"/>
+                        <outlet property="MinumulHours_LBL" destination="mWi-19-ewC" id="osK-oQ-7ST"/>
+                        <outlet property="PerHourRate_LBL" destination="9c6-GQ-B7C" id="MI1-oz-2xQ"/>
+                        <outlet property="Pianoamount_LBL" destination="bbX-ia-ujq" id="XTb-Bd-hbG"/>
+                        <outlet property="PoolTableAmount_LBL" destination="oQu-7O-kdg" id="s1P-Cz-ppL"/>
                         <outlet property="SecondView" destination="EXo-oJ-mnr" id="adO-Cx-c5C"/>
                         <outlet property="TherdView" destination="RSA-sX-ReC" id="UW9-x8-4XX"/>
                         <outlet property="TherdViewBorder" destination="BeF-Hv-njD" id="CtF-Od-1H0"/>
+                        <outlet property="TotalAmount_LBL" destination="W5a-mM-jKd" id="8nx-EV-uL7"/>
+                        <outlet property="addSurhargeTitle_LBL" destination="fj7-ct-Tpx" id="wIt-Ow-22B"/>
+                        <outlet property="pickupAdreess_LBL" destination="4Px-0M-ogj" id="OTn-Sa-yMD"/>
+                        <outlet property="preferredDate_LBL" destination="xBz-dp-ghE" id="3Kx-z8-vDG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yI4-a5-Whg" userLabel="First Responder" sceneMemberID="firstResponder"/>

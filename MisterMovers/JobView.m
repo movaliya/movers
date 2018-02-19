@@ -32,7 +32,13 @@
     MainTBL.rowHeight = cell.frame.size.height;
     [MainTBL registerNib:nib forCellReuseIdentifier:@"TodayJobCell"];
     
-    [self GetTodayTask];
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self GetTodayTask];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    
+    
     
 }
 -(void)GetTodayTask
@@ -160,6 +166,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     JobDetailView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"JobDetailView"];
+    vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+    vcr.Task_NO=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+    
     [self.navigationController pushViewController:vcr animated:YES];
 
 }

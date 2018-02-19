@@ -18,6 +18,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //LIVE
+    //kamal@gmail.com
+    //123123
+    
     //ios@test.com
    // 123
     return YES;
