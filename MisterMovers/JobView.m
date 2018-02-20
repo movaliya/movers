@@ -10,6 +10,7 @@
 #import "TodayJobCell.h"
 #import "JobDetailView.h"
 #import "misterMover.pch"
+#import "StartTaskDetailVW.h"
 
 #define SelectedLabelColor [UIColor colorWithRed:255.0/255.0 green:175.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define Whitecolortitle [UIColor whiteColor]
@@ -165,7 +166,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    JobDetailView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"JobDetailView"];
+    StartTaskDetailVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartTaskDetailVW"];
     vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
     vcr.Task_NO=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
     

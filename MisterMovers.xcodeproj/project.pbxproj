@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		295A636C203BFAD700110792 /* StartTaskDetailVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A636B203BFAD700110792 /* StartTaskDetailVW.m */; };
+		295A636F203C05DB00110792 /* TremNconditionVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A636E203C05DB00110792 /* TremNconditionVW.m */; };
+		295A6372203C11C300110792 /* SignatureVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A6371203C11C300110792 /* SignatureVW.m */; };
+		295A6375203C313500110792 /* UviSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A6374203C313500110792 /* UviSignatureView.m */; };
+		295A6379203C46C000110792 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295A6378203C46C000110792 /* PhotosUI.framework */; };
+		295A637B203C46D100110792 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295A637A203C46D100110792 /* AssetsLibrary.framework */; };
 		2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2B2015B0E6006CA19F /* loginLogo.png */; };
 		2968CE2E2015B571006CA19F /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2D2015B571006CA19F /* splash.png */; };
 		2968CE302015B5BF006CA19F /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2F2015B5BF006CA19F /* ios */; };
@@ -106,6 +112,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		295A636A203BFAD700110792 /* StartTaskDetailVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTaskDetailVW.h; sourceTree = "<group>"; };
+		295A636B203BFAD700110792 /* StartTaskDetailVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTaskDetailVW.m; sourceTree = "<group>"; };
+		295A636D203C05DB00110792 /* TremNconditionVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TremNconditionVW.h; sourceTree = "<group>"; };
+		295A636E203C05DB00110792 /* TremNconditionVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TremNconditionVW.m; sourceTree = "<group>"; };
+		295A6370203C11C300110792 /* SignatureVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureVW.h; sourceTree = "<group>"; };
+		295A6371203C11C300110792 /* SignatureVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureVW.m; sourceTree = "<group>"; };
+		295A6373203C313500110792 /* UviSignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UviSignatureView.h; sourceTree = "<group>"; };
+		295A6374203C313500110792 /* UviSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UviSignatureView.m; sourceTree = "<group>"; };
+		295A6378203C46C000110792 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		295A637A203C46D100110792 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2965CC7D2031C66B00F3BCBB /* misterMover.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misterMover.pch; sourceTree = "<group>"; };
 		2968CE2B2015B0E6006CA19F /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
 		2968CE2D2015B571006CA19F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
@@ -283,17 +299,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295A637B203C46D100110792 /* AssetsLibrary.framework in Frameworks */,
+				295A6379203C46C000110792 /* PhotosUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		295A6376203C366B00110792 /* Signature */ = {
+			isa = PBXGroup;
+			children = (
+				295A6373203C313500110792 /* UviSignatureView.h */,
+				295A6374203C313500110792 /* UviSignatureView.m */,
+			);
+			name = Signature;
+			sourceTree = "<group>";
+		};
+		295A6377203C46C000110792 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				295A637A203C46D100110792 /* AssetsLibrary.framework */,
+				295A6378203C46C000110792 /* PhotosUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		530DC5431EC872C1000D4CA2 = {
 			isa = PBXGroup;
 			children = (
 				530DC54E1EC872C1000D4CA2 /* MisterMovers */,
 				530DC54D1EC872C1000D4CA2 /* Products */,
+				295A6377203C46C000110792 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -308,6 +345,7 @@
 		530DC54E1EC872C1000D4CA2 /* MisterMovers */ = {
 			isa = PBXGroup;
 			children = (
+				295A6376203C366B00110792 /* Signature */,
 				2968CE2F2015B5BF006CA19F /* ios */,
 				53523A951EC9F86B00EE41E9 /* Cell */,
 				530DC6201EC89979000D4CA2 /* Menu */,
@@ -327,12 +365,18 @@
 				53523A931EC9F7EE00EE41E9 /* NotificationVW.m */,
 				B133ECA7202FF512008BC8AE /* JobView.h */,
 				B133ECA8202FF512008BC8AE /* JobView.m */,
+				295A636A203BFAD700110792 /* StartTaskDetailVW.h */,
+				295A636B203BFAD700110792 /* StartTaskDetailVW.m */,
+				295A6370203C11C300110792 /* SignatureVW.h */,
+				295A6371203C11C300110792 /* SignatureVW.m */,
 				B11BDB3F203043D800E97C32 /* JobDetailView.h */,
 				B11BDB40203043D800E97C32 /* JobDetailView.m */,
 				B133ECAF2030118E008BC8AE /* ExpenseView.h */,
 				B133ECB02030118E008BC8AE /* ExpenseView.m */,
 				B11BDB422030609600E97C32 /* ExpenseHistoryView.h */,
 				B11BDB432030609600E97C32 /* ExpenseHistoryView.m */,
+				295A636D203C05DB00110792 /* TremNconditionVW.h */,
+				295A636E203C05DB00110792 /* TremNconditionVW.m */,
 				530DC5581EC872C1000D4CA2 /* Main.storyboard */,
 				2965CC7D2031C66B00F3BCBB /* misterMover.pch */,
 				530DC56B1EC879C9000D4CA2 /* Images */,
@@ -749,6 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				530DC5FF1EC88249000D4CA2 /* IQKeyboardManager.m in Sources */,
+				295A636C203BFAD700110792 /* StartTaskDetailVW.m in Sources */,
 				530DC5E21EC881D3000D4CA2 /* UIImage+KVNEmpty.m in Sources */,
 				530DC5F31EC8822C000D4CA2 /* IQUIScrollView+Additions.m in Sources */,
 				530DC5CC1EC8818A000D4CA2 /* AFURLRequestSerialization.m in Sources */,
@@ -757,6 +802,7 @@
 				530DC6001EC88249000D4CA2 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				530DC58F1EC88157000D4CA2 /* NSData+ImageContentType.m in Sources */,
 				530DC5F21EC8822C000D4CA2 /* IQNSArray+Sort.m in Sources */,
+				295A6375203C313500110792 /* UviSignatureView.m in Sources */,
 				530DC5951EC88157000D4CA2 /* SDWebImageManager.m in Sources */,
 				530DC59A1EC88157000D4CA2 /* UIImageView+HighlightedWebCache.m in Sources */,
 				53523A941EC9F7EE00EE41E9 /* NotificationVW.m in Sources */,
@@ -794,6 +840,7 @@
 				530DC5CA1EC8818A000D4CA2 /* AFNetworkReachabilityManager.m in Sources */,
 				530DC5701EC88137000D4CA2 /* Reachability.m in Sources */,
 				530DC5C91EC8818A000D4CA2 /* AFHTTPSessionManager.m in Sources */,
+				295A636F203C05DB00110792 /* TremNconditionVW.m in Sources */,
 				2968CE4220161433006CA19F /* CCKFNavDrawer.m in Sources */,
 				530DC5971EC88157000D4CA2 /* UIButton+WebCache.m in Sources */,
 				530DC5961EC88157000D4CA2 /* SDWebImagePrefetcher.m in Sources */,
@@ -813,6 +860,7 @@
 				B133ECA9202FF512008BC8AE /* JobView.m in Sources */,
 				530DC5CD1EC8818A000D4CA2 /* AFURLResponseSerialization.m in Sources */,
 				530DC5E31EC881D3000D4CA2 /* UIImage+KVNImageEffects.m in Sources */,
+				295A6372203C11C300110792 /* SignatureVW.m in Sources */,
 				530DC5681EC873AC000D4CA2 /* LogInVW.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

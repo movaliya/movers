@@ -1,24 +1,22 @@
 //
-//  JobDetailView.m
+//  StartTaskDetailVW.m
 //  MisterMovers
 //
-//  Created by kaushik on 11/02/18.
+//  Created by jignesh solanki on 20/02/2018.
 //  Copyright © 2018 jkinfoway. All rights reserved.
 //
 
-#import "JobDetailView.h"
+#import "StartTaskDetailVW.h"
 #import "misterMover.pch"
-
-
-@interface JobDetailView ()
+#import "TremNconditionVW.h"
+@interface StartTaskDetailVW ()
 
 @end
 
-@implementation JobDetailView
+@implementation StartTaskDetailVW
 @synthesize FirstView,SecondView,TherdView,TherdViewBorder;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [FirstView.layer setShadowColor:[UIColor blackColor].CGColor];
@@ -40,13 +38,13 @@
     TherdViewBorder.layer.borderWidth=1.0f;
     TherdViewBorder.layer.borderColor=[[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f] CGColor];
     self.JobTitle_LBL.text=self.Task_NO;
-    
+    self.JobNo_LBL.text=self.Task_NO;
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
-         [self GetDetailTask];
+        [self GetDetailTask];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
-  
+    
 }
 -(void)GetDetailTask
 {
@@ -56,7 +54,7 @@
     [dictParams setObject:Get_Detail_Task  forKey:@"s"];
     
     [dictParams setObject:self.Task_ID  forKey:@"tid"];
-   
+    
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {
          [self handleDetailTaskResponse:response];
@@ -68,6 +66,7 @@
     {
         DetailTaskDic=[[response valueForKey:@"result"] mutableCopy];
         
+        self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
         self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
         self.EndDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_end_date"]];
         self.pickupAdreess_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_location_from"]];
@@ -83,22 +82,12 @@
         NSArray *helpers_details=[[DetailTaskDic valueForKey:@"helpers_details"]objectAtIndex:0];
         self.HelperNumber_LBL.text=[helpers_details valueForKey:@"employee_phone"];
         self.HelperName_LBL.text=[helpers_details valueForKey:@"employee_name"];
-        
-        self.DurationHours_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"quotation_approx_hour"]];
         self.MinumulHours_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"quotation_minimum_hour"]];
-        self.TotalAmount_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"total_payment"]];
         
+         self.vehicleReg_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_vehicle_no"]];
         //self.Pianoamount_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
         //self.PoolTableAmount_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
         //self.addSurhargeTitle_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
-        
-        self.DiscountAmount_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_discount"]];
-        self.GrandTotal_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_grandtotal"]];
-
-        
-        
-        
-        
         
     }
     else
@@ -106,17 +95,33 @@
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
-- (IBAction)SendAction:(id)sender {
-}
-
-- (void)didReceiveMemoryWarning
+- (IBAction)StartTask_Action:(id)sender
 {
-    [super didReceiveMemoryWarning];
+   
+    TremNconditionVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TremNconditionVW"];
+    vcr.Task_ID=[DetailTaskDic valueForKey:@"id"];
+    vcr.vehical_id=[DetailTaskDic valueForKey:@"task_vehicle_id"];
+    [self.navigationController pushViewController:vcr animated:YES];
 }
-
-- (IBAction)Back_click:(id)sender
+- (IBAction)backBtn_Click:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
