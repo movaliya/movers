@@ -101,6 +101,7 @@
     TremNconditionVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TremNconditionVW"];
     vcr.Task_ID=[DetailTaskDic valueForKey:@"id"];
     vcr.vehical_id=[DetailTaskDic valueForKey:@"task_vehicle_id"];
+    vcr.Task_NO1=[DetailTaskDic valueForKey:@"task_no"];
     [self.navigationController pushViewController:vcr animated:YES];
 }
 - (IBAction)backBtn_Click:(id)sender

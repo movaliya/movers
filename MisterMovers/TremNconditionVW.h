@@ -10,5 +10,6 @@
 
 @interface TremNconditionVW : UIViewController
 @property (strong, nonatomic) NSString *Task_ID;
+@property (strong, nonatomic) NSString *Task_NO1;
 @property (strong, nonatomic) NSString *vehical_id;
 @end
