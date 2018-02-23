@@ -54,7 +54,7 @@
     
     [dictParams setObject:@"today"  forKey:@"type"];
     [dictParams setObject:@"0"  forKey:@"ul"];
-    [dictParams setObject:@"2"  forKey:@"ll"];
+    [dictParams setObject:@"5"  forKey:@"ll"];
    
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {
@@ -62,6 +62,37 @@
      }];
 }
 - (void)handleTodayTaskResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        TodayTaskDic=[[response valueForKey:@"result"] mutableCopy];
+        [MainTBL reloadData];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
+-(void)GetAllTask
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Get_Task  forKey:@"s"];
+    
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    
+    [dictParams setObject:@"general"  forKey:@"type"];
+    [dictParams setObject:@"0"  forKey:@"ul"];
+    [dictParams setObject:@"5"  forKey:@"ll"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleAllTaskResponse:response];
+     }];
+}
+- (void)handleAllTaskResponse:(NSDictionary*)response
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
@@ -94,16 +125,29 @@
         
         All_LBL.backgroundColor=[UIColor clearColor];
         [All_BTN setTitleColor:Whitecolortitle forState:UIControlStateNormal];
+        
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self GetTodayTask];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     }
     else if ([sender isEqual:All_BTN])
     {
         FilterBTN.hidden=NO;
-        MainTBL.hidden=YES;
+       // MainTBL.hidden=YES;
         All_LBL.backgroundColor=SelectedLabelColor;
         [All_BTN setTitleColor:SelectedLabelColor forState:UIControlStateNormal];
         
         Today_LBL.backgroundColor=[UIColor clearColor];
         [Today_BTN setTitleColor:Whitecolortitle forState:UIControlStateNormal];
+        
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self GetAllTask];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        
     }
 }
 
