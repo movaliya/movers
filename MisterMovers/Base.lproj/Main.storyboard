@@ -2082,7 +2082,7 @@
                                         </constraints>
                                         <state key="normal" image="BackBtn"/>
                                         <connections>
-                                            <action selector="Back_Click:" destination="37k-Ma-W7A" eventType="touchUpInside" id="M94-Jr-eIS"/>
+                                            <action selector="Back_Click:" destination="37k-Ma-W7A" eventType="touchUpInside" id="mJO-HF-f1l"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qff-Gv-ljZ">
@@ -2109,10 +2109,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-SR-IQT">
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="37k-Ma-W7A" id="YFZ-Mt-c3W"/>
-                                    <outlet property="delegate" destination="37k-Ma-W7A" id="cwB-e7-0cN"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -2129,7 +2125,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ExpenseTBL" destination="9uP-SR-IQT" id="xDG-RD-fRP"/>
+                        <outlet property="ExpenseTBL" destination="9uP-SR-IQT" id="j19-JN-Rp1"/>
                         <outlet property="NoExpBTN" destination="TZk-f8-n0h" id="TXc-Ow-E5n"/>
                     </connections>
                 </viewController>
@@ -2768,6 +2764,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyq-Nm-mmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5101.875" y="943.30985915492954"/>
+        </scene>
+        <!--Invoice View-->
+        <scene sceneID="Eyt-oU-RCR">
+            <objects>
+                <viewController storyboardIdentifier="InvoiceView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FfE-1u-mHW" customClass="InvoiceView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1bz-LV-HG6"/>
+                        <viewControllerLayoutGuide type="bottom" id="WMT-u3-enh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jgI-Vt-3L2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Mc-qm-IwA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGw-WA-oHx">
+                                        <rect key="frame" x="0.0" y="17" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="1JJ-XL-1al"/>
+                                            <constraint firstAttribute="width" constant="50" id="MVY-Zy-e1C"/>
+                                        </constraints>
+                                        <state key="normal" image="BackBtn"/>
+                                        <connections>
+                                            <action selector="Back_Click:" destination="FfE-1u-mHW" eventType="touchUpInside" id="ldS-l9-eus"/>
+                                            <action selector="Back_click:" destination="FfE-1u-mHW" eventType="touchUpInside" id="DAm-7e-NxJ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t83-la-dLo">
+                                        <rect key="frame" x="55" y="30" width="70" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.31764705879999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="gGw-WA-oHx" firstAttribute="leading" secondItem="5Mc-qm-IwA" secondAttribute="leading" id="luc-XY-DzF"/>
+                                    <constraint firstItem="t83-la-dLo" firstAttribute="leading" secondItem="gGw-WA-oHx" secondAttribute="trailing" constant="5" id="ogt-nc-hZR"/>
+                                    <constraint firstAttribute="height" constant="65" id="ovk-uc-EJs"/>
+                                    <constraint firstItem="gGw-WA-oHx" firstAttribute="centerY" secondItem="t83-la-dLo" secondAttribute="centerY" id="sjA-6T-6Bl"/>
+                                    <constraint firstItem="t83-la-dLo" firstAttribute="top" secondItem="5Mc-qm-IwA" secondAttribute="top" constant="30" id="z3O-Wd-rSU"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TR9-1G-hUb">
+                                <rect key="frame" x="79" y="267" width="162" height="34"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" No Expense Found "/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vKq-Ur-AiN">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="FfE-1u-mHW" id="ffV-ee-VHN"/>
+                                    <outlet property="delegate" destination="FfE-1u-mHW" id="b6F-gs-arC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vKq-Ur-AiN" firstAttribute="leading" secondItem="jgI-Vt-3L2" secondAttribute="leading" id="OJg-h4-4Ww"/>
+                            <constraint firstItem="TR9-1G-hUb" firstAttribute="centerY" secondItem="jgI-Vt-3L2" secondAttribute="centerY" id="R3Y-AA-08L"/>
+                            <constraint firstItem="vKq-Ur-AiN" firstAttribute="top" secondItem="5Mc-qm-IwA" secondAttribute="bottom" id="RID-uJ-uVP"/>
+                            <constraint firstItem="5Mc-qm-IwA" firstAttribute="leading" secondItem="jgI-Vt-3L2" secondAttribute="leading" id="Rda-rW-u8u"/>
+                            <constraint firstItem="WMT-u3-enh" firstAttribute="top" secondItem="vKq-Ur-AiN" secondAttribute="bottom" id="URc-Xd-XDD"/>
+                            <constraint firstAttribute="trailing" secondItem="vKq-Ur-AiN" secondAttribute="trailing" id="XtC-Gg-ze7"/>
+                            <constraint firstItem="TR9-1G-hUb" firstAttribute="centerX" secondItem="jgI-Vt-3L2" secondAttribute="centerX" id="dg9-8R-WpO"/>
+                            <constraint firstItem="5Mc-qm-IwA" firstAttribute="top" secondItem="jgI-Vt-3L2" secondAttribute="top" id="fKj-0W-P9A"/>
+                            <constraint firstAttribute="trailing" secondItem="5Mc-qm-IwA" secondAttribute="trailing" id="rae-MW-O31"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="InvoiceTBL" destination="vKq-Ur-AiN" id="IV3-2w-pnb"/>
+                        <outlet property="NoInvoiceBTN" destination="TR9-1G-hUb" id="x05-fO-CPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7AO-el-vlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1391" y="1619"/>
         </scene>
     </scenes>
     <resources>

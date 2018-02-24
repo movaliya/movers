@@ -12,6 +12,7 @@
 #import "JobView.h"
 #import "ExpenseView.h"
 #import "ExpenseHistoryView.h"
+#import "InvoiceView.h"
 
 @interface HomeVW ()
 
@@ -66,7 +67,8 @@
     }
     else if (aButton.tag == 6)
     {
-        // Inward
+        InvoiceView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InvoiceView"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else if (aButton.tag == 7)
     {

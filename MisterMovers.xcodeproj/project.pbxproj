@@ -112,6 +112,10 @@
 		B133ECB12030118E008BC8AE /* ExpenseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECB02030118E008BC8AE /* ExpenseView.m */; };
 		B153429120415AF20041A8EB /* ExpenseCellHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B153428F20415AF20041A8EB /* ExpenseCellHistory.m */; };
 		B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = B153429020415AF20041A8EB /* ExpenseCellHistory.xib */; };
+		B15CFBD72041A9B50070DF8A /* InvoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B15CFBD52041A9B50070DF8A /* InvoiceCell.m */; };
+		B15CFBD82041A9B50070DF8A /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15CFBD62041A9B50070DF8A /* InvoiceCell.xib */; };
+		B15CFBDB2041AC880070DF8A /* InvoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B15CFBDA2041AC880070DF8A /* InvoiceView.m */; };
+		B15CFBDE2041B1490070DF8A /* JobHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B15CFBDD2041B1490070DF8A /* JobHistory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -300,6 +304,13 @@
 		B153428E20415AF20041A8EB /* ExpenseCellHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseCellHistory.h; sourceTree = "<group>"; };
 		B153428F20415AF20041A8EB /* ExpenseCellHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseCellHistory.m; sourceTree = "<group>"; };
 		B153429020415AF20041A8EB /* ExpenseCellHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseCellHistory.xib; sourceTree = "<group>"; };
+		B15CFBD42041A9B50070DF8A /* InvoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoiceCell.h; sourceTree = "<group>"; };
+		B15CFBD52041A9B50070DF8A /* InvoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceCell.m; sourceTree = "<group>"; };
+		B15CFBD62041A9B50070DF8A /* InvoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvoiceCell.xib; sourceTree = "<group>"; };
+		B15CFBD92041AC880070DF8A /* InvoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvoiceView.h; sourceTree = "<group>"; };
+		B15CFBDA2041AC880070DF8A /* InvoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceView.m; sourceTree = "<group>"; };
+		B15CFBDC2041B1490070DF8A /* JobHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobHistory.h; sourceTree = "<group>"; };
+		B15CFBDD2041B1490070DF8A /* JobHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobHistory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +390,10 @@
 				295A6371203C11C300110792 /* SignatureVW.m */,
 				B11BDB3F203043D800E97C32 /* JobDetailView.h */,
 				B11BDB40203043D800E97C32 /* JobDetailView.m */,
+				B15CFBDC2041B1490070DF8A /* JobHistory.h */,
+				B15CFBDD2041B1490070DF8A /* JobHistory.m */,
+				B15CFBD92041AC880070DF8A /* InvoiceView.h */,
+				B15CFBDA2041AC880070DF8A /* InvoiceView.m */,
 				B133ECAF2030118E008BC8AE /* ExpenseView.h */,
 				B133ECB02030118E008BC8AE /* ExpenseView.m */,
 				B11BDB422030609600E97C32 /* ExpenseHistoryView.h */,
@@ -702,6 +717,9 @@
 				B153428E20415AF20041A8EB /* ExpenseCellHistory.h */,
 				B153428F20415AF20041A8EB /* ExpenseCellHistory.m */,
 				B153429020415AF20041A8EB /* ExpenseCellHistory.xib */,
+				B15CFBD42041A9B50070DF8A /* InvoiceCell.h */,
+				B15CFBD52041A9B50070DF8A /* InvoiceCell.m */,
+				B15CFBD62041A9B50070DF8A /* InvoiceCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -778,6 +796,7 @@
 				53523A891EC9DE7300EE41E9 /* notification_list.png in Resources */,
 				53523A7F1EC9DDF500EE41E9 /* attendence.png in Resources */,
 				53523A871EC9DE4100EE41E9 /* logout.png in Resources */,
+				B15CFBD82041A9B50070DF8A /* InvoiceCell.xib in Resources */,
 				530DC6171EC88283000D4CA2 /* IQKeyboardManager.bundle in Resources */,
 				53523A9A1EC9F88700EE41E9 /* Notification_Cell.xib in Resources */,
 				53523A831EC9DE1600EE41E9 /* dispatch.png in Resources */,
@@ -850,6 +869,7 @@
 				530DC6131EC88271000D4CA2 /* IQToolbar.m in Sources */,
 				530DC6041EC88259000D4CA2 /* IQTextView.m in Sources */,
 				530DC5941EC88157000D4CA2 /* SDWebImageDownloaderOperation.m in Sources */,
+				B15CFBDE2041B1490070DF8A /* JobHistory.m in Sources */,
 				530DC5F41EC8822C000D4CA2 /* IQUITextFieldView+Additions.m in Sources */,
 				530DC5B51EC8816C000D4CA2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				530DC5CA1EC8818A000D4CA2 /* AFNetworkReachabilityManager.m in Sources */,
@@ -862,7 +882,9 @@
 				B11BDB41203043D800E97C32 /* JobDetailView.m in Sources */,
 				530DC5B91EC8816C000D4CA2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				530DC5B71EC8816C000D4CA2 /* UIImageView+AFNetworking.m in Sources */,
+				B15CFBD72041A9B50070DF8A /* InvoiceCell.m in Sources */,
 				530DC61B1EC882A8000D4CA2 /* CommonWS.m in Sources */,
+				B15CFBDB2041AC880070DF8A /* InvoiceView.m in Sources */,
 				530DC6101EC88271000D4CA2 /* IQBarButtonItem.m in Sources */,
 				530DC5911EC88157000D4CA2 /* SDWebImageCompat.m in Sources */,
 				530DC6321EC89BFD000D4CA2 /* HomeVW.m in Sources */,
