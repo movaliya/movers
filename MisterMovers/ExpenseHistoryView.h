@@ -10,7 +10,7 @@
 
 @interface ExpenseHistoryView : UIViewController
 {
-    
+    NSMutableDictionary *Expense_historyDIC;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *ExpenseTBL;

@@ -11,4 +11,11 @@
 @interface ExpenseCellHistory : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIView *BackView;
+@property (weak, nonatomic) IBOutlet UILabel *Jobtitle_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *ExpenseType_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *VehicleNo_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *VehicleName_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *Amount_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *Remark_LBL;
+
 @end
