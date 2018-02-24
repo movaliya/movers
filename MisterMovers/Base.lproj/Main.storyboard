@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -939,6 +939,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Em6-Ba-idL" secondAttribute="bottom" id="GVY-gd-p7B"/>
                                     <constraint firstItem="Em6-Ba-idL" firstAttribute="leading" secondItem="nzi-PO-fT6" secondAttribute="leading" id="Og5-nC-PC1"/>
@@ -951,7 +952,7 @@
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nzi-PO-fT6" secondAttribute="trailing" id="288-jN-Esf"/>
                             <constraint firstItem="nzi-PO-fT6" firstAttribute="top" secondItem="J4a-yJ-J0I" secondAttribute="bottom" id="4zF-E9-APi"/>
@@ -2105,20 +2106,36 @@
                                 <color key="backgroundColor" red="0.2470588235" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title=" No Expense Found "/>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-SR-IQT">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="37k-Ma-W7A" id="YFZ-Mt-c3W"/>
+                                    <outlet property="delegate" destination="37k-Ma-W7A" id="cwB-e7-0cN"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="WO2-Or-eRh" firstAttribute="top" secondItem="9uP-SR-IQT" secondAttribute="bottom" id="8oI-l1-t5i"/>
                             <constraint firstItem="TZk-f8-n0h" firstAttribute="centerY" secondItem="9Mj-yu-Ji9" secondAttribute="centerY" id="9lX-dW-9gD"/>
                             <constraint firstItem="vqM-WD-7p2" firstAttribute="leading" secondItem="9Mj-yu-Ji9" secondAttribute="leading" id="Ywc-1V-nl8"/>
+                            <constraint firstItem="9uP-SR-IQT" firstAttribute="top" secondItem="vqM-WD-7p2" secondAttribute="bottom" id="bHY-70-K89"/>
+                            <constraint firstAttribute="trailing" secondItem="9uP-SR-IQT" secondAttribute="trailing" id="dEt-gG-19O"/>
                             <constraint firstAttribute="trailing" secondItem="vqM-WD-7p2" secondAttribute="trailing" id="i33-uW-ZcE"/>
+                            <constraint firstItem="9uP-SR-IQT" firstAttribute="leading" secondItem="9Mj-yu-Ji9" secondAttribute="leading" id="qQl-6x-8qd"/>
                             <constraint firstItem="vqM-WD-7p2" firstAttribute="top" secondItem="9Mj-yu-Ji9" secondAttribute="top" id="xcY-dU-m9u"/>
                             <constraint firstItem="TZk-f8-n0h" firstAttribute="centerX" secondItem="9Mj-yu-Ji9" secondAttribute="centerX" id="yp6-oC-d72"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ExpenseTBL" destination="9uP-SR-IQT" id="xDG-RD-fRP"/>
+                        <outlet property="NoExpBTN" destination="TZk-f8-n0h" id="TXc-Ow-E5n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOy-I3-xTY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2064" y="1620"/>
+            <point key="canvasLocation" x="2062.5" y="1619.3661971830986"/>
         </scene>
         <!--Start Task DetailVW-->
         <scene sceneID="MuY-m8-OsC">

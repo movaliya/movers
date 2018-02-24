@@ -20,6 +20,8 @@
 {
     [super viewDidLoad];
     
+    
+    
     [InfoView.layer setShadowColor:[UIColor blackColor].CGColor];
     [InfoView.layer setShadowOpacity:0.8];
     [InfoView.layer setShadowRadius:2.0];

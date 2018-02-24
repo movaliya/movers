@@ -110,6 +110,8 @@
 		B133ECAD20300192008BC8AE /* TodayJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECAB20300192008BC8AE /* TodayJobCell.m */; };
 		B133ECAE20300192008BC8AE /* TodayJobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B133ECAC20300192008BC8AE /* TodayJobCell.xib */; };
 		B133ECB12030118E008BC8AE /* ExpenseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECB02030118E008BC8AE /* ExpenseView.m */; };
+		B153429120415AF20041A8EB /* ExpenseCellHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B153428F20415AF20041A8EB /* ExpenseCellHistory.m */; };
+		B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = B153429020415AF20041A8EB /* ExpenseCellHistory.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -295,6 +297,9 @@
 		B133ECAC20300192008BC8AE /* TodayJobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayJobCell.xib; sourceTree = "<group>"; };
 		B133ECAF2030118E008BC8AE /* ExpenseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseView.h; sourceTree = "<group>"; };
 		B133ECB02030118E008BC8AE /* ExpenseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseView.m; sourceTree = "<group>"; };
+		B153428E20415AF20041A8EB /* ExpenseCellHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseCellHistory.h; sourceTree = "<group>"; };
+		B153428F20415AF20041A8EB /* ExpenseCellHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseCellHistory.m; sourceTree = "<group>"; };
+		B153429020415AF20041A8EB /* ExpenseCellHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseCellHistory.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -694,6 +699,9 @@
 				B133ECAA20300192008BC8AE /* TodayJobCell.h */,
 				B133ECAB20300192008BC8AE /* TodayJobCell.m */,
 				B133ECAC20300192008BC8AE /* TodayJobCell.xib */,
+				B153428E20415AF20041A8EB /* ExpenseCellHistory.h */,
+				B153428F20415AF20041A8EB /* ExpenseCellHistory.m */,
+				B153429020415AF20041A8EB /* ExpenseCellHistory.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -781,6 +789,7 @@
 				53523A7D1EC9DDF000EE41E9 /* attendence_empty.png in Resources */,
 				2968CE3C2015D55A006CA19F /* invoice.png in Resources */,
 				530DC55C1EC872C1000D4CA2 /* Assets.xcassets in Resources */,
+				B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */,
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,
 				2968CE2E2015B571006CA19F /* splash.png in Resources */,
 				530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */,
@@ -797,6 +806,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B153429120415AF20041A8EB /* ExpenseCellHistory.m in Sources */,
 				530DC5FF1EC88249000D4CA2 /* IQKeyboardManager.m in Sources */,
 				295A636C203BFAD700110792 /* StartTaskDetailVW.m in Sources */,
 				530DC5E21EC881D3000D4CA2 /* UIImage+KVNEmpty.m in Sources */,

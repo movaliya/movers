@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ExpenseHistoryView : UIViewController
+{
+    
+}
 
+@property (strong, nonatomic) IBOutlet UITableView *ExpenseTBL;
+@property (strong, nonatomic) IBOutlet UIButton *NoExpBTN;
 @end

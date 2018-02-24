@@ -13,6 +13,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
     [BackView.layer setCornerRadius:3.0f];
     BackView.layer.borderWidth = 1.0f;
     [BackView.layer setMasksToBounds:YES];
