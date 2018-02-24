@@ -13,6 +13,7 @@
 #import "ExpenseView.h"
 #import "ExpenseHistoryView.h"
 #import "InvoiceView.h"
+#import "JobHistory.h"
 
 @interface HomeVW ()
 
@@ -63,7 +64,8 @@
     }
     else if (aButton.tag == 5)
     {
-        // Customer
+        JobHistory *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"JobHistory"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else if (aButton.tag == 6)
     {

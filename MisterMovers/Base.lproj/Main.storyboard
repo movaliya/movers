@@ -2844,6 +2844,94 @@
             </objects>
             <point key="canvasLocation" x="1391" y="1619"/>
         </scene>
+        <!--Job History-->
+        <scene sceneID="VzE-Je-k4q">
+            <objects>
+                <viewController storyboardIdentifier="JobHistory" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g9s-XK-Kjy" customClass="JobHistory" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BpZ-ek-0bU"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Dg-yT-1Tm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YKb-tG-qse">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGH-Rm-s0w">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYj-Ik-x3l">
+                                        <rect key="frame" x="0.0" y="17" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Nkk-1O-4OY"/>
+                                            <constraint firstAttribute="height" constant="50" id="uV3-ec-6Qz"/>
+                                        </constraints>
+                                        <state key="normal" image="BackBtn"/>
+                                        <connections>
+                                            <action selector="Back_Click:" destination="g9s-XK-Kjy" eventType="touchUpInside" id="V1j-lp-5ZH"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvK-qN-pcR">
+                                        <rect key="frame" x="55" y="30" width="70" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.31764705879999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="EYj-Ik-x3l" firstAttribute="centerY" secondItem="zvK-qN-pcR" secondAttribute="centerY" id="65j-CC-1HG"/>
+                                    <constraint firstItem="EYj-Ik-x3l" firstAttribute="leading" secondItem="TGH-Rm-s0w" secondAttribute="leading" id="WTe-JL-bHg"/>
+                                    <constraint firstItem="zvK-qN-pcR" firstAttribute="leading" secondItem="EYj-Ik-x3l" secondAttribute="trailing" constant="5" id="i0F-Dp-BfM"/>
+                                    <constraint firstItem="zvK-qN-pcR" firstAttribute="top" secondItem="TGH-Rm-s0w" secondAttribute="top" constant="30" id="ihb-Db-QLv"/>
+                                    <constraint firstAttribute="height" constant="65" id="vdH-lr-JJx"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-ps-Vyh">
+                                <rect key="frame" x="270" y="19.5" width="50" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="3II-9O-9DH"/>
+                                    <constraint firstAttribute="width" constant="50" id="vbI-JH-qVE"/>
+                                </constraints>
+                                <state key="normal" image="FilterIcon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEY-yh-268">
+                                <rect key="frame" x="79" y="267" width="162" height="34"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" No Expense Found "/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xmc-49-Tbg">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="g9s-XK-Kjy" id="9ue-Bp-2TK"/>
+                                    <outlet property="delegate" destination="g9s-XK-Kjy" id="LS7-Db-vHh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="HEY-yh-268" firstAttribute="centerY" secondItem="YKb-tG-qse" secondAttribute="centerY" id="9C3-vR-Y0J"/>
+                            <constraint firstItem="eg8-ps-Vyh" firstAttribute="centerY" secondItem="zvK-qN-pcR" secondAttribute="centerY" id="CP2-sI-vPf"/>
+                            <constraint firstItem="Xmc-49-Tbg" firstAttribute="top" secondItem="TGH-Rm-s0w" secondAttribute="bottom" id="Cd5-y4-wsD"/>
+                            <constraint firstItem="TGH-Rm-s0w" firstAttribute="leading" secondItem="YKb-tG-qse" secondAttribute="leading" id="Etd-el-xOe"/>
+                            <constraint firstAttribute="trailing" secondItem="Xmc-49-Tbg" secondAttribute="trailing" id="LlC-bX-8Ye"/>
+                            <constraint firstItem="Xmc-49-Tbg" firstAttribute="leading" secondItem="YKb-tG-qse" secondAttribute="leading" id="LnK-8M-tSI"/>
+                            <constraint firstItem="HEY-yh-268" firstAttribute="centerX" secondItem="YKb-tG-qse" secondAttribute="centerX" id="cvE-ri-MLo"/>
+                            <constraint firstAttribute="trailing" secondItem="TGH-Rm-s0w" secondAttribute="trailing" id="l2J-Q5-eSK"/>
+                            <constraint firstItem="TGH-Rm-s0w" firstAttribute="top" secondItem="YKb-tG-qse" secondAttribute="top" id="plF-My-Rio"/>
+                            <constraint firstAttribute="trailing" secondItem="eg8-ps-Vyh" secondAttribute="trailing" id="r0b-VG-OdD"/>
+                            <constraint firstItem="0Dg-yT-1Tm" firstAttribute="top" secondItem="Xmc-49-Tbg" secondAttribute="bottom" id="y66-Fj-g5E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="HistoryTBL" destination="Xmc-49-Tbg" id="l8F-2K-VDv"/>
+                        <outlet property="NoJobHistoryBTN" destination="HEY-yh-268" id="gSa-TP-NZM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YBf-Pc-m68" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="1619"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BackBtn" width="17" height="17"/>

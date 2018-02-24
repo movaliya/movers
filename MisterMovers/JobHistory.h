@@ -10,4 +10,7 @@
 
 @interface JobHistory : UIViewController
 
+- (IBAction)Back_Click:(id)sender;
+@property (strong, nonatomic) IBOutlet UITableView *HistoryTBL;
+@property (strong, nonatomic) IBOutlet UIButton *NoJobHistoryBTN;
 @end
