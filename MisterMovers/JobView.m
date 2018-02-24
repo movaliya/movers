@@ -70,6 +70,8 @@
     }
     else
     {
+        TodayTaskDic=[[NSMutableDictionary alloc]init];
+        [MainTBL reloadData];
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
@@ -101,6 +103,8 @@
     }
     else
     {
+        TodayTaskDic=[[NSMutableDictionary alloc]init];
+        [MainTBL reloadData];
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
