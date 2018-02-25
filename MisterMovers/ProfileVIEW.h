@@ -28,6 +28,12 @@
 @property (strong, nonatomic) IBOutlet UITextField *Email_TXT;
 @property (strong, nonatomic) IBOutlet UIView *ResidentialView;
 @property (strong, nonatomic) IBOutlet IQTextView *Residential_TXT;
+@property (weak, nonatomic) IBOutlet IQTextView *permanentAdress_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *OldPass_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *NewPass_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *RetypePass_TXT;
+@property (weak, nonatomic) IBOutlet UIView *passwordVIEW;
+
 - (IBAction)Done_Click:(id)sender;
 
 @end
