@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *All_LBL;
 @property (strong, nonatomic) IBOutlet UIButton *Today_BTN;
 @property (strong, nonatomic) IBOutlet UIButton *All_BTN;
+@property (weak, nonatomic) IBOutlet UILabel *NoJobsFound_LBL;
 - (IBAction)Tab_Click:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *FilterBTN;

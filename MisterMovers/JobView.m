@@ -21,12 +21,13 @@
 @end
 
 @implementation JobView
-@synthesize Today_BTN,Today_LBL,All_BTN,All_LBL,FilterBTN,MainTBL;
+@synthesize Today_BTN,Today_LBL,All_BTN,All_LBL,FilterBTN,MainTBL,NoJobsFound_LBL;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     FilterBTN.hidden=YES;
+    NoJobsFound_LBL.hidden=YES;
     
     UINib *nib = [UINib nibWithNibName:@"TodayJobCell" bundle:nil];
     TodayJobCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
@@ -65,11 +66,13 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
+        NoJobsFound_LBL.hidden=YES;
         TodayTaskDic=[[response valueForKey:@"result"] mutableCopy];
         [MainTBL reloadData];
     }
     else
     {
+         NoJobsFound_LBL.hidden=NO;
         TodayTaskDic=[[NSMutableDictionary alloc]init];
         [MainTBL reloadData];
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
@@ -98,11 +101,13 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
+        NoJobsFound_LBL.hidden=YES;
         TodayTaskDic=[[response valueForKey:@"result"] mutableCopy];
         [MainTBL reloadData];
     }
     else
     {
+        NoJobsFound_LBL.hidden=NO;
         TodayTaskDic=[[NSMutableDictionary alloc]init];
         [MainTBL reloadData];
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
