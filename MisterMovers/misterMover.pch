@@ -32,7 +32,7 @@
 #define Update_User_Profile @"5"
 
 #define user_forget_password @"2"
-#define user_change_password @"22"
+#define user_change_password @"4"
 #define get_notification @"24"
 
 #define Get_Task @"6"
