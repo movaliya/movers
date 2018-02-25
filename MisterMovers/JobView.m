@@ -25,11 +25,15 @@
 @property (strong, nonatomic) UIButton *CancleBTN;
 @property (strong, nonatomic) UIButton *SetBTN;
 @property (strong, nonatomic) UIButton *ClearBTN;
+@property (strong, nonatomic) UITextField *FromDateTXT;
+@property (strong, nonatomic) UITextField *ToDateTXT;
+
+
 
 @end
 
 @implementation JobView
-@synthesize Today_BTN,Today_LBL,All_BTN,All_LBL,FilterBTN,MainTBL;
+@synthesize Today_BTN,Today_LBL,All_BTN,All_LBL,FilterBTN,MainTBL,NoJobsFound_LBL;
 
 - (void)viewDidLoad
 {
@@ -40,8 +44,18 @@
     
     self.CancleBTN = (UIButton *)[alert viewWithTag:100];
     [self.CancleBTN addTarget:self action:@selector(PopupCancle_Click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.ClearBTN = (UIButton *)[alert viewWithTag:101];
+    [self.ClearBTN addTarget:self action:@selector(PopupClearBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.SetBTN = (UIButton *)[alert viewWithTag:102];
+    [self.SetBTN addTarget:self action:@selector(PopupSetBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
 
     FilterBTN.hidden=YES;
+    NoJobsFound_LBL.hidden=YES;
+    
+    self.FromDateTXT = (UITextField *)[alert viewWithTag:103];
+    self.ToDateTXT = (UITextField *)[alert viewWithTag:104];
     
     UINib *nib = [UINib nibWithNibName:@"TodayJobCell" bundle:nil];
     TodayJobCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
@@ -83,11 +97,13 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
+        NoJobsFound_LBL.hidden=YES;
         TodayTaskDic=[[response valueForKey:@"result"] mutableCopy];
         [MainTBL reloadData];
     }
     else
     {
+         NoJobsFound_LBL.hidden=NO;
         TodayTaskDic=[[NSMutableDictionary alloc]init];
         [MainTBL reloadData];
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
@@ -118,11 +134,13 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
+        NoJobsFound_LBL.hidden=YES;
         TodayTaskDic=[[response valueForKey:@"result"] mutableCopy];
         [MainTBL reloadData];
     }
     else
     {
+        NoJobsFound_LBL.hidden=NO;
         TodayTaskDic=[[NSMutableDictionary alloc]init];
         [MainTBL reloadData];
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
@@ -195,6 +213,61 @@
 
 -(void)PopupCancle_Click:(id)sender
 {
+    alert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    [UIView animateWithDuration:0.2 animations:^{
+        alert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            alert.hidden=YES;
+        }];
+    }];
+}
+-(void)PopupClearBTN_Click:(id)sender
+{
+    self.ToDateTXT.text=@"";
+    self.FromDateTXT.text=@"";
+}
+-(void)PopupSetBTN_Click:(id)sender
+{
+    /*
+    // NSString *dateStr = @"2016-09-20";
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd-MM-yyyy"];
+    NSDate *Startdate = [dateFormat dateFromString:self.FromTextPop.text];
+    
+    // NSString *dateStr2 = @"2016-09-21";
+    NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
+    [dateFormat2 setDateFormat:@"dd-MM-yyyy"];
+    NSDate *Enddate = [dateFormat2 dateFromString:self.ToTextPop.text];
+    
+    if ([[Enddate laterDate:Startdate] isEqualToDate:Enddate]) {
+        NSLog(@"currentDate is later then previousDate");
+        DateFiiterPOPUp.hidden=YES;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit ) fromDate:[NSDate date]];
+        //create a date with these components
+        NSDate *startDate = [calendar dateFromComponents:components];
+        [components setMonth:0];
+        [components setDay:0]; //reset the other components
+        [components setYear:0]; //reset the other components
+        NSDate *endDate = [calendar dateByAddingComponents:components toDate:startDate options:0];
+        
+        startDate = [NSDate date];
+        endDate = [startDate dateByAddingTimeInterval:-(7 * 24 * 60 * 60)];//change here
+        
+        NSString *startTimeStamp = [[NSNumber numberWithInt:floor([Startdate timeIntervalSince1970])] stringValue];
+        NSString *endTimeStamp = [[NSNumber numberWithInt:floor([Enddate timeIntervalSince1970])] stringValue];
+        
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"((date >= %@) AND (date <= %@))",startTimeStamp,endTimeStamp];
+        NSLog(@"predicate is %@",predicate);
+        NSArray *totalArr = [filterArray filteredArrayUsingPredicate:predicate];
+        ExchangeArray = [totalArr mutableCopy];
+        
+        NSLog(@"NEW ARR==%@",totalArr);
+        [Table reloadData];*/
+        
+        
     alert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
     [UIView animateWithDuration:0.2 animations:^{
         alert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);

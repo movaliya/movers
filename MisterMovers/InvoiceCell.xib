@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="143"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="142.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3r-LX-KHd">
@@ -115,6 +115,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="BackView" destination="O3r-LX-KHd" id="5Aq-1p-BPb"/>
+                <outlet property="CutomerName_LBL" destination="Zbh-o3-7Kf" id="g22-x7-Zwa"/>
+                <outlet property="Date_LBL" destination="oqo-Do-mZJ" id="Km3-Na-FfH"/>
+                <outlet property="PaymentBy_LBL" destination="n5s-Cx-mE2" id="fJR-NW-Lxk"/>
+                <outlet property="Payment_LBL" destination="dFS-Bi-eb4" id="4yp-aD-B0W"/>
             </connections>
             <point key="canvasLocation" x="-60" y="-5"/>
         </tableViewCell>

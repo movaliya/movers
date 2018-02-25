@@ -1239,7 +1239,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkr-Cf-uX2">
-                                        <rect key="frame" x="0.0" y="17.5" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="17" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="BJY-se-yKJ"/>
                                             <constraint firstAttribute="width" constant="50" id="ZAv-rQ-EHK"/>
@@ -1373,6 +1373,17 @@
                                     <outlet property="delegate" destination="2d6-Uw-2h0" id="s2i-mT-zGw"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Jobs Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ0-H0-zxf">
+                                <rect key="frame" x="85" y="269.5" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.31764705879999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="AdR-GA-qYd"/>
+                                    <constraint firstAttribute="height" constant="30" id="ged-SQ-bnV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1381,11 +1392,13 @@
                             <constraint firstAttribute="trailing" secondItem="QqC-Wl-wiP" secondAttribute="trailing" id="O78-Rm-Knf"/>
                             <constraint firstItem="QqC-Wl-wiP" firstAttribute="leading" secondItem="9wH-4i-mcQ" secondAttribute="leading" id="PSB-me-LtV"/>
                             <constraint firstAttribute="trailing" secondItem="hYf-Y0-2Ax" secondAttribute="trailing" id="VlO-mq-VkK"/>
+                            <constraint firstItem="XQ0-H0-zxf" firstAttribute="centerX" secondItem="9wH-4i-mcQ" secondAttribute="centerX" id="biG-rZ-dXG"/>
                             <constraint firstItem="QqC-Wl-wiP" firstAttribute="top" secondItem="hYf-Y0-2Ax" secondAttribute="bottom" id="eeJ-ZB-nsh"/>
                             <constraint firstItem="hYf-Y0-2Ax" firstAttribute="top" secondItem="kHg-aC-q4d" secondAttribute="bottom" id="exA-bj-qlM"/>
                             <constraint firstItem="hYf-Y0-2Ax" firstAttribute="leading" secondItem="9wH-4i-mcQ" secondAttribute="leading" id="fig-Mq-H2e"/>
                             <constraint firstItem="kHg-aC-q4d" firstAttribute="leading" secondItem="9wH-4i-mcQ" secondAttribute="leading" id="gri-zN-sYM"/>
                             <constraint firstItem="VX5-pA-Eu3" firstAttribute="top" secondItem="QqC-Wl-wiP" secondAttribute="bottom" id="qx6-gd-UIk"/>
+                            <constraint firstItem="XQ0-H0-zxf" firstAttribute="centerY" secondItem="9wH-4i-mcQ" secondAttribute="centerY" id="uwQ-vf-bgh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1393,13 +1406,14 @@
                         <outlet property="All_LBL" destination="B4D-l3-yzT" id="XwJ-hX-Sp4"/>
                         <outlet property="FilterBTN" destination="mL6-WY-IVE" id="fgM-Ad-iul"/>
                         <outlet property="MainTBL" destination="QqC-Wl-wiP" id="9yt-4a-IUU"/>
+                        <outlet property="NoJobsFound_LBL" destination="XQ0-H0-zxf" id="7UT-n4-bWK"/>
                         <outlet property="Today_BTN" destination="eVk-1M-ETy" id="XYp-C2-2xe"/>
                         <outlet property="Today_LBL" destination="9CD-Lt-8EP" id="8bD-ue-tgQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYr-ac-sLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="935"/>
+            <point key="canvasLocation" x="1342.5" y="934.85915492957747"/>
         </scene>
         <!--Expense View-->
         <scene sceneID="M3r-Hg-eu3">

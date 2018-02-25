@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface InvoiceView : UIViewController
+{
+    NSMutableDictionary *Get_InvoiceDic;
+}
 
 @property (strong, nonatomic) IBOutlet UITableView *InvoiceTBL;
 - (IBAction)Back_click:(id)sender;
