@@ -11,12 +11,20 @@
 #import "JobDetailView.h"
 #import "misterMover.pch"
 #import "StartTaskDetailVW.h"
+#import "CustomAlert.h"
 
 #define SelectedLabelColor [UIColor colorWithRed:255.0/255.0 green:175.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define Whitecolortitle [UIColor whiteColor]
 
 
 @interface JobView ()
+{
+    CustomAlert *alert;
+
+}
+@property (strong, nonatomic) UIButton *CancleBTN;
+@property (strong, nonatomic) UIButton *SetBTN;
+@property (strong, nonatomic) UIButton *ClearBTN;
 
 @end
 
@@ -26,6 +34,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    alert = [[CustomAlert alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:alert];
+    alert.hidden=YES;
+    
+    self.CancleBTN = (UIButton *)[alert viewWithTag:100];
+    [self.CancleBTN addTarget:self action:@selector(PopupCancle_Click:) forControlEvents:UIControlEventTouchUpInside];
+
     FilterBTN.hidden=YES;
     
     UINib *nib = [UINib nibWithNibName:@"TodayJobCell" bundle:nil];
@@ -42,6 +57,8 @@
     
     
 }
+
+
 -(void)GetTodayTask
 {
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
@@ -61,6 +78,7 @@
          [self handleTodayTaskResponse:response];
      }];
 }
+
 - (void)handleTodayTaskResponse:(NSDictionary*)response
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
@@ -75,6 +93,7 @@
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
+
 -(void)GetAllTask
 {
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
@@ -94,6 +113,7 @@
          [self handleAllTaskResponse:response];
      }];
 }
+
 - (void)handleAllTaskResponse:(NSDictionary*)response
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
@@ -108,6 +128,7 @@
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -157,9 +178,32 @@
 
 - (IBAction)Filter_Click:(id)sender
 {
+    [self.view endEditing:YES];
+    alert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
     
+    [KmyappDelegate SettextfieldViewBorder:alert.FromDateView];
+    [KmyappDelegate SettextfieldViewBorder:alert.ToDateView];
+    alert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    
+    alert.hidden=NO;
+    
+    [UIView animateWithDuration:0.2 animations:
+     ^{
+        alert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+      }];
 }
 
+-(void)PopupCancle_Click:(id)sender
+{
+    alert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    [UIView animateWithDuration:0.2 animations:^{
+        alert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            alert.hidden=YES;
+        }];
+    }];
+}
 
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -209,5 +253,6 @@
     [self.navigationController pushViewController:vcr animated:YES];
 
 }
+
 
 @end

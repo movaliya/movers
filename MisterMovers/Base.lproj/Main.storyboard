@@ -357,7 +357,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1240"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTO-PV-PCT">
-                                                <rect key="frame" x="8" y="0.0" width="304" height="810"/>
+                                                <rect key="frame" x="8" y="8" width="304" height="810"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIP-Tc-x8a">
                                                         <rect key="frame" x="15" y="15" width="274" height="18"/>
@@ -626,7 +626,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOa-IM-6Vd">
-                                                <rect key="frame" x="8" y="830" width="304" height="400"/>
+                                                <rect key="frame" x="8" y="838" width="304" height="397"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASM-uA-lH1">
                                                         <rect key="frame" x="78.5" y="20" width="148" height="21"/>
@@ -759,7 +759,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="YNv-CP-VL6" secondAttribute="trailing" constant="15" id="gys-E4-rce"/>
                                                     <constraint firstAttribute="trailing" secondItem="Jvs-S9-2of" secondAttribute="trailing" constant="15" id="ivc-ih-OsQ"/>
                                                     <constraint firstItem="YNv-CP-VL6" firstAttribute="leading" secondItem="IOa-IM-6Vd" secondAttribute="leading" constant="15" id="jEp-GZ-H2e"/>
-                                                    <constraint firstAttribute="height" constant="400" id="mOe-0C-LUP"/>
+                                                    <constraint firstAttribute="height" constant="397" id="mOe-0C-LUP"/>
                                                     <constraint firstAttribute="trailing" secondItem="fmU-u0-Bs4" secondAttribute="trailing" constant="15" id="n5u-Ib-czQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="Bmh-fp-cUD" secondAttribute="trailing" constant="15" id="oTa-8q-2at"/>
                                                     <constraint firstItem="SG0-On-oGN" firstAttribute="top" secondItem="Jvs-S9-2of" secondAttribute="bottom" constant="10" id="u2M-0s-9Rv"/>
@@ -770,7 +770,7 @@
                                         <constraints>
                                             <constraint firstItem="IOa-IM-6Vd" firstAttribute="top" secondItem="qTO-PV-PCT" secondAttribute="bottom" constant="20" id="3rb-s2-Su5"/>
                                             <constraint firstAttribute="height" constant="1240" id="5dd-YY-gqq"/>
-                                            <constraint firstItem="qTO-PV-PCT" firstAttribute="top" secondItem="jFV-Zb-SuF" secondAttribute="top" id="OHa-lP-SI0"/>
+                                            <constraint firstItem="qTO-PV-PCT" firstAttribute="top" secondItem="jFV-Zb-SuF" secondAttribute="top" constant="8" id="OHa-lP-SI0"/>
                                             <constraint firstItem="qTO-PV-PCT" firstAttribute="leading" secondItem="jFV-Zb-SuF" secondAttribute="leading" constant="8" id="bmf-xF-8Sg"/>
                                             <constraint firstAttribute="trailing" secondItem="IOa-IM-6Vd" secondAttribute="trailing" constant="8" id="g9f-Nm-5fl"/>
                                             <constraint firstItem="IOa-IM-6Vd" firstAttribute="leading" secondItem="jFV-Zb-SuF" secondAttribute="leading" constant="8" id="unL-PP-si9"/>

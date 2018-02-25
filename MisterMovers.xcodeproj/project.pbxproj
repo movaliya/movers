@@ -110,6 +110,10 @@
 		B133ECAD20300192008BC8AE /* TodayJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECAB20300192008BC8AE /* TodayJobCell.m */; };
 		B133ECAE20300192008BC8AE /* TodayJobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B133ECAC20300192008BC8AE /* TodayJobCell.xib */; };
 		B133ECB12030118E008BC8AE /* ExpenseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B133ECB02030118E008BC8AE /* ExpenseView.m */; };
+		B137AC062042A32400DD2B2D /* CustomAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B137AC042042A32400DD2B2D /* CustomAlert.m */; };
+		B137AC072042A32400DD2B2D /* CustomAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = B137AC052042A32400DD2B2D /* CustomAlert.xib */; };
+		B137AC0A2042ABAC00DD2B2D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B137AC092042ABAC00DD2B2D /* UIImage+ImageEffects.m */; };
+		B137AC0E2042ACAE00DD2B2D /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */; };
 		B153429120415AF20041A8EB /* ExpenseCellHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B153428F20415AF20041A8EB /* ExpenseCellHistory.m */; };
 		B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = B153429020415AF20041A8EB /* ExpenseCellHistory.xib */; };
 		B15CFBD72041A9B50070DF8A /* InvoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B15CFBD52041A9B50070DF8A /* InvoiceCell.m */; };
@@ -301,6 +305,15 @@
 		B133ECAC20300192008BC8AE /* TodayJobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayJobCell.xib; sourceTree = "<group>"; };
 		B133ECAF2030118E008BC8AE /* ExpenseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseView.h; sourceTree = "<group>"; };
 		B133ECB02030118E008BC8AE /* ExpenseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseView.m; sourceTree = "<group>"; };
+		B137AC032042A32400DD2B2D /* CustomAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlert.h; sourceTree = "<group>"; };
+		B137AC042042A32400DD2B2D /* CustomAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlert.m; sourceTree = "<group>"; };
+		B137AC052042A32400DD2B2D /* CustomAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlert.xib; sourceTree = "<group>"; };
+		B137AC082042ABAC00DD2B2D /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		B137AC092042ABAC00DD2B2D /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		B137AC0B2042ABE800DD2B2D /* SCLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLMacros.h; sourceTree = "<group>"; };
+		B137AC0C2042ACAE00DD2B2D /* UIControl+BlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+BlocksKit.h"; sourceTree = "<group>"; };
+		B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+BlocksKit.m"; sourceTree = "<group>"; };
+		B137AC0F2042AD1800DD2B2D /* BKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKDefines.h; sourceTree = "<group>"; };
 		B153428E20415AF20041A8EB /* ExpenseCellHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseCellHistory.h; sourceTree = "<group>"; };
 		B153428F20415AF20041A8EB /* ExpenseCellHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseCellHistory.m; sourceTree = "<group>"; };
 		B153429020415AF20041A8EB /* ExpenseCellHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseCellHistory.xib; sourceTree = "<group>"; };
@@ -364,6 +377,15 @@
 		530DC54E1EC872C1000D4CA2 /* MisterMovers */ = {
 			isa = PBXGroup;
 			children = (
+				B137AC0F2042AD1800DD2B2D /* BKDefines.h */,
+				B137AC0C2042ACAE00DD2B2D /* UIControl+BlocksKit.h */,
+				B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */,
+				B137AC0B2042ABE800DD2B2D /* SCLMacros.h */,
+				B137AC082042ABAC00DD2B2D /* UIImage+ImageEffects.h */,
+				B137AC092042ABAC00DD2B2D /* UIImage+ImageEffects.m */,
+				B137AC032042A32400DD2B2D /* CustomAlert.h */,
+				B137AC042042A32400DD2B2D /* CustomAlert.m */,
+				B137AC052042A32400DD2B2D /* CustomAlert.xib */,
 				295A6376203C366B00110792 /* Signature */,
 				2968CE2F2015B5BF006CA19F /* ios */,
 				53523A951EC9F86B00EE41E9 /* Cell */,
@@ -786,6 +808,7 @@
 				530DC62F1EC89A74000D4CA2 /* WhiteMenuIcon.png in Resources */,
 				2968CE382015D446006CA19F /* runningJob.png in Resources */,
 				53523A811EC9DE0600EE41E9 /* customer.png in Resources */,
+				B137AC072042A32400DD2B2D /* CustomAlert.xib in Resources */,
 				53523A851EC9DE3B00EE41E9 /* inward.png in Resources */,
 				53523A8D1EC9DE8000EE41E9 /* profile.png in Resources */,
 				2968CE3E2015D5BC006CA19F /* expense.png in Resources */,
@@ -843,6 +866,7 @@
 				530DC5931EC88157000D4CA2 /* SDWebImageDownloader.m in Sources */,
 				530DC6141EC88271000D4CA2 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				B11BDB442030609600E97C32 /* ExpenseHistoryView.m in Sources */,
+				B137AC0E2042ACAE00DD2B2D /* UIControl+BlocksKit.m in Sources */,
 				530DC5B81EC8816C000D4CA2 /* UIProgressView+AFNetworking.m in Sources */,
 				530DC59B1EC88157000D4CA2 /* UIImageView+WebCache.m in Sources */,
 				530DC5B41EC8816C000D4CA2 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -862,6 +886,7 @@
 				530DC5991EC88157000D4CA2 /* UIImage+MultiFormat.m in Sources */,
 				530DC5D81EC881C0000D4CA2 /* KVNProgress.m in Sources */,
 				B133ECAD20300192008BC8AE /* TodayJobCell.m in Sources */,
+				B137AC0A2042ABAC00DD2B2D /* UIImage+ImageEffects.m in Sources */,
 				530DC6111EC88271000D4CA2 /* IQPreviousNextView.m in Sources */,
 				530DC62B1EC89989000D4CA2 /* DrawerView.m in Sources */,
 				530DC62C1EC89989000D4CA2 /* MenuCell.m in Sources */,
@@ -888,6 +913,7 @@
 				530DC6101EC88271000D4CA2 /* IQBarButtonItem.m in Sources */,
 				530DC5911EC88157000D4CA2 /* SDWebImageCompat.m in Sources */,
 				530DC6321EC89BFD000D4CA2 /* HomeVW.m in Sources */,
+				B137AC062042A32400DD2B2D /* CustomAlert.m in Sources */,
 				530DC5F51EC8822C000D4CA2 /* IQUIView+Hierarchy.m in Sources */,
 				530DC5D91EC881C0000D4CA2 /* KVNProgressConfiguration.m in Sources */,
 				53523A991EC9F88700EE41E9 /* Notification_Cell.m in Sources */,
