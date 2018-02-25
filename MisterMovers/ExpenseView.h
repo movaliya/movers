@@ -24,4 +24,22 @@
 @property (strong, nonatomic) IBOutlet UITextField *AmountTXT;
 @property (strong, nonatomic) IBOutlet UIView *RemarkView;
 @property (strong, nonatomic) IBOutlet IQTextView *RemarkTXT;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ScrollHight;
+
+@property (strong, nonatomic) IBOutlet UITableView *SelectJobTBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *JobTableTop;
+
+@property (strong, nonatomic) IBOutlet UIView *OtherView;
+@property (strong, nonatomic) IBOutlet UITextField *OtherAmount_TXT;
+@property (strong, nonatomic) IBOutlet IQTextView *OtherRemark_TXT;
+@property (strong, nonatomic) IBOutlet UIView *FealView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *FealAmoutTop;
+@property (strong, nonatomic) IBOutlet UIButton *FeaulUploadinvoise_BTN;
+@property (strong, nonatomic) IBOutlet UITextField *FeaulPaymentType_TXT;
+
+@property (strong, nonatomic) IBOutlet UIView *HelperView;
+@property (strong, nonatomic) IBOutlet UITextField *Helper_TXT;
+
+
 @end
