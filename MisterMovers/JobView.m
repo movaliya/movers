@@ -164,12 +164,12 @@
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return TodayTaskDic.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return TodayTaskDic.count;
+    return 1;
 }
 
 
@@ -187,11 +187,11 @@
    
     cell.JobName_LBL.text=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
     
-    cell.JobTitle_LBL.text=[NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_title"] objectAtIndex:indexPath.row]];
+    cell.JobTitle_LBL.text=[NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_title"] objectAtIndex:indexPath.section]];
     
-    cell.JobStartdate_LBL.text=[NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_start_date"] objectAtIndex:indexPath.row]];
+    cell.JobStartdate_LBL.text=[NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_start_date"] objectAtIndex:indexPath.section]];
     
-    cell.jobEnddate_LBL.text= [NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_end_date"] objectAtIndex:indexPath.row]];
+    cell.jobEnddate_LBL.text= [NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_end_date"] objectAtIndex:indexPath.section]];
     
     
     

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface JobHistory : UIViewController
+{
+    NSMutableDictionary *JobHrtyDic;
+}
 
 - (IBAction)Back_Click:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *HistoryTBL;

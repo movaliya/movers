@@ -28,8 +28,46 @@
     HistoryTBL.rowHeight = cell.frame.size.height;
     [HistoryTBL registerNib:nib forCellReuseIdentifier:@"TodayJobCell"];
     
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self GetHrtyTask];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    
 }
-
+-(void)GetHrtyTask
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Get_Task  forKey:@"s"];
+    
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    
+    [dictParams setObject:@"general"  forKey:@"type"];
+    [dictParams setObject:@"0"  forKey:@"ul"];
+    [dictParams setObject:@"5"  forKey:@"ll"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleHrtyTaskResponse:response];
+     }];
+}
+- (void)handleHrtyTaskResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        JobHrtyDic=[[response valueForKey:@"result"] mutableCopy];
+        [HistoryTBL reloadData];
+    }
+    else
+    {
+        JobHrtyDic=[[NSMutableDictionary alloc]init];
+        [HistoryTBL reloadData];
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -43,12 +81,12 @@
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return JobHrtyDic.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,7 +100,13 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     }
+    cell.JobName_LBL.text=[[JobHrtyDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
     
+    cell.JobTitle_LBL.text=[NSString stringWithFormat:@": %@",[[JobHrtyDic valueForKey:@"task_title"] objectAtIndex:indexPath.section]];
+    
+    cell.JobStartdate_LBL.text=[NSString stringWithFormat:@": %@",[[JobHrtyDic valueForKey:@"task_start_date"] objectAtIndex:indexPath.section]];
+    
+    cell.jobEnddate_LBL.text= [NSString stringWithFormat:@": %@",[[JobHrtyDic valueForKey:@"task_end_date"] objectAtIndex:indexPath.section]];
     
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
