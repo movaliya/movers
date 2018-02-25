@@ -44,10 +44,9 @@
     [dictParams setObject:Get_Task  forKey:@"s"];
     
     [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    //[dictParams setObject:@"2"  forKey:@"eid"];
+    [dictParams setObject:@"completed"  forKey:@"type"];
     
-    [dictParams setObject:@"general"  forKey:@"type"];
-    [dictParams setObject:@"0"  forKey:@"ul"];
-    [dictParams setObject:@"5"  forKey:@"ll"];
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {
