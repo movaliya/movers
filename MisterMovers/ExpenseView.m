@@ -13,6 +13,8 @@
 {
     NSMutableArray *JobArr,*ExpenseArr,*FeaulPaymentArr,*HelperArr;
     NSString *SelectedTextfield;
+    NSMutableDictionary *jobDict;
+    NSMutableDictionary *HelperDetailDict;
 }
 @end
 
@@ -29,6 +31,7 @@
     SelectedTextfield=@"OTHER";
     
     JobArr=[[NSMutableArray alloc] initWithObjects:@"John",@"Marko",@"Fabio", nil];
+    
     HelperArr=[[NSMutableArray alloc] initWithObjects:@"Lisa",@"Jaini",@"Laura", nil];
     ExpenseArr=[[NSMutableArray alloc] initWithObjects:@"Fuel and oil",@"Helper",@"Other", nil];
     FeaulPaymentArr=[[NSMutableArray alloc] initWithObjects:@"Please select payment type",@"Cash",@"Card", nil];
@@ -51,7 +54,68 @@
     [KmyappDelegate SettextfieldViewBorder:ExpenseView];
     [KmyappDelegate SettextfieldViewBorder:RemarkView];
     [KmyappDelegate SettextfieldViewBorder:AmountView];
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self GetJobList];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
 
+}
+-(void)GetJobList
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Get_Task  forKey:@"s"];
+    
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [dictParams setObject:@"expense_all_task"  forKey:@"type"];
+    
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleJobListResponse:response];
+     }];
+}
+
+- (void)handleJobListResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        jobDict=[[response valueForKey:@"result"] mutableCopy];
+        [SelectJobTBL reloadData];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
+-(void)Get_Task_Detail:(NSString *)TaskId
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Get_Detail_Task  forKey:@"s"];
+    [dictParams setObject:TaskId  forKey:@"tid"];
+    
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleTaskDetailResponse:response];
+     }];
+}
+- (void)handleTaskDetailResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        NSMutableDictionary *result=[[response valueForKey:@"result"] mutableCopy];
+        HelperDetailDict=[[result valueForKey:@"helpers_details"] mutableCopy];
+        [SelectJobTBL reloadData];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,7 +184,7 @@
     {
         if ([SelectedTextfield isEqualToString:@"OTHER"])
         {
-            return JobArr.count;
+            return jobDict.count;
         }
         else if ([SelectedTextfield isEqualToString:@"EXPENSE"])
         {
@@ -128,7 +192,7 @@
         }
         else if ([SelectedTextfield isEqualToString:@"HELPER"])
         {
-            return HelperArr.count;
+            return HelperDetailDict.count;
         }
         else
         {
@@ -153,7 +217,7 @@
         }
         if ([SelectedTextfield isEqualToString:@"OTHER"])
         {
-            cell.textLabel.text=[JobArr objectAtIndex:indexPath.row];
+            cell.textLabel.text=[[jobDict valueForKey:@"task_title"] objectAtIndex:indexPath.row];
         }
         else if ([SelectedTextfield isEqualToString:@"EXPENSE"])
         {
@@ -161,7 +225,7 @@
         }
         else if ([SelectedTextfield isEqualToString:@"HELPER"])
         {
-            cell.textLabel.text=[HelperArr objectAtIndex:indexPath.row];
+            cell.textLabel.text=[[HelperDetailDict valueForKey:@"employee_name"] objectAtIndex:indexPath.row];
         }
         else
         {
@@ -180,8 +244,15 @@
     {
         if ([SelectedTextfield isEqualToString:@"OTHER"])
         {
-            JobTXT.text=[JobArr objectAtIndex:indexPath.row];
             
+            JobTXT.text=[[jobDict valueForKey:@"task_title"] objectAtIndex:indexPath.row];
+            taskID=[NSString stringWithFormat:@"%@",[[jobDict valueForKey:@"id"] objectAtIndex:indexPath.row]];
+            
+            if ([[jobDict valueForKey:@"task_vehicle_no"] objectAtIndex:indexPath.row] != (id)[NSNull null])
+            {
+               VehicleNameSTR=[NSString stringWithFormat:@"%@",[[jobDict valueForKey:@"task_vehicle_no"] objectAtIndex:indexPath.row]];
+                self.FuelVehicleName_TXT.text=VehicleNameSTR;
+            }
         }
         else if ([SelectedTextfield isEqualToString:@"FeaulPaymentType"])
         {
@@ -206,7 +277,7 @@
         }
         else if ([SelectedTextfield isEqualToString:@"HELPER"])
         {
-            Helper_TXT.text=[HelperArr objectAtIndex:indexPath.row];
+            Helper_TXT.text=[[HelperDetailDict valueForKey:@"employee_name"] objectAtIndex:indexPath.row];
         }
         else
         {
@@ -220,14 +291,30 @@
                 FeaulUploadinvoise_BTN.hidden=YES;
                 FealAmoutTop.constant=10;
                 ScrollHight.constant=680.0f;
+                self.FuelVehicleName_TXT.text=VehicleNameSTR;
+                if (VehicleNameSTR)
+                {
+                    self.FuelVehicleName_TXT.enabled=NO;
+                }
+                else
+                {
+                     self.FuelVehicleName_TXT.enabled=YES;
+                }
+               
             }
             else if ([ExpenseTXT.text isEqualToString:@"Helper"])
             {
+                BOOL internet=[AppDelegate connectedToNetwork];
+                if (internet)
+                    [self Get_Task_Detail:taskID];
+                else
+                    [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
                 OtherView.hidden=YES;
                 FealView.hidden=YES;
                 HelperView.hidden=NO;
                 
                 ScrollHight.constant=570.0f;
+                
             }
             else if ([ExpenseTXT.text isEqualToString:@"Other"])
             {
@@ -239,6 +326,73 @@
         }
     }
 }
+- (IBAction)FuelSubmitBtn_Click:(id)sender
+{
+    
+}
+- (IBAction)HelperSubmitBtn_Click:(id)sender
+{
+    
+}
+- (IBAction)OtherSubmitBtn_Click:(id)sender
+{
+    if (taskID == nil)
+    {
+       [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please select job." delegate:nil];
+    }
+    else if ([ExpenseTXT.text isEqualToString:@"Please Select Expense Type"])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please select expense type." delegate:nil];
+    }
+    else if ([OtherAmount_TXT.text isEqualToString:@""])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter amount." delegate:nil];
+    }
+    else
+    {
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self OtherAddExpenseService];
 
-
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    }
+}
+-(void)OtherAddExpenseService
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Add_Expense  forKey:@"s"];
+    [dictParams setObject:taskID  forKey:@"tid"];
+    [dictParams setObject:@"other"  forKey:@"type"];
+    [dictParams setObject:@""  forKey:@"vehical_id"];
+    [dictParams setObject:OtherRemark_TXT.text  forKey:@"remark"];
+    [dictParams setObject:OtherAmount_TXT.text  forKey:@"amount"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [dictParams setObject:@""  forKey:@"helper_id"];
+    [dictParams setObject:@""  forKey:@"payment_type"];
+    [dictParams setObject:@""  forKey:@"invoice_file"];
+    
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleOtherExpenseResponse:response];
+     }];
+}
+- (void)handleOtherExpenseResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
 @end

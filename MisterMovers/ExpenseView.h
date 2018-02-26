@@ -11,7 +11,7 @@
 
 @interface ExpenseView : UIViewController
 {
-    
+    NSString *taskID,*VehicleNameSTR;
 }
 - (IBAction)Back_click:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *InfoView;
@@ -40,6 +40,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *HelperView;
 @property (strong, nonatomic) IBOutlet UITextField *Helper_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *FuelVehicleName_TXT;
 
 
 @end
