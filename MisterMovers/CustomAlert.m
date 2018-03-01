@@ -59,7 +59,6 @@
     [datePicker setDate:[NSDate date]];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.backgroundColor=[UIColor whiteColor];
-    datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField1:) forControlEvents:UIControlEventValueChanged];
     
     //UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -75,10 +74,10 @@
 }
 -(void) dateTextField1:(id)sender
 {
-    UIDatePicker *picker = (UIDatePicker*)self.ToDate_TXT.inputView;
+    UIDatePicker *picker = (UIDatePicker*)self.FromDate_TXT.inputView;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSDate *eventDate = picker.date;
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    [dateFormat setDateFormat:@"dd-MM-yyyy HH:mm"];
     
     NSString *dateString = [dateFormat stringFromDate:eventDate];
     self.FromDate_TXT.text = [NSString stringWithFormat:@"%@",dateString];
@@ -87,7 +86,6 @@
 {
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     [datePicker setDate:[NSDate date]];
-    datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.backgroundColor=[UIColor whiteColor];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
@@ -108,7 +106,7 @@
     UIDatePicker *picker = (UIDatePicker*)self.ToDate_TXT.inputView;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSDate *eventDate = picker.date;
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    [dateFormat setDateFormat:@"dd-MM-yyyy HH:mm"];
     
     NSString *dateString = [dateFormat stringFromDate:eventDate];
     self.ToDate_TXT.text = [NSString stringWithFormat:@"%@",dateString];

@@ -11,7 +11,8 @@
 
 @interface ExpenseView : UIViewController
 {
-    NSString *taskID,*VehicleNameSTR;
+    NSString *taskID,*VehicleNameSTR,*VehicleID,*helperID;
+    UIImage *chosenImage;
 }
 - (IBAction)Back_click:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *InfoView;
@@ -37,10 +38,14 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *FealAmoutTop;
 @property (strong, nonatomic) IBOutlet UIButton *FeaulUploadinvoise_BTN;
 @property (strong, nonatomic) IBOutlet UITextField *FeaulPaymentType_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *FuelVehicleName_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *FuelAmount_TXT;
+@property (weak, nonatomic) IBOutlet IQTextView *FuelRemark_TXT;
 
 @property (strong, nonatomic) IBOutlet UIView *HelperView;
 @property (strong, nonatomic) IBOutlet UITextField *Helper_TXT;
-@property (weak, nonatomic) IBOutlet UITextField *FuelVehicleName_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *helperAmount_TXT;
+@property (weak, nonatomic) IBOutlet IQTextView *helperRemarkTXT;
 
 
 @end

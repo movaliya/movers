@@ -10,7 +10,6 @@
 #import <PhotosUI/PhotosUI.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "misterMover.pch"
-#import "NSData+Base64.h"
 #import "AFHTTPSessionManager.h"
 #import "HomeVW.h"
 
@@ -57,66 +56,11 @@
 }
 - (IBAction)StartBtn_Click:(id)sender
 {
-    
-    UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [self.signatureView.layer renderInContext:context];
-    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    NSData *photoData = UIImageJPEGRepresentation(snapshotImage, 0.8);
-
      BOOL internet=[AppDelegate connectedToNetwork];
      if (internet)
-     [self SignatureUpload:photoData];
+     [self StartTask];
      else
      [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
-    
-}
-- (NSString *)encodeToBase64String:(UIImage *)image {
-    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-}
--(void)SignatureUpload:(NSData *)imageData
-{
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
-    [dictParams setObject:Base_Key  forKey:@"key"];
-    [dictParams setObject:Signature_Upload  forKey:@"s"];
-    [dictParams setObject:self.Task_ID  forKey:@"tid"];
-   // [dictParams setObject:@""  forKey:@"file"];
-    [manager.requestSerializer setValue:@"application/json; text/html" forHTTPHeaderField:@"Accept"];
-    [manager.requestSerializer setValue:@"application/json; text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-    
-    [manager POST:[NSString stringWithFormat:@"%@",BaseUrl] parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
-     {
-         [formData appendPartWithFileData:imageData name:@"file" fileName:@"signature.jpeg" mimeType:@"image/jpeg"];
-     }
-         progress:^(NSProgress * _Nonnull uploadProgress)
-    {
-    }
-          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
-    {
-          NSLog(@"JSON: %@", responseObject);
-        if ([[[responseObject objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
-        {
-            [self StartTask];
-        }
-        else
-        {
-            [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
-        }
-     }
-    failure:^(NSURLSessionDataTask * _Nullable task, NSError*  _Nonnull error)
-    {
-          NSLog(@"%@",error.localizedDescription);
-        
-     }];
     
 }
 -(void)StartTask
@@ -150,13 +94,76 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
-        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        
+        UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.signatureView.layer renderInContext:context];
+        UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSData *photoData = UIImageJPEGRepresentation(snapshotImage, 0.8);
+        
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self SignatureUpload:photoData];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     }
     else
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
+- (NSString *)encodeToBase64String:(UIImage *)image {
+    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
+-(void)SignatureUpload:(NSData *)imageData
+{
+     [KVNProgress show];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Signature_Upload  forKey:@"s"];
+    [dictParams setObject:self.Task_ID  forKey:@"tid"];
+   // [dictParams setObject:@""  forKey:@"file"];
+    [manager.requestSerializer setValue:@"application/json; text/html" forHTTPHeaderField:@"Accept"];
+    [manager.requestSerializer setValue:@"application/json; text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    
+    [manager POST:[NSString stringWithFormat:@"%@",BaseUrl] parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+     {
+         [formData appendPartWithFileData:imageData name:@"file" fileName:@"signature.jpeg" mimeType:@"image/jpeg"];
+     }
+         progress:^(NSProgress * _Nonnull uploadProgress)
+    {
+    }
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+    {
+         [KVNProgress dismiss];
+          NSLog(@"JSON: %@", responseObject);
+        if ([[[responseObject objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+        {
+           [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        }
+        else
+        {
+            [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
+        }
+     }
+    failure:^(NSURLSessionDataTask * _Nullable task, NSError*  _Nonnull error)
+    {
+          NSLog(@"%@",error.localizedDescription);
+          [KVNProgress dismiss];
+        
+     }];
+    
+}
+
 - (IBAction)ClearBtn_Click:(id)sender
 {
      [self.signatureView erase];

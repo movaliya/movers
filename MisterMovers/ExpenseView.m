@@ -9,7 +9,7 @@
 #import "ExpenseView.h"
 #import "misterMover.pch"
 
-@interface ExpenseView ()
+@interface ExpenseView ()<UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
 {
     NSMutableArray *JobArr,*ExpenseArr,*FeaulPaymentArr,*HelperArr;
     NSString *SelectedTextfield;
@@ -252,6 +252,7 @@
             {
                VehicleNameSTR=[NSString stringWithFormat:@"%@",[[jobDict valueForKey:@"task_vehicle_no"] objectAtIndex:indexPath.row]];
                 self.FuelVehicleName_TXT.text=VehicleNameSTR;
+                VehicleID=[NSString stringWithFormat:@"%@",[[jobDict valueForKey:@"task_vehicle_id"] objectAtIndex:indexPath.row]];
             }
         }
         else if ([SelectedTextfield isEqualToString:@"FeaulPaymentType"])
@@ -278,11 +279,18 @@
         else if ([SelectedTextfield isEqualToString:@"HELPER"])
         {
             Helper_TXT.text=[[HelperDetailDict valueForKey:@"employee_name"] objectAtIndex:indexPath.row];
+            helperID=[NSString stringWithFormat:@"%@",[[HelperDetailDict valueForKey:@"id"] objectAtIndex:indexPath.row]];
         }
         else
         {
-        
-            ExpenseTXT.text=[ExpenseArr objectAtIndex:indexPath.row];
+            if (taskID == nil)
+            {
+                [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please select Job first." delegate:nil];
+            }
+            else
+            {
+                ExpenseTXT.text=[ExpenseArr objectAtIndex:indexPath.row];
+            }
             if ([ExpenseTXT.text isEqualToString:@"Fuel and oil"])
             {
                 HelperView.hidden=YES;
@@ -304,16 +312,24 @@
             }
             else if ([ExpenseTXT.text isEqualToString:@"Helper"])
             {
-                BOOL internet=[AppDelegate connectedToNetwork];
-                if (internet)
-                    [self Get_Task_Detail:taskID];
+                if (taskID == nil)
+                {
+                    [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please select Job first." delegate:nil];
+                }
                 else
-                    [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
-                OtherView.hidden=YES;
-                FealView.hidden=YES;
-                HelperView.hidden=NO;
-                
-                ScrollHight.constant=570.0f;
+                {
+                    BOOL internet=[AppDelegate connectedToNetwork];
+                    if (internet)
+                        [self Get_Task_Detail:taskID];
+                    else
+                        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+                    OtherView.hidden=YES;
+                    FealView.hidden=YES;
+                    HelperView.hidden=NO;
+                    
+                    ScrollHight.constant=570.0f;
+                }
+               
                 
             }
             else if ([ExpenseTXT.text isEqualToString:@"Other"])
@@ -328,11 +344,168 @@
 }
 - (IBAction)FuelSubmitBtn_Click:(id)sender
 {
+    if (taskID == nil)
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Job." delegate:nil];
+    }
+    else if ([ExpenseTXT.text isEqualToString:@"Please Select Expense Type"])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Expense Type." delegate:nil];
+    }
+    else if (VehicleID == nil)
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Vehicle Name" delegate:nil];
+    }
+    else if ([FeaulPaymentType_TXT.text isEqualToString:@""])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Payment Type." delegate:nil];
+    }
+    else if ([FeaulPaymentType_TXT.text isEqualToString:@"Please select payment type"])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Payment Type." delegate:nil];
+    }
+    else if ([self.FuelAmount_TXT.text isEqualToString:@""])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Amount." delegate:nil];
+    }
+    else
+    {
+        if ([FeaulPaymentType_TXT.text isEqualToString:@"Cash"])
+        {
+            if (chosenImage)
+            {
+                NSData *photoData = UIImageJPEGRepresentation(chosenImage, 0.8);
+                BOOL internet=[AppDelegate connectedToNetwork];
+                if (internet)
+                    [self CashFuelAddExpense:photoData];
+                else
+                    [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            }
+            else
+            {
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please Upload Invoice" delegate:nil];
+            }
+            
+        }
+        else
+        {
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self CardFuelAddExpenseService];
+            
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        }
+        
+    }
+}
+-(void)CardFuelAddExpenseService
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
     
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init]; //Fuel Helper Others
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Add_Expense  forKey:@"s"];
+    [dictParams setObject:taskID  forKey:@"tid"];
+    [dictParams setObject:@"Fuel"  forKey:@"type"];
+    [dictParams setObject:VehicleID  forKey:@"vehical_id"];
+    [dictParams setObject:self.FuelRemark_TXT.text  forKey:@"remark"];
+    [dictParams setObject:self.FuelAmount_TXT.text  forKey:@"amount"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [dictParams setObject:@""  forKey:@"helper_id"];
+    [dictParams setObject:@"card"  forKey:@"payment_type"];
+    [dictParams setObject:@""  forKey:@"invoice_file"];
+    
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleCardFuelAddExpenseResponse:response];
+     }];
+}
+- (void)handleCardFuelAddExpenseResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
 }
 - (IBAction)HelperSubmitBtn_Click:(id)sender
 {
     
+    if (taskID == nil)
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Job." delegate:nil];
+    }
+    else if ([ExpenseTXT.text isEqualToString:@"Please Select Expense Type"])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Expense Type." delegate:nil];
+    }
+    else if ([Helper_TXT.text isEqualToString:@""])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Helper." delegate:nil];
+    }
+    else if ([self.helperAmount_TXT.text isEqualToString:@""])
+    {
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Amount." delegate:nil];
+    }
+    else
+    {
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self HelperAddExpenseService];
+        
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        
+    }
+}
+
+-(void)HelperAddExpenseService
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init]; //Fuel Helper Others
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Add_Expense  forKey:@"s"];
+    [dictParams setObject:taskID  forKey:@"tid"];
+    [dictParams setObject:@"Helper"  forKey:@"type"];
+    [dictParams setObject:@""  forKey:@"vehical_id"];
+    [dictParams setObject:self.helperRemarkTXT.text  forKey:@"remark"];
+    [dictParams setObject:self.helperAmount_TXT.text  forKey:@"amount"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [dictParams setObject:helperID  forKey:@"helper_id"];
+    [dictParams setObject:@""  forKey:@"payment_type"];
+    [dictParams setObject:@""  forKey:@"invoice_file"];
+    
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleHelperAddExpenseResponse:response];
+     }];
+}
+- (void)handleHelperAddExpenseResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
 }
 - (IBAction)OtherSubmitBtn_Click:(id)sender
 {
@@ -364,11 +537,11 @@
 {
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
     
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init]; //Fuel Helper
     [dictParams setObject:Base_Key  forKey:@"key"];
     [dictParams setObject:Add_Expense  forKey:@"s"];
     [dictParams setObject:taskID  forKey:@"tid"];
-    [dictParams setObject:@"other"  forKey:@"type"];
+    [dictParams setObject:@"Others"  forKey:@"type"];
     [dictParams setObject:@""  forKey:@"vehical_id"];
     [dictParams setObject:OtherRemark_TXT.text  forKey:@"remark"];
     [dictParams setObject:OtherAmount_TXT.text  forKey:@"amount"];
@@ -394,5 +567,117 @@
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
+}
+
+
+-(void)CashFuelAddExpense:(NSData *)imageData
+{
+     [KVNProgress show];
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Add_Expense  forKey:@"s"];
+    [dictParams setObject:taskID  forKey:@"tid"];
+    [dictParams setObject:@"Fuel"  forKey:@"type"];
+    [dictParams setObject:VehicleID  forKey:@"vehical_id"];
+    [dictParams setObject:self.FuelRemark_TXT.text  forKey:@"remark"];
+    [dictParams setObject:self.FuelAmount_TXT.text  forKey:@"amount"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [dictParams setObject:@""  forKey:@"helper_id"];
+    [dictParams setObject:@"cash"  forKey:@"payment_type"];
+    //[dictParams setObject:@""  forKey:@"invoice_file"];
+    
+    [manager.requestSerializer setValue:@"application/json; text/html" forHTTPHeaderField:@"Accept"];
+    [manager.requestSerializer setValue:@"application/json; text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    
+    [manager POST:[NSString stringWithFormat:@"%@",BaseUrl] parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+     {
+         [formData appendPartWithFileData:imageData name:@"invoice_file" fileName:@"signature.jpeg" mimeType:@"image/jpeg"];
+     }
+         progress:^(NSProgress * _Nonnull uploadProgress)
+     {
+     }
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         [KVNProgress dismiss];
+
+         NSLog(@"JSON: %@", responseObject);
+         if ([[[responseObject objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+         {
+             [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
+             [self.navigationController popViewControllerAnimated:YES];
+         }
+         else
+         {
+             [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
+         }
+     }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError*  _Nonnull error)
+     {
+         NSLog(@"%@",error.localizedDescription);
+         [KVNProgress dismiss];
+         
+     }];
+    
+}
+- (IBAction)UploadInvoiceBtn_Click:(id)sender
+{
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Choose From" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        // Cancel button tappped.
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        // Cemera button tapped.
+        
+        
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+             [AppDelegate showErrorMessageWithTitle:@"Error" message:@"Device has no camera." delegate:nil];
+            
+        }
+        else{
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = NO;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.allowsEditing = YES;
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+        
+        
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        // Gallery button tapped.
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:nil];
+    }]];
+
+    // Present action sheet.
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    // output image
+    chosenImage = info[UIImagePickerControllerEditedImage];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 @end

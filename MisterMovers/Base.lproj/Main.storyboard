@@ -59,12 +59,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1W-ug-eSV">
                                 <rect key="frame" x="20" y="275" width="280" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type Your User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nA7-7g-SEc">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type Your Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nA7-7g-SEc">
                                         <rect key="frame" x="5" y="0.0" width="270" height="50"/>
                                         <color key="tintColor" red="0.24313725489999999" green="0.25098039220000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="sML-es-83T"/>
                                         </connections>
@@ -1556,7 +1556,7 @@
                                                                 <color key="tintColor" red="0.24313725489999999" green="0.25098039220000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="FGq-aX-bx7" id="zTm-1O-ZPd"/>
                                                                 </connections>
@@ -1720,7 +1720,7 @@
                                                                 <color key="tintColor" red="0.24313725489999999" green="0.25098039220000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="FGq-aX-bx7" id="gpn-l1-K0B"/>
                                                                 </connections>
@@ -1788,6 +1788,9 @@
                                                         <state key="normal" title="UPLOAD INVOICE">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="UploadInvoiceBtn_Click:" destination="FGq-aX-bx7" eventType="touchUpInside" id="GhZ-Jn-m8t"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1880,7 +1883,7 @@
                                                                 <color key="tintColor" red="0.24313725489999999" green="0.25098039220000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="FGq-aX-bx7" id="Fqo-ce-iMn"/>
                                                                 </connections>
@@ -2038,6 +2041,8 @@
                         <outlet property="FealView" destination="lNV-hn-86h" id="DCB-nb-y8S"/>
                         <outlet property="FeaulPaymentType_TXT" destination="Svd-ww-5xs" id="xj0-au-mJX"/>
                         <outlet property="FeaulUploadinvoise_BTN" destination="I9F-Uw-ExQ" id="5Nl-f9-9mw"/>
+                        <outlet property="FuelAmount_TXT" destination="dUS-rf-DaL" id="1Bp-nI-Oif"/>
+                        <outlet property="FuelRemark_TXT" destination="zMF-W5-oAm" id="4l7-3o-fmW"/>
                         <outlet property="FuelVehicleName_TXT" destination="cOt-6C-YY5" id="H7V-Cg-SeH"/>
                         <outlet property="HelperView" destination="FgL-ct-4T2" id="xU4-8N-rDx"/>
                         <outlet property="Helper_TXT" destination="4gd-mo-bOx" id="LsM-Ng-bx8"/>
@@ -2051,6 +2056,8 @@
                         <outlet property="RemarkView" destination="zg1-PS-bxr" id="1Md-aq-MFJ"/>
                         <outlet property="ScrollHight" destination="9Ew-AR-k8K" id="Yi9-UM-g34"/>
                         <outlet property="SelectJobTBL" destination="gV7-n8-gBz" id="kiA-gQ-SJc"/>
+                        <outlet property="helperAmount_TXT" destination="e2P-HX-gWP" id="AxW-IJ-fzf"/>
+                        <outlet property="helperRemarkTXT" destination="udJ-Wr-0qL" id="6QX-Sq-a8F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="occ-3Q-Jcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3494,6 +3501,9 @@
                                     <constraint firstAttribute="width" constant="50" id="vbI-JH-qVE"/>
                                 </constraints>
                                 <state key="normal" image="FilterIcon"/>
+                                <connections>
+                                    <action selector="FilterBtn_Click:" destination="g9s-XK-Kjy" eventType="touchUpInside" id="Foz-g7-lUF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEY-yh-268">
                                 <rect key="frame" x="79" y="267" width="162" height="34"/>

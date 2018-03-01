@@ -13,7 +13,6 @@
 		295A6375203C313500110792 /* UviSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A6374203C313500110792 /* UviSignatureView.m */; };
 		295A6379203C46C000110792 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295A6378203C46C000110792 /* PhotosUI.framework */; };
 		295A637B203C46D100110792 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295A637A203C46D100110792 /* AssetsLibrary.framework */; };
-		29639AC4203D62FA0073BC74 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 29639AC3203D62FA0073BC74 /* NSData+Base64.m */; };
 		2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2B2015B0E6006CA19F /* loginLogo.png */; };
 		2968CE2E2015B571006CA19F /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2D2015B571006CA19F /* splash.png */; };
 		2968CE302015B5BF006CA19F /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2F2015B5BF006CA19F /* ios */; };
@@ -133,8 +132,6 @@
 		295A6374203C313500110792 /* UviSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UviSignatureView.m; sourceTree = "<group>"; };
 		295A6378203C46C000110792 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		295A637A203C46D100110792 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		29639AC2203D62FA0073BC74 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		29639AC3203D62FA0073BC74 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		2965CC7D2031C66B00F3BCBB /* misterMover.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misterMover.pch; sourceTree = "<group>"; };
 		2968CE2B2015B0E6006CA19F /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
 		2968CE2D2015B571006CA19F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
@@ -424,8 +421,6 @@
 				295A636E203C05DB00110792 /* TremNconditionVW.m */,
 				530DC5581EC872C1000D4CA2 /* Main.storyboard */,
 				2965CC7D2031C66B00F3BCBB /* misterMover.pch */,
-				29639AC2203D62FA0073BC74 /* NSData+Base64.h */,
-				29639AC3203D62FA0073BC74 /* NSData+Base64.m */,
 				530DC56B1EC879C9000D4CA2 /* Images */,
 				530DC55B1EC872C1000D4CA2 /* Assets.xcassets */,
 				530DC55D1EC872C1000D4CA2 /* LaunchScreen.storyboard */,
@@ -918,7 +913,6 @@
 				530DC5D91EC881C0000D4CA2 /* KVNProgressConfiguration.m in Sources */,
 				53523A991EC9F88700EE41E9 /* Notification_Cell.m in Sources */,
 				530DC5981EC88157000D4CA2 /* UIImage+GIF.m in Sources */,
-				29639AC4203D62FA0073BC74 /* NSData+Base64.m in Sources */,
 				530DC59C1EC88157000D4CA2 /* UIView+WebCacheOperation.m in Sources */,
 				530DC5E11EC881D3000D4CA2 /* UIColor+KVNContrast.m in Sources */,
 				B133ECA9202FF512008BC8AE /* JobView.m in Sources */,
