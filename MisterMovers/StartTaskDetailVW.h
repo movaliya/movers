@@ -41,4 +41,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *MinumulHours_LBL;
 
 @property (weak, nonatomic) IBOutlet UILabel *vehicleReg_LBL;
+
+
+@property (strong, nonatomic) IBOutlet UILabel *PickupAddressTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *DropAddressTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *Address1Title_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *Address2Title_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *CustomerNmTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *CustomerNumberTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *CustomerEmailTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *PerHourTitle_LBL;
+
+
 @end

@@ -65,36 +65,41 @@
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
         DetailTaskDic=[[response valueForKey:@"result"] mutableCopy];
-        
-        self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
-        self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
-        self.EndDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_end_date"]];
-        self.pickupAdreess_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_location_from"]];
-        self.DropAddress_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_location_to"]];
-        self.Address1_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address1"]];
-        self.Address2_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address2"]];
-        NSString *customfullname=[NSString stringWithFormat:@": %@ %@",[DetailTaskDic valueForKey:@"inquiry_first_name"],[DetailTaskDic valueForKey:@"inquiry_last_name"]];
-        self.CutomerName_LBL.text=customfullname;
-        self.CustomerNumber_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"inquiry_contact"]];
-        self.CustomerEmail_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"inquiry_email"]];
-        self.PerHourRate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"price_per_rate"]];
-        
-        NSArray *helpers_details=[[DetailTaskDic valueForKey:@"helpers_details"]objectAtIndex:0];
-        self.HelperNumber_LBL.text=[helpers_details valueForKey:@"employee_phone"];
-        self.HelperName_LBL.text=[helpers_details valueForKey:@"employee_name"];
-        self.MinumulHours_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"quotation_minimum_hour"]];
-        
-         self.vehicleReg_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_vehicle_no"]];
-        //self.Pianoamount_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
-        //self.PoolTableAmount_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
-        //self.addSurhargeTitle_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
-        
+        [self FilluptheTaskDetail];
     }
     else
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
+
+-(void)FilluptheTaskDetail
+{
+    self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
+    self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
+    self.EndDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_end_date"]];
+    
+    self.pickupAdreess_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_location_from"]];
+    self.DropAddress_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_location_to"]];
+    self.Address1_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address1"]];
+    self.Address2_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address2"]];
+    NSString *customfullname=[NSString stringWithFormat:@": %@ %@",[DetailTaskDic valueForKey:@"inquiry_first_name"],[DetailTaskDic valueForKey:@"inquiry_last_name"]];
+    self.CutomerName_LBL.text=customfullname;
+    self.CustomerNumber_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"inquiry_contact"]];
+    self.CustomerEmail_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"inquiry_email"]];
+    self.PerHourRate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"price_per_rate"]];
+    
+    NSArray *helpers_details=[[DetailTaskDic valueForKey:@"helpers_details"]objectAtIndex:0];
+    self.HelperNumber_LBL.text=[helpers_details valueForKey:@"employee_phone"];
+    self.HelperName_LBL.text=[helpers_details valueForKey:@"employee_name"];
+    self.MinumulHours_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"quotation_minimum_hour"]];
+    
+    self.vehicleReg_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_vehicle_no"]];
+    //self.Pianoamount_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
+    //self.PoolTableAmount_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
+    //self.addSurhargeTitle_LBL.text=[DetailTaskDic valueForKey:@"task_start_date"];
+}
+
 - (IBAction)StartTask_Action:(id)sender
 {
    
@@ -114,15 +119,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
