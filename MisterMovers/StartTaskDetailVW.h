@@ -51,6 +51,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *CustomerNumberTitle_LBL;
 @property (strong, nonatomic) IBOutlet UILabel *CustomerEmailTitle_LBL;
 @property (strong, nonatomic) IBOutlet UILabel *PerHourTitle_LBL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *address1Top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *address2Top;
 
 
 @end

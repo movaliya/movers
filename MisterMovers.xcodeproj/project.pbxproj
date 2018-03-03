@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291FC44B204A8C370044F4D4 /* PrivacyPolicyVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 291FC44A204A8C370044F4D4 /* PrivacyPolicyVW.m */; };
+		291FC44D204A8C740044F4D4 /* PrivacyPolicyVW.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291FC44C204A8C740044F4D4 /* PrivacyPolicyVW.xib */; };
+		291FC44F204A8F210044F4D4 /* policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 291FC44E204A8F210044F4D4 /* policy.pdf */; };
 		295A636C203BFAD700110792 /* StartTaskDetailVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A636B203BFAD700110792 /* StartTaskDetailVW.m */; };
 		295A636F203C05DB00110792 /* TremNconditionVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A636E203C05DB00110792 /* TremNconditionVW.m */; };
 		295A6372203C11C300110792 /* SignatureVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A6371203C11C300110792 /* SignatureVW.m */; };
@@ -122,6 +125,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		291FC449204A8C370044F4D4 /* PrivacyPolicyVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyVW.h; sourceTree = "<group>"; };
+		291FC44A204A8C370044F4D4 /* PrivacyPolicyVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyVW.m; sourceTree = "<group>"; };
+		291FC44C204A8C740044F4D4 /* PrivacyPolicyVW.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPolicyVW.xib; sourceTree = "<group>"; };
+		291FC44E204A8F210044F4D4 /* policy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = policy.pdf; sourceTree = "<group>"; };
 		295A636A203BFAD700110792 /* StartTaskDetailVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTaskDetailVW.h; sourceTree = "<group>"; };
 		295A636B203BFAD700110792 /* StartTaskDetailVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTaskDetailVW.m; sourceTree = "<group>"; };
 		295A636D203C05DB00110792 /* TremNconditionVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TremNconditionVW.h; sourceTree = "<group>"; };
@@ -374,12 +381,16 @@
 		530DC54E1EC872C1000D4CA2 /* MisterMovers */ = {
 			isa = PBXGroup;
 			children = (
+				291FC44E204A8F210044F4D4 /* policy.pdf */,
 				B137AC0F2042AD1800DD2B2D /* BKDefines.h */,
 				B137AC0C2042ACAE00DD2B2D /* UIControl+BlocksKit.h */,
 				B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */,
 				B137AC0B2042ABE800DD2B2D /* SCLMacros.h */,
 				B137AC082042ABAC00DD2B2D /* UIImage+ImageEffects.h */,
 				B137AC092042ABAC00DD2B2D /* UIImage+ImageEffects.m */,
+				291FC449204A8C370044F4D4 /* PrivacyPolicyVW.h */,
+				291FC44A204A8C370044F4D4 /* PrivacyPolicyVW.m */,
+				291FC44C204A8C740044F4D4 /* PrivacyPolicyVW.xib */,
 				B137AC032042A32400DD2B2D /* CustomAlert.h */,
 				B137AC042042A32400DD2B2D /* CustomAlert.m */,
 				B137AC052042A32400DD2B2D /* CustomAlert.xib */,
@@ -815,6 +826,7 @@
 				53523A7F1EC9DDF500EE41E9 /* attendence.png in Resources */,
 				53523A871EC9DE4100EE41E9 /* logout.png in Resources */,
 				B15CFBD82041A9B50070DF8A /* InvoiceCell.xib in Resources */,
+				291FC44D204A8C740044F4D4 /* PrivacyPolicyVW.xib in Resources */,
 				530DC6171EC88283000D4CA2 /* IQKeyboardManager.bundle in Resources */,
 				53523A9A1EC9F88700EE41E9 /* Notification_Cell.xib in Resources */,
 				53523A831EC9DE1600EE41E9 /* dispatch.png in Resources */,
@@ -830,6 +842,7 @@
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,
 				2968CE2E2015B571006CA19F /* splash.png in Resources */,
 				530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */,
+				291FC44F204A8F210044F4D4 /* policy.pdf in Resources */,
 				2968CE322015C71A006CA19F /* refreshicon.png in Resources */,
 				53523A731EC972FB00EE41E9 /* logo.png in Resources */,
 				2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */,
@@ -912,6 +925,7 @@
 				530DC5F51EC8822C000D4CA2 /* IQUIView+Hierarchy.m in Sources */,
 				530DC5D91EC881C0000D4CA2 /* KVNProgressConfiguration.m in Sources */,
 				53523A991EC9F88700EE41E9 /* Notification_Cell.m in Sources */,
+				291FC44B204A8C370044F4D4 /* PrivacyPolicyVW.m in Sources */,
 				530DC5981EC88157000D4CA2 /* UIImage+GIF.m in Sources */,
 				530DC59C1EC88157000D4CA2 /* UIView+WebCacheOperation.m in Sources */,
 				530DC5E11EC881D3000D4CA2 /* UIColor+KVNContrast.m in Sources */,

@@ -13,6 +13,7 @@
 #import "StartTaskDetailVW.h"
 #import "CustomAlert.h"
 
+
 #define SelectedLabelColor [UIColor colorWithRed:255.0/255.0 green:175.0/255.0 blue:77.0/255.0 alpha:1.0]
 #define Whitecolortitle [UIColor whiteColor]
 
@@ -27,6 +28,8 @@
 @property (strong, nonatomic) UIButton *ClearBTN;
 @property (strong, nonatomic) UITextField *FromDateTXT;
 @property (strong, nonatomic) UITextField *ToDateTXT;
+
+
 
 
 
@@ -56,6 +59,9 @@
     
     self.FromDateTXT = (UITextField *)[alert viewWithTag:103];
     self.ToDateTXT = (UITextField *)[alert viewWithTag:104];
+    
+    
+   
     
     UINib *nib = [UINib nibWithNibName:@"TodayJobCell" bundle:nil];
     TodayJobCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];

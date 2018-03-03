@@ -9,7 +9,16 @@
 #import "StartTaskDetailVW.h"
 #import "misterMover.pch"
 #import "TremNconditionVW.h"
+#import "PrivacyPolicyVW.h"
 @interface StartTaskDetailVW ()
+{
+    PrivacyPolicyVW *policyAlert;
+    
+}
+
+@property (strong, nonatomic) UIButton *CanclepolicyBTN;
+@property (strong, nonatomic) UIButton *SubmitpolicyBTN;
+@property (strong, nonatomic) UIWebView *policywevVw;
 
 @end
 
@@ -18,6 +27,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+    policyAlert = [[PrivacyPolicyVW alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:policyAlert];
+    policyAlert.hidden=YES;
+    
+    self.CanclepolicyBTN = (UIButton *)[policyAlert viewWithTag:200];
+    [self.CanclepolicyBTN addTarget:self action:@selector(CanclePolicy_Click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.SubmitpolicyBTN = (UIButton *)[policyAlert viewWithTag:201];
+    [self.SubmitpolicyBTN addTarget:self action:@selector(SubmitPolicyBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.policywevVw = (UIWebView *)[policyAlert viewWithTag:202];
+    NSString *urlAddress = [[NSBundle mainBundle] pathForResource:@"policy" ofType:@"pdf"];
+    NSURL *url = [NSURL fileURLWithPath:urlAddress];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.policywevVw loadRequest:urlRequest];
     
     [FirstView.layer setShadowColor:[UIColor blackColor].CGColor];
     [FirstView.layer setShadowOpacity:0.8];
@@ -81,8 +106,28 @@
     
     self.pickupAdreess_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_location_from"]];
     self.DropAddress_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_location_to"]];
-    self.Address1_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address1"]];
-    self.Address2_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address2"]];
+    
+    if ([[DetailTaskDic valueForKey:@"task_address1"]isEqualToString:@""])
+    {
+        self.address1Top.constant=0;
+        self.Address1Title_LBL.text=@"";
+        self.Address1_LBL.text=@"";
+    }
+    else
+    {
+        self.Address1_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address1"]];
+    }
+    if ([[DetailTaskDic valueForKey:@"task_address2"]isEqualToString:@""])
+    {
+        self.address2Top.constant=0;
+        self.Address2Title_LBL.text=@"";
+        self.Address2_LBL.text=@"";
+    }
+    else
+    {
+        self.Address2_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_address2"]];
+    }
+    
     NSString *customfullname=[NSString stringWithFormat:@": %@ %@",[DetailTaskDic valueForKey:@"inquiry_first_name"],[DetailTaskDic valueForKey:@"inquiry_last_name"]];
     self.CutomerName_LBL.text=customfullname;
     self.CustomerNumber_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"inquiry_contact"]];
@@ -102,12 +147,44 @@
 
 - (IBAction)StartTask_Action:(id)sender
 {
-   
+    [self.view endEditing:YES];
+    policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    policyAlert.hidden=NO;
+    [UIView animateWithDuration:0.2 animations:
+     ^{
+         policyAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+     }];
+
+   /*
     TremNconditionVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TremNconditionVW"];
     vcr.Task_ID=[DetailTaskDic valueForKey:@"id"];
     vcr.vehical_id=[DetailTaskDic valueForKey:@"task_vehicle_id"];
     vcr.Task_NO1=[DetailTaskDic valueForKey:@"task_no"];
-    [self.navigationController pushViewController:vcr animated:YES];
+    [self.navigationController pushViewController:vcr animated:YES];*/
+}
+- (IBAction)SubmitPolicyBTN_Click:(id)sender
+{
+    policyAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    [UIView animateWithDuration:0.2 animations:^{
+        policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            policyAlert.hidden=YES;
+        }];
+    }];
+}
+- (IBAction)CanclePolicy_Click:(id)sender
+{
+    
+    policyAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    [UIView animateWithDuration:0.2 animations:^{
+        policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            policyAlert.hidden=YES;
+        }];
+    }];
 }
 - (IBAction)backBtn_Click:(id)sender
 {
