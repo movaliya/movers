@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *TaskTitle;
 @property (weak, nonatomic) IBOutlet UILabel *JobNo_LBL;
 @property (weak, nonatomic) IBOutlet UILabel *JobTitle_LBL;
-- (IBAction)Back_click:(id)sender;
+
 @property (strong, nonatomic) NSString *Task_ID;
 @property (strong, nonatomic) NSString *Task_NO;
 
@@ -41,6 +41,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *MinumulHours_LBL;
 
 @property (weak, nonatomic) IBOutlet UILabel *vehicleReg_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *VehicleName_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *Stair_LBL;
+@property (strong, nonatomic) IBOutlet UIScrollView *Scroll_Helper;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ScrollHight;
 
 
 @property (strong, nonatomic) IBOutlet UILabel *PickupAddressTitle_LBL;
@@ -51,8 +55,32 @@
 @property (strong, nonatomic) IBOutlet UILabel *CustomerNumberTitle_LBL;
 @property (strong, nonatomic) IBOutlet UILabel *CustomerEmailTitle_LBL;
 @property (strong, nonatomic) IBOutlet UILabel *PerHourTitle_LBL;
+
+@property (strong, nonatomic) IBOutlet UILabel *VehicleRegTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *VehicleNameTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *StairTitle_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *VehicleRegTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *VehicleNameTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *StairTop;
+
+@property (strong, nonatomic) IBOutlet UILabel *MinimumTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *ExtraItemTitle_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *MinHourTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ExtraItemTop;
+@property (strong, nonatomic) IBOutlet UILabel *ExtraItem_LBL;
+
+
+
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *PickupAddressTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *DropAddressTop;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *address1Top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *address2Top;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *CustomerNameTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *CustomerNumberTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *CustomerEmailTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *PerHourRateTop;
 
 
 @end
