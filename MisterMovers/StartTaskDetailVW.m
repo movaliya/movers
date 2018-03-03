@@ -8,8 +8,8 @@
 
 #import "StartTaskDetailVW.h"
 #import "misterMover.pch"
-#import "TremNconditionVW.h"
 #import "PrivacyPolicyVW.h"
+#import "SignatureVW.h"
 @interface StartTaskDetailVW ()
 {
     PrivacyPolicyVW *policyAlert;
@@ -18,7 +18,6 @@
 
 @property (strong, nonatomic) UIButton *CanclepolicyBTN;
 @property (strong, nonatomic) UIButton *SubmitpolicyBTN;
-@property (strong, nonatomic) UIWebView *policywevVw;
 
 @end
 
@@ -37,12 +36,6 @@
     
     self.SubmitpolicyBTN = (UIButton *)[policyAlert viewWithTag:201];
     [self.SubmitpolicyBTN addTarget:self action:@selector(SubmitPolicyBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.policywevVw = (UIWebView *)[policyAlert viewWithTag:202];
-    NSString *urlAddress = [[NSBundle mainBundle] pathForResource:@"policy" ofType:@"pdf"];
-    NSURL *url = [NSURL fileURLWithPath:urlAddress];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.policywevVw loadRequest:urlRequest];
     
     [FirstView.layer setShadowColor:[UIColor blackColor].CGColor];
     [FirstView.layer setShadowOpacity:0.8];
@@ -171,6 +164,12 @@
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.2 animations:^{
             policyAlert.hidden=YES;
+            SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
+            vcr.Task_ID=[DetailTaskDic valueForKey:@"id"];
+            vcr.vehical_id=[DetailTaskDic valueForKey:@"task_vehicle_id"];
+            vcr.Task_No2=[DetailTaskDic valueForKey:@"task_no"];
+            
+            [self.navigationController pushViewController:vcr animated:YES];
         }];
     }];
 }

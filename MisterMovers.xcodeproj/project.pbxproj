@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		291FC44B204A8C370044F4D4 /* PrivacyPolicyVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 291FC44A204A8C370044F4D4 /* PrivacyPolicyVW.m */; };
 		291FC44D204A8C740044F4D4 /* PrivacyPolicyVW.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291FC44C204A8C740044F4D4 /* PrivacyPolicyVW.xib */; };
-		291FC44F204A8F210044F4D4 /* policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 291FC44E204A8F210044F4D4 /* policy.pdf */; };
+		291FC453204ADFA10044F4D4 /* policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 291FC452204ADFA10044F4D4 /* policy.pdf */; };
 		295A636C203BFAD700110792 /* StartTaskDetailVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A636B203BFAD700110792 /* StartTaskDetailVW.m */; };
 		295A636F203C05DB00110792 /* TremNconditionVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A636E203C05DB00110792 /* TremNconditionVW.m */; };
 		295A6372203C11C300110792 /* SignatureVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A6371203C11C300110792 /* SignatureVW.m */; };
@@ -128,7 +128,7 @@
 		291FC449204A8C370044F4D4 /* PrivacyPolicyVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyVW.h; sourceTree = "<group>"; };
 		291FC44A204A8C370044F4D4 /* PrivacyPolicyVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyVW.m; sourceTree = "<group>"; };
 		291FC44C204A8C740044F4D4 /* PrivacyPolicyVW.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPolicyVW.xib; sourceTree = "<group>"; };
-		291FC44E204A8F210044F4D4 /* policy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = policy.pdf; sourceTree = "<group>"; };
+		291FC452204ADFA10044F4D4 /* policy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = policy.pdf; sourceTree = "<group>"; };
 		295A636A203BFAD700110792 /* StartTaskDetailVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTaskDetailVW.h; sourceTree = "<group>"; };
 		295A636B203BFAD700110792 /* StartTaskDetailVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTaskDetailVW.m; sourceTree = "<group>"; };
 		295A636D203C05DB00110792 /* TremNconditionVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TremNconditionVW.h; sourceTree = "<group>"; };
@@ -381,7 +381,7 @@
 		530DC54E1EC872C1000D4CA2 /* MisterMovers */ = {
 			isa = PBXGroup;
 			children = (
-				291FC44E204A8F210044F4D4 /* policy.pdf */,
+				291FC452204ADFA10044F4D4 /* policy.pdf */,
 				B137AC0F2042AD1800DD2B2D /* BKDefines.h */,
 				B137AC0C2042ACAE00DD2B2D /* UIControl+BlocksKit.h */,
 				B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */,
@@ -842,7 +842,7 @@
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,
 				2968CE2E2015B571006CA19F /* splash.png in Resources */,
 				530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */,
-				291FC44F204A8F210044F4D4 /* policy.pdf in Resources */,
+				291FC453204ADFA10044F4D4 /* policy.pdf in Resources */,
 				2968CE322015C71A006CA19F /* refreshicon.png in Resources */,
 				53523A731EC972FB00EE41E9 /* logo.png in Resources */,
 				2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */,

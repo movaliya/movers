@@ -24,12 +24,7 @@
 {
     
     
-    SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
-    vcr.Task_ID=self.Task_ID;
-    vcr.vehical_id=self.vehical_id;
-    vcr.Task_No2=self.Task_NO1;
-    
-    [self.navigationController pushViewController:vcr animated:YES];
+   
 }
 
 - (IBAction)Cancel_Click:(id)sender

@@ -26,6 +26,16 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    /*
+    NSString *url=@"http://www.google.com";
+    NSURL *nsurl=[NSURL URLWithString:url];
+    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];*/
+
+    self.WebVW.delegate = self;
+     NSString *urlAddress = [[NSBundle mainBundle] pathForResource:@"policy" ofType:@"pdf"];
+     NSURL *url = [NSURL fileURLWithPath:urlAddress];
+     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+     [self.WebVW loadRequest:urlRequest];
     
 }
 - (UIImage*)makeBlurBackground

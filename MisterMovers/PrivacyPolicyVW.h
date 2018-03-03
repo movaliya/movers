@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PrivacyPolicyVW : UIView
+@interface PrivacyPolicyVW : UIView<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *WebVW;
 @property (weak, nonatomic) IBOutlet UIButton *CancelPolicyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *AgreePolicyBtn;
