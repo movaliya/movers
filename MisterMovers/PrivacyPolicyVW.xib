@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,44 +14,66 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGN-7Y-D7a">
+                <imageView userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NGN-7Y-D7a">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKA-Ob-BCg">
-                    <rect key="frame" x="30" y="88" width="315" height="510"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKA-Ob-BCg">
+                    <rect key="frame" x="30" y="50" width="315" height="567"/>
                     <subviews>
-                        <webView tag="202" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GT4-T7-nKS">
-                            <rect key="frame" x="0.0" y="0.0" width="315" height="510"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <webView tag="202" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GT4-T7-nKS">
+                            <rect key="frame" x="0.0" y="0.0" width="315" height="522"/>
                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="hni-Q5-QgQ"/>
                             </connections>
                         </webView>
-                        <button opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEF-gc-Hr1">
-                            <rect key="frame" x="8" y="470" width="144" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="CANCEL">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" tag="201" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yh3-x8-njI">
-                            <rect key="frame" x="162" y="470" width="144" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.098039215690000001" green="0.4823529412" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="AGREE">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Dfe-Mn-N0E">
+                            <rect key="frame" x="10" y="527" width="295" height="35"/>
+                            <subviews>
+                                <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEF-gc-Hr1">
+                                    <rect key="frame" x="0.0" y="0.0" width="143.5" height="35"/>
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="CANCEL">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yh3-x8-njI">
+                                    <rect key="frame" x="151.5" y="0.0" width="143.5" height="35"/>
+                                    <color key="backgroundColor" red="0.098039215690000001" green="0.4823529412" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="AGREE">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="HIp-53-hSj"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="GT4-T7-nKS" firstAttribute="leading" secondItem="JKA-Ob-BCg" secondAttribute="leading" id="4Nf-wK-AgV"/>
+                        <constraint firstItem="Dfe-Mn-N0E" firstAttribute="leading" secondItem="JKA-Ob-BCg" secondAttribute="leading" constant="10" id="4sd-BE-nWL"/>
+                        <constraint firstAttribute="trailing" secondItem="GT4-T7-nKS" secondAttribute="trailing" id="4vJ-0I-nFB"/>
+                        <constraint firstAttribute="trailing" secondItem="Dfe-Mn-N0E" secondAttribute="trailing" constant="10" id="EVb-1A-xwL"/>
+                        <constraint firstItem="GT4-T7-nKS" firstAttribute="top" secondItem="JKA-Ob-BCg" secondAttribute="top" id="LPD-0l-atx"/>
+                        <constraint firstItem="Dfe-Mn-N0E" firstAttribute="top" secondItem="GT4-T7-nKS" secondAttribute="bottom" constant="5" id="xdL-ot-R5k"/>
+                        <constraint firstAttribute="bottom" secondItem="Dfe-Mn-N0E" secondAttribute="bottom" constant="5" id="y5v-fd-gtA"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NGN-7Y-D7a" secondAttribute="bottom" id="9We-eq-bhd"/>
+                <constraint firstItem="NGN-7Y-D7a" firstAttribute="top" secondItem="s8D-gK-DOE" secondAttribute="top" id="DhL-gE-N4a"/>
+                <constraint firstAttribute="bottom" secondItem="JKA-Ob-BCg" secondAttribute="bottom" constant="50" id="KrV-YK-jDC"/>
+                <constraint firstAttribute="trailing" secondItem="JKA-Ob-BCg" secondAttribute="trailing" constant="30" id="WJP-Ct-aNz"/>
+                <constraint firstItem="JKA-Ob-BCg" firstAttribute="leading" secondItem="s8D-gK-DOE" secondAttribute="leading" constant="30" id="eYO-1G-PeB"/>
+                <constraint firstItem="NGN-7Y-D7a" firstAttribute="leading" secondItem="s8D-gK-DOE" secondAttribute="leading" id="hug-Th-wIU"/>
+                <constraint firstItem="JKA-Ob-BCg" firstAttribute="top" secondItem="s8D-gK-DOE" secondAttribute="top" constant="50" id="mRh-F0-TZe"/>
+                <constraint firstAttribute="trailing" secondItem="NGN-7Y-D7a" secondAttribute="trailing" id="vH2-eL-Vl9"/>
+            </constraints>
             <connections>
                 <outlet property="AgreePolicyBtn" destination="yh3-x8-njI" id="Zf2-PT-7Yk"/>
                 <outlet property="CancelPolicyBtn" destination="tEF-gc-Hr1" id="KGj-AF-Q1s"/>
