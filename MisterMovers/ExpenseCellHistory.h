@@ -18,4 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *Amount_LBL;
 @property (weak, nonatomic) IBOutlet UILabel *Remark_LBL;
 
+@property (strong, nonatomic) IBOutlet UILabel *VehicletNoTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *VehicleNameTitle_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *AmountTop;
 @end

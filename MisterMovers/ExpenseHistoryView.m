@@ -47,6 +47,7 @@
          [self handleExpense_historyResponse:response];
      }];
 }
+
 - (void)handleExpense_historyResponse:(NSDictionary*)response
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
@@ -101,10 +102,40 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     }
+    
     cell.Jobtitle_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"job_title"] objectAtIndex:indexPath.section]];
     cell.ExpenseType_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"expense_type"] objectAtIndex:indexPath.section]];
-    cell.VehicleNo_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"vehical_no"] objectAtIndex:indexPath.section]];
-    cell.VehicleName_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"vehical_name"] objectAtIndex:indexPath.section]];
+    
+    if ([[[Expense_historyDIC valueForKey:@"expense_type"] objectAtIndex:indexPath.section] isEqualToString:@"Fuel"])
+    {
+        cell.VehicletNoTitle_LBL.text=@"Vehicle No";
+        cell.AmountTop.constant=70.0f;
+        cell.VehicleNo_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"vehical_no"] objectAtIndex:indexPath.section]];
+        cell.VehicleName_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"vehical_name"] objectAtIndex:indexPath.section]];
+    }
+    else if ([[[Expense_historyDIC valueForKey:@"expense_type"] objectAtIndex:indexPath.section] isEqualToString:@"Others"])
+    {
+        cell.AmountTop.constant=10.0f;
+        cell.VehicletNoTitle_LBL.hidden=YES;
+        cell.VehicleNameTitle_LBL.hidden=YES;
+        cell.VehicletNoTitle_LBL.text=@"Vehicle No";
+        cell.VehicleNo_LBL.text=@"";
+        cell.VehicleName_LBL.text=@"";
+    }
+    else if ([[[Expense_historyDIC valueForKey:@"expense_type"] objectAtIndex:indexPath.section] isEqualToString:@"Helper"])
+    {
+        cell.AmountTop.constant=40.0f;
+        cell.VehicletNoTitle_LBL.hidden=NO;
+        cell.VehicleNameTitle_LBL.hidden=YES;
+        cell.VehicletNoTitle_LBL.text=@"Helper Name";
+        cell.VehicleNo_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"helper_name"] objectAtIndex:indexPath.section]];
+        
+        cell.VehicleName_LBL.text=@"";
+    }
+    
+    
+    
+    
     cell.Amount_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"amount"] objectAtIndex:indexPath.section]];
     cell.Remark_LBL.text=[NSString stringWithFormat:@": %@",[[Expense_historyDIC valueForKey:@"remark"] objectAtIndex:indexPath.section]];
     
@@ -118,4 +149,15 @@
 {
     
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension;
+}
+
 @end

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -145,19 +145,22 @@
                     <constraint firstItem="qbg-yE-Hlj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="k7t-vs-gNh"/>
                     <constraint firstItem="Fnv-gv-Ij6" firstAttribute="top" secondItem="hjE-38-m4s" secondAttribute="bottom" constant="10" id="kGh-B1-ord"/>
                     <constraint firstItem="qbg-yE-Hlj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kOW-XK-ENm"/>
-                    <constraint firstItem="Vt5-Pi-Q8i" firstAttribute="top" secondItem="Fnv-gv-Ij6" secondAttribute="bottom" constant="10" id="oHz-B0-oeD"/>
+                    <constraint firstItem="Vt5-Pi-Q8i" firstAttribute="top" secondItem="xsK-va-bYf" secondAttribute="bottom" constant="70" id="rZx-E7-rfC"/>
                     <constraint firstItem="Vt5-Pi-Q8i" firstAttribute="centerY" secondItem="FHZ-C4-GrG" secondAttribute="centerY" id="tMq-HV-0ru"/>
                     <constraint firstItem="dyn-oG-hIb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="ufa-c7-nFN"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="AmountTop" destination="rZx-E7-rfC" id="HXk-ro-Hwo"/>
                 <outlet property="Amount_LBL" destination="FHZ-C4-GrG" id="BWq-eW-Ref"/>
                 <outlet property="BackView" destination="qbg-yE-Hlj" id="lz8-A4-YJA"/>
                 <outlet property="ExpenseType_LBL" destination="2QP-jj-t6H" id="F9s-4u-PX7"/>
                 <outlet property="Jobtitle_LBL" destination="OPg-fh-w2O" id="gPy-pN-qSd"/>
                 <outlet property="Remark_LBL" destination="BrM-a7-gBi" id="b7f-Us-4yK"/>
+                <outlet property="VehicleNameTitle_LBL" destination="Fnv-gv-Ij6" id="ZUH-xu-RJs"/>
                 <outlet property="VehicleName_LBL" destination="kwi-xg-NjU" id="zIN-Jq-PAw"/>
                 <outlet property="VehicleNo_LBL" destination="pC3-l0-1dW" id="37y-fq-Ayv"/>
+                <outlet property="VehicletNoTitle_LBL" destination="hjE-38-m4s" id="4ZA-VD-s50"/>
             </connections>
             <point key="canvasLocation" x="-113" y="21.5"/>
         </tableViewCell>
