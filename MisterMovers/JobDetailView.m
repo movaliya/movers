@@ -94,11 +94,6 @@
         
         self.DiscountAmount_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_discount"]];
         self.GrandTotal_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_grandtotal"]];
-
-        
-        
-        
-        
         
     }
     else
