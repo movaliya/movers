@@ -300,7 +300,7 @@
     {
         if (![MainStr isEqualToString:@""])
         {
-            MainStr=[NSString stringWithFormat:@", %@",Extraitem2];
+            MainStr=[NSString stringWithFormat:@"%@, %@",MainStr,Extraitem2];
         }
         else
         {
@@ -311,7 +311,7 @@
     {
         if (![MainStr isEqualToString:@""])
         {
-            MainStr=[NSString stringWithFormat:@", %@",Extraitem3];
+            MainStr=[NSString stringWithFormat:@"%@, %@",MainStr,Extraitem3];
         }
         else
         {

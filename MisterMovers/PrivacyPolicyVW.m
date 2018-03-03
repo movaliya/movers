@@ -32,6 +32,7 @@
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];*/
 
     self.WebVW.delegate = self;
+    self.WebVW.scalesPageToFit = YES;
      NSString *urlAddress = [[NSBundle mainBundle] pathForResource:@"policy" ofType:@"pdf"];
      NSURL *url = [NSURL fileURLWithPath:urlAddress];
      NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];

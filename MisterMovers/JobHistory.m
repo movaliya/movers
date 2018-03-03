@@ -71,8 +71,8 @@
     [dictParams setObject:Base_Key  forKey:@"key"];
     [dictParams setObject:Get_Task  forKey:@"s"];
     
-    //[dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
-    [dictParams setObject:@"2"  forKey:@"eid"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+   // [dictParams setObject:@"2"  forKey:@"eid"];
     [dictParams setObject:@"completed"  forKey:@"type"];
     
     
