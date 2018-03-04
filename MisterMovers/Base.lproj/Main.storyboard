@@ -5,7 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -635,7 +636,7 @@
                                                 <rect key="frame" x="8" y="838" width="304" height="397"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASM-uA-lH1">
-                                                        <rect key="frame" x="79" y="20" width="148" height="21"/>
+                                                        <rect key="frame" x="78" y="20" width="148" height="21"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                         <color key="textColor" red="0.29411764709999999" green="0.29411764709999999" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -963,7 +964,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCH-Ci-Ong">
-                                                <rect key="frame" x="215" y="240" width="105" height="109"/>
+                                                <rect key="frame" x="214" y="240" width="106" height="109"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="109" id="swX-sa-u0W"/>
@@ -1007,7 +1008,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T0-ta-fbz">
-                                                <rect key="frame" x="215" y="130" width="105" height="109"/>
+                                                <rect key="frame" x="214" y="130" width="106" height="109"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="109" id="VLG-Nz-jCp"/>
@@ -1024,7 +1025,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2o-YB-Ae8">
-                                                <rect key="frame" x="215" y="219" width="105" height="16"/>
+                                                <rect key="frame" x="214" y="219" width="106" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1251,7 +1252,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dca-8d-bOs">
-                                        <rect key="frame" x="55" y="30" width="37" height="24"/>
+                                        <rect key="frame" x="55" y="30" width="36.5" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1375,7 +1376,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Jobs Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ0-H0-zxf">
-                                <rect key="frame" x="85" y="270" width="150" height="30"/>
+                                <rect key="frame" x="85" y="269" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.31764705879999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="AdR-GA-qYd"/>
@@ -3176,7 +3177,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Case" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-Ch-Nyi">
-                                                                <rect key="frame" x="25" y="36" width="37" height="17"/>
+                                                                <rect key="frame" x="25" y="35.5" width="37" height="18"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3205,7 +3206,7 @@
                                                                 <state key="normal" title="Button"/>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcr-z7-XfU">
-                                                                <rect key="frame" x="25" y="64" width="46" height="21"/>
+                                                                <rect key="frame" x="25" y="64.5" width="46" height="20"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3505,6 +3506,7 @@
                         <outlet property="ExtraTitle2_LBL" destination="Ohd-KJ-qLf" id="a3A-Az-M5Y"/>
                         <outlet property="ExtraTitle3_LBL" destination="IhP-bG-9X4" id="bVY-oV-FMT"/>
                         <outlet property="FirstView" destination="CKE-jD-ZaM" id="gQZ-WZ-2hN"/>
+                        <outlet property="GrandTotalLBL" destination="Ond-lg-nK9" id="6sa-xj-JTq"/>
                         <outlet property="JobNo_LBL" destination="WnM-hT-lyW" id="Ny4-c4-oH2"/>
                         <outlet property="JobTitle_LBL" destination="TT3-x4-HbU" id="yB6-a9-QzI"/>
                         <outlet property="MinHourTop" destination="8vM-mW-5Xo" id="uSJ-11-WSw"/>
@@ -3528,6 +3530,7 @@
                         <outlet property="StairTop" destination="j5R-er-ZaZ" id="mqL-sb-Ucd"/>
                         <outlet property="Stair_LBL" destination="HBT-m7-9cA" id="836-7w-lad"/>
                         <outlet property="StartBTNTop" destination="QAv-ax-6tq" id="zfc-9M-U7W"/>
+                        <outlet property="StartBtn" destination="EM8-49-1ZO" id="93r-XD-daf"/>
                         <outlet property="TaskTitle" destination="qlg-q4-78A" id="kR1-6g-Ngg"/>
                         <outlet property="TherdView" destination="yVF-q2-gvx" id="ER0-OL-WKL"/>
                         <outlet property="TherdViewBorder" destination="TQT-cm-txr" id="bQg-NA-QbH"/>

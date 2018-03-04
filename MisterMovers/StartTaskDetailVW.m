@@ -109,7 +109,8 @@
 
 -(void)FilluptheTaskDetail
 {
-    [self HideSendView];
+   // [self HideSendView];
+    [self ShowSendView];
 
     
     self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
@@ -542,16 +543,53 @@
     self.SendView.hidden=NO;
     self.TotalTop.constant=10;
     self.TotalTitle_LBL.text=@"Total";
+     self.Total_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"task_subtotal"]];
     
-    self.Extra1Top.constant=10;
-    self.ExtraTitle1_LBL.text=@"";
-    self.Extra2Top.constant=10;
-    self.ExtraTitle2_LBL.text=@"";
-    self.Extra3Top.constant=10;
-    self.ExtraTitle3_LBL.text=@"";
-    self.Extra1Top.constant=10;
-    self.ExtraTitle1_LBL.text=@"";
+    NSString *Extraitem1=[DetailTaskDic valueForKey:@"quotation_extra_charge_title1"];
+    NSString *Extraitem2=[DetailTaskDic valueForKey:@"quotation_extra_charge_title2"];
+    NSString *Extraitem3=[DetailTaskDic valueForKey:@"quotation_extra_charge_title3"];
+    NSInteger ExtraitemTotal=0;
+    //Extra Item
+    if (![Extraitem1 isEqualToString:@""])
+    {
+        self.Extra1Top.constant=10;
+        self.ExtraTitle1_LBL.text=Extraitem1;
+        self.Extra1_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge1"]];
+        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge1"] integerValue];
+    }
+    else
+    {
+        self.Extra1Top.constant=0;
+        self.ExtraTitle1_LBL.text=@"";
+    }
+    if (![Extraitem2 isEqualToString:@""])
+    {
+        self.Extra2Top.constant=10;
+        self.ExtraTitle2_LBL.text=Extraitem2;
+        self.Extra2_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge2"]];
+        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge2"] integerValue];
+    }
+    else
+    {
+        self.Extra2Top.constant=0;
+        self.ExtraTitle2_LBL.text=@"";
+    }
+    if (![Extraitem3 isEqualToString:@""])
+    {
+        self.Extra3Top.constant=10;
+        self.ExtraTitle3_LBL.text=Extraitem3;
+        self.Extra3_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge3"]];
+        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge3"] integerValue];
+
+    }
+    else
+    {
+        self.Extra3Top.constant=0;
+        self.ExtraTitle3_LBL.text=@"";
+    }
+     ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"task_grandtotal"] integerValue];
     
+    self.GrandTotalLBL.text=[NSString stringWithFormat:@": $ %ld",(long)ExtraitemTotal];
     self.AddSurchargeHight.constant=35.0f;
     self.SendCaseViewHight.constant=90.0f;
     self.SendViewTop.constant=12;

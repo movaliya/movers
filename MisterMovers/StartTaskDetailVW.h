@@ -118,5 +118,6 @@
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *SendViewTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *StartBTNTop;
+@property (weak, nonatomic) IBOutlet UILabel *GrandTotalLBL;
 
 @end
