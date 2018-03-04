@@ -64,6 +64,10 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *VehicleNameTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *StairTop;
 
+@property (strong, nonatomic) IBOutlet UILabel *DurationHourTitle_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *DurationHourTop;
+@property (strong, nonatomic) IBOutlet UILabel *DurationHour_LBL;
+
 @property (strong, nonatomic) IBOutlet UILabel *MinimumTitle_LBL;
 @property (strong, nonatomic) IBOutlet UILabel *ExtraItemTitle_LBL;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *MinHourTop;
@@ -84,5 +88,35 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *PerHourRateTop;
 @property (weak, nonatomic) IBOutlet UIButton *StartBtn;
 
+@property (strong, nonatomic) IBOutlet UIView *SendView;
+@property (strong, nonatomic) IBOutlet UILabel *TotalTitle_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *Total_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *TotalTop;
+
+@property (strong, nonatomic) IBOutlet UILabel *ExtraTitle1_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *Extra1_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *Extra1Top;
+
+@property (strong, nonatomic) IBOutlet UILabel *ExtraTitle2_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *Extra2_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *Extra2Top;
+
+@property (strong, nonatomic) IBOutlet UILabel *ExtraTitle3_LBL;
+@property (strong, nonatomic) IBOutlet UILabel *Extra3_LBL;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *Extra3Top;
+
+@property (strong, nonatomic) IBOutlet UITextField *AddSurChargeTitle_TXT;
+@property (strong, nonatomic) IBOutlet UITextField *AddSurChargeTXT;
+@property (strong, nonatomic) IBOutlet UIButton *PlushBTN;
+- (IBAction)Plush_Click:(id)sender;
+@property (strong, nonatomic) IBOutlet UIScrollView *SendScroll;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *SendScrollHight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *SendCaseViewHight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *AddSurchargeHight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *PlushBTNHight;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *SendViewTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *StartBTNTop;
 
 @end

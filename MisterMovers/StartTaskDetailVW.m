@@ -13,6 +13,8 @@
 @interface StartTaskDetailVW ()
 {
     PrivacyPolicyVW *policyAlert;
+    NSMutableArray *SurchargeTitleArr,*SurchargeArr;
+    NSMutableDictionary *SurchargeDic;
     
 }
 
@@ -24,9 +26,16 @@
 @implementation StartTaskDetailVW
 @synthesize FirstView,SecondView,TherdView,TherdViewBorder;
 @synthesize StartBtn;
-- (void)viewDidLoad {
+
+
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-   
+    
+    SurchargeTitleArr=[[NSMutableArray alloc]init];
+    SurchargeArr=[[NSMutableArray alloc]init];
+    SurchargeDic=[[NSMutableDictionary alloc]init];
 
     policyAlert = [[PrivacyPolicyVW alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:policyAlert];
@@ -53,6 +62,11 @@
     [TherdView.layer setShadowOpacity:0.8];
     [TherdView.layer setShadowRadius:2.0];
     [TherdView.layer setShadowOffset:CGSizeMake(1.0,1.0)];
+    
+    [self.SendView.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.SendView.layer setShadowOpacity:0.8];
+    [self.SendView.layer setShadowRadius:2.0];
+    [self.SendView.layer setShadowOffset:CGSizeMake(1.0,1.0)];
     
     TherdViewBorder.layer.cornerRadius=2.0f;
     TherdViewBorder.layer.borderWidth=1.0f;
@@ -95,6 +109,9 @@
 
 -(void)FilluptheTaskDetail
 {
+    [self HideSendView];
+
+    
     self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
     self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
     self.EndDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_end_date"]];
@@ -401,6 +418,7 @@
   
    
 }
+
 - (IBAction)SubmitPolicyBTN_Click:(id)sender
 {
     policyAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
@@ -418,6 +436,7 @@
         }];
     }];
 }
+
 - (IBAction)CanclePolicy_Click:(id)sender
 {
     
@@ -466,14 +485,156 @@
     }
 }
 
+
 - (IBAction)backBtn_Click:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
     
 }
-- (void)didReceiveMemoryWarning {
+
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)Plush_Click:(id)sender
+{
+    if (![self.AddSurChargeTitle_TXT.text isEqualToString:@""] && ![self.AddSurChargeTXT.text isEqualToString:@""])
+    {
+        [SurchargeTitleArr addObject:self.AddSurChargeTitle_TXT.text];
+        [SurchargeArr addObject:self.AddSurChargeTXT.text];
+        
+        self.AddSurChargeTitle_TXT.text=@"";
+        self.AddSurChargeTXT.text=@"";
+        
+        [self SetSendScroll];
+     
+    }
+}
+
+-(void)HideSendView
+{
+    self.SendView.hidden=YES;
+    self.TotalTop.constant=0;
+    self.Total_LBL.text=@"";
+    self.TotalTitle_LBL.text=@"";
+    
+    self.Extra1Top.constant=0;
+    self.ExtraTitle1_LBL.text=@"";
+    self.Extra2Top.constant=0;
+    self.ExtraTitle2_LBL.text=@"";
+    self.Extra3Top.constant=0;
+    self.ExtraTitle3_LBL.text=@"";
+    self.Extra1Top.constant=0;
+    self.ExtraTitle1_LBL.text=@"";
+    
+    self.AddSurchargeHight.constant=0.0f;
+    self.SendCaseViewHight.constant=0.0f;
+    self.SendViewTop.constant=0;
+    self.StartBTNTop.constant=0;
+}
+
+
+-(void)ShowSendView
+{
+    self.SendView.hidden=NO;
+    self.TotalTop.constant=10;
+    self.TotalTitle_LBL.text=@"Total";
+    
+    self.Extra1Top.constant=10;
+    self.ExtraTitle1_LBL.text=@"";
+    self.Extra2Top.constant=10;
+    self.ExtraTitle2_LBL.text=@"";
+    self.Extra3Top.constant=10;
+    self.ExtraTitle3_LBL.text=@"";
+    self.Extra1Top.constant=10;
+    self.ExtraTitle1_LBL.text=@"";
+    
+    self.AddSurchargeHight.constant=35.0f;
+    self.SendCaseViewHight.constant=90.0f;
+    self.SendViewTop.constant=12;
+    self.StartBTNTop.constant=15;
+}
+
+
+
+-(void)SetSendScroll
+{
+    
+    NSArray* subviews = [[NSArray alloc] initWithArray: self.SendScroll.subviews];
+    for (UIView* view in subviews)
+    {
+        if ([view isKindOfClass:[UIView class]])
+        {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UIImageView class]])
+        {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UIButton class]])
+        {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UILabel class]])
+        {
+            [view removeFromSuperview];
+        }
+    }
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    
+    if (SurchargeArr.count>0)
+    {
+        int y = 6;
+        for (int i=0; i<SurchargeArr.count; i++)
+        {
+            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 15)];
+            HelperName.text=[NSString stringWithFormat:@"%@",[SurchargeTitleArr objectAtIndex:i]];
+            //HelperName.text=@"Kaushik";
+            HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            HelperName.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
+            HelperName.textAlignment=NSTextAlignmentCenter;
+            [self.SendScroll addSubview:HelperName];
+            
+            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-20, 15)];
+            HelperPhoneNo.text=[NSString stringWithFormat:@"$ %@",[SurchargeArr objectAtIndex:i]];
+            //HelperPhoneNo.text=@"23233223232";
+            HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+            HelperPhoneNo.textAlignment=NSTextAlignmentCenter;
+            [self.SendScroll addSubview:HelperPhoneNo];
+            
+            UIButton *CloseBTN=[[UIButton alloc]initWithFrame:CGRectMake(screenWidth-40, y, 15, 15)];
+            [CloseBTN setTitle:@"X" forState:UIControlStateNormal];
+            CloseBTN.titleLabel.font=[UIFont boldSystemFontOfSize:18];
+            [CloseBTN setTitleColor:[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+            [CloseBTN addTarget:self action:@selector(Close_click:) forControlEvents:UIControlEventTouchUpInside];
+            CloseBTN.tag=i;
+            CloseBTN.layer.cornerRadius=7.5;
+            CloseBTN.layer.masksToBounds=YES;
+            CloseBTN.layer.borderColor=[[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f] CGColor];
+            CloseBTN.layer.borderWidth=1.0f;
+            [self.SendScroll addSubview:CloseBTN];
+            
+            
+            y=y+30;
+        }
+        self.SendScrollHight.constant=y-5;
+    }
+}
+
+-(void)Close_click:(id)Sender
+{
+    [SurchargeArr removeObjectAtIndex:[Sender tag]];
+    [SurchargeTitleArr removeObjectAtIndex:[Sender tag]];
+    
+    [self SetSendScroll];
+}
+
 
 @end
