@@ -11,6 +11,7 @@
 @interface StartTaskDetailVW : UIViewController
 {
     NSMutableDictionary *DetailTaskDic;
+    NSString *Task_Status;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *TaskTitle;
@@ -81,6 +82,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *CustomerNumberTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *CustomerEmailTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *PerHourRateTop;
+@property (weak, nonatomic) IBOutlet UIButton *StartBtn;
 
 
 @end

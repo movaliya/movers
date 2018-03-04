@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -3237,6 +3237,7 @@
                         <outlet property="StairTitle_LBL" destination="0YE-sb-bgJ" id="0tb-V1-zSp"/>
                         <outlet property="StairTop" destination="j5R-er-ZaZ" id="mqL-sb-Ucd"/>
                         <outlet property="Stair_LBL" destination="HBT-m7-9cA" id="836-7w-lad"/>
+                        <outlet property="StartBtn" destination="EM8-49-1ZO" id="TcB-2K-2wC"/>
                         <outlet property="TaskTitle" destination="qlg-q4-78A" id="kR1-6g-Ngg"/>
                         <outlet property="TherdView" destination="yVF-q2-gvx" id="ER0-OL-WKL"/>
                         <outlet property="TherdViewBorder" destination="TQT-cm-txr" id="bQg-NA-QbH"/>

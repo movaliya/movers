@@ -23,7 +23,7 @@
 
 @implementation StartTaskDetailVW
 @synthesize FirstView,SecondView,TherdView,TherdViewBorder;
-
+@synthesize StartBtn;
 - (void)viewDidLoad {
     [super viewDidLoad];
    
@@ -98,6 +98,26 @@
     self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
     self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
     self.EndDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_end_date"]];
+    
+    //Task Status setup button property
+    Task_Status=[DetailTaskDic valueForKey:@"task_status"];
+    if ([Task_Status isEqualToString:@"0"])
+    {
+        StartBtn.backgroundColor = [UIColor colorWithRed:25.0/255.0 green:123.0/255.0 blue:48.0/255.0 alpha:1.0];
+        [StartBtn setTitle:@"START" forState:UIControlStateNormal];
+
+
+    }
+    else if ([Task_Status isEqualToString:@"4"])
+    {
+        StartBtn.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
+        [StartBtn setTitle:@"END" forState:UIControlStateNormal];
+
+    }
+    else
+    {
+         //[StartBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
     
     
     //Pickup Address
@@ -338,21 +358,48 @@
 
 - (IBAction)StartTask_Action:(id)sender
 {
-    [self.view endEditing:YES];
-    policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
-    policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
-    policyAlert.hidden=NO;
-    [UIView animateWithDuration:0.2 animations:
-     ^{
-         policyAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-     }];
-
-   /*
-    TremNconditionVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TremNconditionVW"];
-    vcr.Task_ID=[DetailTaskDic valueForKey:@"id"];
-    vcr.vehical_id=[DetailTaskDic valueForKey:@"task_vehicle_id"];
-    vcr.Task_NO1=[DetailTaskDic valueForKey:@"task_no"];
-    [self.navigationController pushViewController:vcr animated:YES];*/
+    
+    if ([Task_Status isEqualToString:@"0"])
+    {
+       //START Action
+        [self.view endEditing:YES];
+        policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+        policyAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+        policyAlert.hidden=NO;
+        [UIView animateWithDuration:0.2 animations:
+         ^{
+             policyAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+         }];
+    }
+    else if ([Task_Status isEqualToString:@"4"])
+    {
+        
+        UIAlertController *Endalert = [UIAlertController alertControllerWithTitle:@"" message:@"Are you sure want to end job?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *No = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+            // No Action
+        }];
+        UIAlertAction *Yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+            // YES action
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self ENDTask];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        }];
+        [Endalert addAction:No];
+        [Endalert addAction:Yes];
+        // Present action where needed
+        [self presentViewController:Endalert animated:YES completion:nil];
+    }
+    else
+    {
+        //[StartBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+  
+   
 }
 - (IBAction)SubmitPolicyBTN_Click:(id)sender
 {
@@ -383,12 +430,47 @@
         }];
     }];
 }
+-(void)ENDTask
+{
+    // Get current datetime
+    NSDate *currentDateTime = [NSDate date];
+    
+    // Instantiate a NSDateFormatter
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    // Set the dateFormatter format
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
+    // Get the date time in NSString
+    NSString *dateInString = [dateFormatter stringFromDate:currentDateTime];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:End_Task  forKey:@"s"];
+    [dictParams setObject:[DetailTaskDic valueForKey:@"id"] forKey:@"tid"];
+    [dictParams setObject:dateInString  forKey:@"end_date"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleEndTaskResponse:response];
+     }];
+}
+- (void)handleEndTaskResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
+
 - (IBAction)backBtn_Click:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

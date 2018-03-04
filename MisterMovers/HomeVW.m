@@ -89,29 +89,27 @@
     }
     else if (aButton.tag == 10)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:@"Are you sure want to Logout?"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                              otherButtonTitles:@"Logout",nil];
-        alert.tag=50;
-        [alert show];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Are you sure want to Logout?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *Cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+            // Cancel Action
+        }];
+        UIAlertAction *Logout = [UIAlertAction actionWithTitle:@"Logout" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+            // Logout action
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"LoginUserDic"];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+           
+        }];
+        [alert addAction:Cancel];
+        [alert addAction:Logout];
+        // Present action where needed
+        [self presentViewController:alert animated:YES completion:nil];
         
     }
     
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    // the user clicked Logout
-    if (alertView.tag==50)
-    {
-        if (buttonIndex == 1)
-        {
-            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"LoginUserDic"];
-            [self.navigationController popToRootViewControllerAnimated:NO];
-        }
-    }
 }
 
 
