@@ -42,6 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
+
     alert = [[CustomAlert alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:alert];
     alert.hidden=YES;

@@ -426,7 +426,6 @@
     {
         //SEND enble
     }
-  
    
 }
 
@@ -490,6 +489,55 @@
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
          [self ShowSendView];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
+-(void)SNDTask
+{
+    //NSMutableArray *title=[[NSMutableArray alloc]initWithObjects:@"table",@"sofa",@"tanki", nil];
+    //NSMutableArray *charge=[[NSMutableArray alloc]initWithObjects:@"100",@"200",@"300", nil];
+    
+    NSMutableArray *task_items=[[NSMutableArray alloc]init];
+    for (int k=0; k<SurchargeTitleArr.count; k++)
+    {
+        NSMutableDictionary *inddic=[[NSMutableDictionary alloc]init];
+        [inddic setObject:[SurchargeTitleArr objectAtIndex:k] forKey:@"title"];
+        [inddic setObject:[SurchargeArr objectAtIndex:k] forKey:@"amount"];
+        [task_items addObject:inddic];
+    }
+    NSLog(@"task_items==%@",task_items);
+    NSError* error = nil;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:task_items options:NSJSONWritingPrettyPrinted error:&error];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers  error:&error];
+    
+    
+    
+    
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    //task_items=[{"title":"task1","amount":"500"},{"title":"task2","amount":"600"}]
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Send_Task  forKey:@"s"];
+    [dictParams setObject:[DetailTaskDic valueForKey:@"id"] forKey:@"tid"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [dictParams setObject:@"cash"  forKey:@"payment_type"];
+    [dictParams setObject:json  forKey:@"task_items"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleSendTaskResponse:response];
+     }];
+}
+- (void)handleSendTaskResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
     else
     {
