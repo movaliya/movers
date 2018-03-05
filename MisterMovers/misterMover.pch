@@ -24,9 +24,8 @@
 
 
 // URL Implement
-#define BaseUrl @"http://zconcept99.com/mistermovers/service/service_user.php"
-//#define BaseUrl @"http://mistermover.com.au/development/service/service_user.php"
-
+//#define BaseUrl @"http://zconcept99.com/mistermovers/service/service_user.php"
+#define BaseUrl @"https://mistermover.com.au/development/service/service_user.php"
 #define Base_Key @"1226"
 
 

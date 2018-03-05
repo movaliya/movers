@@ -22,6 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.vehical_id==nil)
+    {
+        self.customerSignatureTitle.text=@"Customer Signature End";
+    }
+    else
+    {
+         self.customerSignatureTitle.text=@"Customer Signature Start";
+    }
     self.TaskTitle_LBL.text=self.Task_No2;
     self.StartBtn.enabled=NO;
     self.StartBtn.alpha=0.5f;
@@ -56,11 +65,31 @@
 }
 - (IBAction)StartBtn_Click:(id)sender
 {
-     BOOL internet=[AppDelegate connectedToNetwork];
-     if (internet)
-     [self StartTask];
-     else
-     [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    if (self.vehical_id==nil)
+    {
+        self.customerSignatureTitle.text=@"Customer Signature End";
+        UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.signatureView.layer renderInContext:context];
+        UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSData *photoData = UIImageJPEGRepresentation(snapshotImage, 0.8);
+        
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self SignatureUpload:photoData];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    }
+    else
+    {
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self StartTask];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    }
     
 }
 -(void)StartTask

@@ -12,6 +12,7 @@
 #import "misterMover.pch"
 #import "StartTaskDetailVW.h"
 #import "CustomAlert.h"
+#import "SignatureVW.h"
 
 
 #define SelectedLabelColor [UIColor colorWithRed:255.0/255.0 green:175.0/255.0 blue:77.0/255.0 alpha:1.0]
@@ -350,7 +351,17 @@
     
     cell.JobStartdate_LBL.text=[NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_start_date"] objectAtIndex:indexPath.section]];
     
-    cell.jobEnddate_LBL.text= [NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_end_date"] objectAtIndex:indexPath.section]];
+    NSString *enddatestr=[[TodayTaskDic valueForKey:@"task_ended_date"] objectAtIndex:indexPath.section];
+    if (![enddatestr isEqualToString:@""])
+    {
+         cell.jobEnddate_LBL.text= [NSString stringWithFormat:@": %@",[[TodayTaskDic valueForKey:@"task_ended_date"] objectAtIndex:indexPath.section]];
+    }
+    else
+    {
+         cell.jobEnddate_LBL.text= @": Not Yet Ended";
+    }
+    
+   
     
     
     
@@ -361,13 +372,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    StartTaskDetailVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartTaskDetailVW"];
-    NSLog(@"taskid=%@",[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section]);
-    vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
-    vcr.Task_NO=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
     
-    [self.navigationController pushViewController:vcr animated:YES];
-
+    NSString *Task_Status=[[TodayTaskDic valueForKey:@"task_status"]objectAtIndex:indexPath.section];
+    if ([Task_Status isEqualToString:@"3"])
+    {
+        //End Signature
+        SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
+        vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+        vcr.Task_No2=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+    }
+    else if ([Task_Status isEqualToString:@"4"])
+    {
+        //Job Photos
+        
+    }
+    else
+    {
+        StartTaskDetailVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartTaskDetailVW"];
+        NSLog(@"taskid=%@",[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section]);
+        vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+        vcr.Task_NO=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+        
+        [self.navigationController pushViewController:vcr animated:YES];
+    }
+ 
 }
 
 

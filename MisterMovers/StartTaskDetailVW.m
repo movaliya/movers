@@ -109,32 +109,42 @@
 
 -(void)FilluptheTaskDetail
 {
-   // [self HideSendView];
-    [self ShowSendView];
-
     
     self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
     self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
-    self.EndDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_end_date"]];
+    self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_actual_hour"]];
+    
+    if (![[DetailTaskDic valueForKey:@"task_ended_date"]isEqualToString:@""])
+    {
+        self.EndDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_ended_date"]];
+    }
+    else
+    {
+        self.EndDate_LBL.text= @": Not Yet Ended";
+    }
     
     //Task Status setup button property
     Task_Status=[DetailTaskDic valueForKey:@"task_status"];
     if ([Task_Status isEqualToString:@"0"])
     {
+        [self HideSendView];
         StartBtn.backgroundColor = [UIColor colorWithRed:25.0/255.0 green:123.0/255.0 blue:48.0/255.0 alpha:1.0];
         [StartBtn setTitle:@"START" forState:UIControlStateNormal];
 
 
     }
-    else if ([Task_Status isEqualToString:@"4"])
+    else if ([Task_Status isEqualToString:@"1"])
     {
+        [self HideSendView];
         StartBtn.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
         [StartBtn setTitle:@"END" forState:UIControlStateNormal];
 
     }
     else
     {
-         //[StartBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self ShowSendView];
+        StartBtn.backgroundColor = [UIColor colorWithRed:63.0/255.0 green:82.0/255.0 blue:169.0/255.0 alpha:1.0];
+        [StartBtn setTitle:@"SEND" forState:UIControlStateNormal];
     }
     
     
@@ -232,11 +242,11 @@
     }
     else
     {
-        self.PerHourRate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"price_per_rate"]];
+        self.PerHourRate_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"price_per_rate"]];
     }
     
     // Vehicle Name
-    if ([[DetailTaskDic valueForKey:@"task_vehical_name"]isEqualToString:@""])
+    if ([DetailTaskDic valueForKey:@"task_vehical_name"] == (id)[NSNull null])
     {
         self.VehicleNameTop.constant=0;
         self.VehicleNameTitle_LBL.text=@"";
@@ -389,7 +399,7 @@
              policyAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
          }];
     }
-    else if ([Task_Status isEqualToString:@"4"])
+    else if ([Task_Status isEqualToString:@"1"])
     {
         
         UIAlertController *Endalert = [UIAlertController alertControllerWithTitle:@"" message:@"Are you sure want to end job?" preferredStyle:UIAlertControllerStyleAlert];
@@ -414,7 +424,7 @@
     }
     else
     {
-        //[StartBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        //SEND enble
     }
   
    
@@ -479,6 +489,7 @@
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+         [self ShowSendView];
     }
     else
     {
@@ -631,7 +642,7 @@
         int y = 6;
         for (int i=0; i<SurchargeArr.count; i++)
         {
-            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 15)];
+            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 16)];
             HelperName.text=[NSString stringWithFormat:@"%@",[SurchargeTitleArr objectAtIndex:i]];
             //HelperName.text=@"Kaushik";
             HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
@@ -647,8 +658,8 @@
             HelperPhoneNo.textAlignment=NSTextAlignmentCenter;
             [self.SendScroll addSubview:HelperPhoneNo];
             
-            UIButton *CloseBTN=[[UIButton alloc]initWithFrame:CGRectMake(screenWidth-40, y, 15, 15)];
-            [CloseBTN setTitle:@"X" forState:UIControlStateNormal];
+            UIButton *CloseBTN=[[UIButton alloc]initWithFrame:CGRectMake(screenWidth-42, y, 15, 15)];
+            [CloseBTN setTitle:@"x" forState:UIControlStateNormal];
             CloseBTN.titleLabel.font=[UIFont boldSystemFontOfSize:18];
             [CloseBTN setTitleColor:[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
             [CloseBTN addTarget:self action:@selector(Close_click:) forControlEvents:UIControlEventTouchUpInside];

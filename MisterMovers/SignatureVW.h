@@ -18,5 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UviSignatureView *signatureView;
 @property (weak, nonatomic) IBOutlet UILabel *TaskTitle_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *customerSignatureTitle;
 
 @end
