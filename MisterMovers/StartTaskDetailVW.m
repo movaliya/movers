@@ -690,7 +690,7 @@
         int y = 6;
         for (int i=0; i<SurchargeArr.count; i++)
         {
-            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 16)];
+            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 18)];
             HelperName.text=[NSString stringWithFormat:@"%@",[SurchargeTitleArr objectAtIndex:i]];
             //HelperName.text=@"Kaushik";
             HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
@@ -698,7 +698,7 @@
             HelperName.textAlignment=NSTextAlignmentCenter;
             [self.SendScroll addSubview:HelperName];
             
-            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-20, 15)];
+            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-20, 18)];
             HelperPhoneNo.text=[NSString stringWithFormat:@"$ %@",[SurchargeArr objectAtIndex:i]];
             //HelperPhoneNo.text=@"23233223232";
             HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
