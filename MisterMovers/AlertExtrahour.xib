@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="AlertExtrahour" id="iN0-l3-epB" customClass="AlertExtrahour">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Np2-0s-msr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCR-qW-wCn">
+                    <rect key="frame" x="30" y="258.5" width="315" height="150"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to enter any extra hours?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO1-h7-WCw">
+                            <rect key="frame" x="15" y="15" width="285" height="48"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy5-sk-Hlh">
+                            <rect key="frame" x="250" y="90" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Dze-IY-ui5"/>
+                                <constraint firstAttribute="width" constant="50" id="aAU-g3-5Hc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <state key="normal" title="YES"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFH-K0-fKc">
+                            <rect key="frame" x="185" y="90" width="50" height="50"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <state key="normal" title="NO"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="gy5-sk-Hlh" secondAttribute="bottom" constant="10" id="O4L-n5-FUV"/>
+                        <constraint firstItem="AO1-h7-WCw" firstAttribute="leading" secondItem="zCR-qW-wCn" secondAttribute="leading" constant="15" id="O6L-cZ-MPJ"/>
+                        <constraint firstItem="WFH-K0-fKc" firstAttribute="height" secondItem="gy5-sk-Hlh" secondAttribute="height" id="TgA-ix-O9E"/>
+                        <constraint firstAttribute="trailing" secondItem="AO1-h7-WCw" secondAttribute="trailing" constant="15" id="URy-U7-02Q"/>
+                        <constraint firstItem="WFH-K0-fKc" firstAttribute="centerY" secondItem="gy5-sk-Hlh" secondAttribute="centerY" id="dGl-Cp-6lz"/>
+                        <constraint firstItem="gy5-sk-Hlh" firstAttribute="leading" secondItem="WFH-K0-fKc" secondAttribute="trailing" constant="15" id="jJU-bD-oAq"/>
+                        <constraint firstAttribute="height" constant="150" id="r2A-Nm-8J1"/>
+                        <constraint firstItem="AO1-h7-WCw" firstAttribute="top" secondItem="zCR-qW-wCn" secondAttribute="top" constant="15" id="rXL-TV-5ne"/>
+                        <constraint firstItem="WFH-K0-fKc" firstAttribute="width" secondItem="gy5-sk-Hlh" secondAttribute="width" id="sxF-bc-nrB"/>
+                        <constraint firstAttribute="trailing" secondItem="gy5-sk-Hlh" secondAttribute="trailing" constant="15" id="ujQ-HB-gqM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="zCR-qW-wCn" secondAttribute="trailing" constant="30" id="43E-BO-Sb4"/>
+                <constraint firstItem="zCR-qW-wCn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6sz-o5-vNB"/>
+                <constraint firstItem="Np2-0s-msr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Wdx-hj-sUG"/>
+                <constraint firstItem="Np2-0s-msr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Zbw-bG-pVu"/>
+                <constraint firstAttribute="trailing" secondItem="Np2-0s-msr" secondAttribute="trailing" id="dTs-tV-Pwo"/>
+                <constraint firstItem="zCR-qW-wCn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="nui-j4-1ay"/>
+                <constraint firstAttribute="bottom" secondItem="Np2-0s-msr" secondAttribute="bottom" id="oI6-WF-Xw4"/>
+            </constraints>
+            <connections>
+                <outlet property="constYAxes" destination="6sz-o5-vNB" id="hAU-l9-thE"/>
+                <outlet property="viewAlertController" destination="zCR-qW-wCn" id="tXZ-i5-783"/>
+            </connections>
+            <point key="canvasLocation" x="-638.5" y="-230.5"/>
+        </view>
+    </objects>
+</document>

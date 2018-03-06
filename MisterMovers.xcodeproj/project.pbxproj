@@ -116,6 +116,11 @@
 		B137AC072042A32400DD2B2D /* CustomAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = B137AC052042A32400DD2B2D /* CustomAlert.xib */; };
 		B137AC0A2042ABAC00DD2B2D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B137AC092042ABAC00DD2B2D /* UIImage+ImageEffects.m */; };
 		B137AC0E2042ACAE00DD2B2D /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */; };
+		B1528AB3204EFC7E00E16D7F /* UploadImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1528AB2204EFC7E00E16D7F /* UploadImgView.m */; };
+		B1528AB7204F14F500E16D7F /* AlertExtrahour.m in Sources */ = {isa = PBXBuildFile; fileRef = B1528AB4204F14F500E16D7F /* AlertExtrahour.m */; };
+		B1528AB8204F14F500E16D7F /* AlertExtrahour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1528AB6204F14F500E16D7F /* AlertExtrahour.xib */; };
+		B1528ABC204F177B00E16D7F /* AddExtrahoursAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B1528AB9204F177B00E16D7F /* AddExtrahoursAlert.m */; };
+		B1528ABD204F177B00E16D7F /* AddExtrahoursAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1528ABB204F177B00E16D7F /* AddExtrahoursAlert.xib */; };
 		B153429120415AF20041A8EB /* ExpenseCellHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B153428F20415AF20041A8EB /* ExpenseCellHistory.m */; };
 		B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = B153429020415AF20041A8EB /* ExpenseCellHistory.xib */; };
 		B15CFBD72041A9B50070DF8A /* InvoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B15CFBD52041A9B50070DF8A /* InvoiceCell.m */; };
@@ -318,6 +323,14 @@
 		B137AC0C2042ACAE00DD2B2D /* UIControl+BlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+BlocksKit.h"; sourceTree = "<group>"; };
 		B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+BlocksKit.m"; sourceTree = "<group>"; };
 		B137AC0F2042AD1800DD2B2D /* BKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKDefines.h; sourceTree = "<group>"; };
+		B1528AB1204EFC7E00E16D7F /* UploadImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImgView.h; sourceTree = "<group>"; };
+		B1528AB2204EFC7E00E16D7F /* UploadImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImgView.m; sourceTree = "<group>"; };
+		B1528AB4204F14F500E16D7F /* AlertExtrahour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertExtrahour.m; sourceTree = "<group>"; };
+		B1528AB5204F14F500E16D7F /* AlertExtrahour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertExtrahour.h; sourceTree = "<group>"; };
+		B1528AB6204F14F500E16D7F /* AlertExtrahour.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertExtrahour.xib; sourceTree = "<group>"; };
+		B1528AB9204F177B00E16D7F /* AddExtrahoursAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExtrahoursAlert.m; sourceTree = "<group>"; };
+		B1528ABA204F177B00E16D7F /* AddExtrahoursAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExtrahoursAlert.h; sourceTree = "<group>"; };
+		B1528ABB204F177B00E16D7F /* AddExtrahoursAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExtrahoursAlert.xib; sourceTree = "<group>"; };
 		B153428E20415AF20041A8EB /* ExpenseCellHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseCellHistory.h; sourceTree = "<group>"; };
 		B153428F20415AF20041A8EB /* ExpenseCellHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpenseCellHistory.m; sourceTree = "<group>"; };
 		B153429020415AF20041A8EB /* ExpenseCellHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseCellHistory.xib; sourceTree = "<group>"; };
@@ -394,6 +407,12 @@
 				B137AC032042A32400DD2B2D /* CustomAlert.h */,
 				B137AC042042A32400DD2B2D /* CustomAlert.m */,
 				B137AC052042A32400DD2B2D /* CustomAlert.xib */,
+				B1528AB4204F14F500E16D7F /* AlertExtrahour.m */,
+				B1528AB5204F14F500E16D7F /* AlertExtrahour.h */,
+				B1528AB6204F14F500E16D7F /* AlertExtrahour.xib */,
+				B1528ABA204F177B00E16D7F /* AddExtrahoursAlert.h */,
+				B1528AB9204F177B00E16D7F /* AddExtrahoursAlert.m */,
+				B1528ABB204F177B00E16D7F /* AddExtrahoursAlert.xib */,
 				295A6376203C366B00110792 /* Signature */,
 				2968CE2F2015B5BF006CA19F /* ios */,
 				53523A951EC9F86B00EE41E9 /* Cell */,
@@ -430,6 +449,8 @@
 				B11BDB432030609600E97C32 /* ExpenseHistoryView.m */,
 				295A636D203C05DB00110792 /* TremNconditionVW.h */,
 				295A636E203C05DB00110792 /* TremNconditionVW.m */,
+				B1528AB1204EFC7E00E16D7F /* UploadImgView.h */,
+				B1528AB2204EFC7E00E16D7F /* UploadImgView.m */,
 				530DC5581EC872C1000D4CA2 /* Main.storyboard */,
 				2965CC7D2031C66B00F3BCBB /* misterMover.pch */,
 				530DC56B1EC879C9000D4CA2 /* Images */,
@@ -836,6 +857,7 @@
 				2968CE342015D2FD006CA19F /* job.png in Resources */,
 				2968CE402015D633006CA19F /* expenseHistry.png in Resources */,
 				53523A7D1EC9DDF000EE41E9 /* attendence_empty.png in Resources */,
+				B1528AB8204F14F500E16D7F /* AlertExtrahour.xib in Resources */,
 				2968CE3C2015D55A006CA19F /* invoice.png in Resources */,
 				530DC55C1EC872C1000D4CA2 /* Assets.xcassets in Resources */,
 				B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */,
@@ -844,6 +866,7 @@
 				530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */,
 				291FC453204ADFA10044F4D4 /* policy.pdf in Resources */,
 				2968CE322015C71A006CA19F /* refreshicon.png in Resources */,
+				B1528ABD204F177B00E16D7F /* AddExtrahoursAlert.xib in Resources */,
 				53523A731EC972FB00EE41E9 /* logo.png in Resources */,
 				2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */,
 			);
@@ -860,6 +883,7 @@
 				530DC5FF1EC88249000D4CA2 /* IQKeyboardManager.m in Sources */,
 				295A636C203BFAD700110792 /* StartTaskDetailVW.m in Sources */,
 				530DC5E21EC881D3000D4CA2 /* UIImage+KVNEmpty.m in Sources */,
+				B1528AB3204EFC7E00E16D7F /* UploadImgView.m in Sources */,
 				530DC5F31EC8822C000D4CA2 /* IQUIScrollView+Additions.m in Sources */,
 				530DC5CC1EC8818A000D4CA2 /* AFURLRequestSerialization.m in Sources */,
 				530DC61E1EC88373000D4CA2 /* ForgotPassVW.m in Sources */,
@@ -924,9 +948,11 @@
 				B137AC062042A32400DD2B2D /* CustomAlert.m in Sources */,
 				530DC5F51EC8822C000D4CA2 /* IQUIView+Hierarchy.m in Sources */,
 				530DC5D91EC881C0000D4CA2 /* KVNProgressConfiguration.m in Sources */,
+				B1528AB7204F14F500E16D7F /* AlertExtrahour.m in Sources */,
 				53523A991EC9F88700EE41E9 /* Notification_Cell.m in Sources */,
 				291FC44B204A8C370044F4D4 /* PrivacyPolicyVW.m in Sources */,
 				530DC5981EC88157000D4CA2 /* UIImage+GIF.m in Sources */,
+				B1528ABC204F177B00E16D7F /* AddExtrahoursAlert.m in Sources */,
 				530DC59C1EC88157000D4CA2 /* UIView+WebCacheOperation.m in Sources */,
 				530DC5E11EC881D3000D4CA2 /* UIColor+KVNContrast.m in Sources */,
 				B133ECA9202FF512008BC8AE /* JobView.m in Sources */,
