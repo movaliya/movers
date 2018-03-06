@@ -383,6 +383,7 @@
         SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
         vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
         vcr.Task_No2=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else if ([Task_Status isEqualToString:@"4"])
     {

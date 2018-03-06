@@ -67,7 +67,6 @@
 {
     if (self.vehical_id==nil)
     {
-        self.customerSignatureTitle.text=@"Customer Signature End";
         UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
         CGContextRef context = UIGraphicsGetCurrentContext();
         [self.signatureView.layer renderInContext:context];

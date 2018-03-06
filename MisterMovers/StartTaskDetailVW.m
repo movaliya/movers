@@ -425,6 +425,26 @@
     else
     {
         //SEND enble
+        if([self.CashPayment_TXT.text isEqualToString:@""] && self.CashBTN.selected)
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please enter cash payment." delegate:nil];
+        }
+        else if ([self.OnlinePayment_TXT.text isEqualToString:@""]&& self.OnlineBTN.selected)
+        {
+             [AppDelegate showErrorMessageWithTitle:@"" message:@"Please enter online payment." delegate:nil];
+        }
+        else
+        {
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self SNDTask];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        }
+        
+        
+        
+        
     }
    
 }
@@ -538,6 +558,10 @@
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
+        vcr.Task_ID=[DetailTaskDic valueForKey:@"id"];
+        vcr.Task_No2=[DetailTaskDic valueForKey:@"task_no"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else
     {
@@ -572,6 +596,10 @@
         [self SetSendScroll];
      
     }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:@"Please enter Charge." delegate:nil];
+    }
 }
 
 -(void)HideSendView
@@ -599,6 +627,16 @@
 
 -(void)ShowSendView
 {
+    UIImage *btnImage1 = [UIImage imageNamed:@"EnbleCheckBox"];
+    UIImage *selected = [UIImage imageNamed:@"UncheckBox"];
+    
+    [self.CashBTN setImage:btnImage1 forState:UIControlStateSelected];
+    [self.CashBTN setImage:selected forState:UIControlStateNormal];
+    self.CashBTN.selected=YES;
+    [self.OnlineBTN setImage:btnImage1 forState:UIControlStateSelected];
+    [self.OnlineBTN setImage:selected forState:UIControlStateNormal];
+    self.OnlinePayment_TXT.hidden=YES;
+    
     self.SendView.hidden=NO;
     self.TotalTop.constant=10;
     self.TotalTitle_LBL.text=@"Total";
@@ -731,6 +769,36 @@
     [SurchargeTitleArr removeObjectAtIndex:[Sender tag]];
     
     [self SetSendScroll];
+}
+- (IBAction)CashBtn_Click:(id)sender
+{
+    if (self.CashBTN.selected)
+    {
+       
+        self.CashPayment_TXT.hidden=YES;
+        self.CashPayment_TXT.text=@"";
+    }
+    else
+    {
+         self.CashPayment_TXT.hidden=NO;
+    }
+    self.CashBTN.selected = !self.CashBTN.selected;
+    
+}
+- (IBAction)OnlineBtn_click:(id)sender
+{
+    if (self.OnlineBTN.selected)
+    {
+        self.OnlinePayment_TXT.hidden=YES;
+        self.OnlinePayment_TXT.text=@"";
+    }
+    else
+    {
+        self.OnlinePayment_TXT.hidden=NO;
+
+    }
+    self.OnlineBTN.selected = !self.OnlineBTN.selected;
+
 }
 
 

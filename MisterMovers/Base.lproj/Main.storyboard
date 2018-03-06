@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -3189,6 +3189,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="KtJ-nt-mFy" id="0wp-pL-j6c"/>
+                                                                </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": 2" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ond-lg-nK9">
                                                                 <rect key="frame" x="138" y="6" width="155" height="18"/>
@@ -3198,15 +3201,18 @@
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYf-aC-rg3">
                                                                 <rect key="frame" x="0.0" y="34" width="20" height="20"/>
-                                                                <color key="backgroundColor" red="0.098039215690000001" green="0.4823529412" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="I9R-Sw-GTz"/>
                                                                     <constraint firstAttribute="width" constant="20" id="xVn-WU-XLj"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="EnbleCheckBox"/>
+                                                                <connections>
+                                                                    <action selector="CashBtn_Click:" destination="KtJ-nt-mFy" eventType="touchUpInside" id="e4H-dO-gcN"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcr-z7-XfU">
-                                                                <rect key="frame" x="25" y="64" width="46" height="21"/>
+                                                                <rect key="frame" x="25" y="64.5" width="46" height="20"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3215,15 +3221,21 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="KtJ-nt-mFy" id="Scj-B6-7Pb"/>
+                                                                </connections>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqO-Hf-KOv">
                                                                 <rect key="frame" x="0.0" y="64" width="20" height="20"/>
-                                                                <color key="backgroundColor" red="0.098039215690000001" green="0.4823529412" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="VEi-VV-0uQ"/>
                                                                     <constraint firstAttribute="height" constant="20" id="dnk-x0-cbO"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="UncheckBox"/>
+                                                                <connections>
+                                                                    <action selector="OnlineBtn_click:" destination="KtJ-nt-mFy" eventType="touchUpInside" id="ubA-YS-P5W"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3476,6 +3488,8 @@
                         <outlet property="Address1_LBL" destination="9dm-rg-CJg" id="98A-oI-NlI"/>
                         <outlet property="Address2Title_LBL" destination="64u-q3-TLY" id="g4t-ox-T6G"/>
                         <outlet property="Address2_LBL" destination="hCa-qw-rxX" id="Bsh-ue-mhw"/>
+                        <outlet property="CashBTN" destination="MYf-aC-rg3" id="WuG-VA-O9t"/>
+                        <outlet property="CashPayment_TXT" destination="PdC-Jv-EPG" id="oKo-oz-Q5B"/>
                         <outlet property="CustomerEmailTitle_LBL" destination="c2Q-gj-JWp" id="teK-Ue-3Ie"/>
                         <outlet property="CustomerEmailTop" destination="brN-JC-Bep" id="YzT-ll-XYv"/>
                         <outlet property="CustomerEmail_LBL" destination="sil-8h-sZ6" id="OXl-wb-nA4"/>
@@ -3511,6 +3525,8 @@
                         <outlet property="MinHourTop" destination="8vM-mW-5Xo" id="uSJ-11-WSw"/>
                         <outlet property="MinimumTitle_LBL" destination="eIo-lx-e4U" id="kD8-om-Tcl"/>
                         <outlet property="MinumulHours_LBL" destination="4kp-Z0-M5J" id="Sge-DO-jrl"/>
+                        <outlet property="OnlineBTN" destination="ZqO-Hf-KOv" id="f46-4E-T4X"/>
+                        <outlet property="OnlinePayment_TXT" destination="7v4-8B-B53" id="Rr4-sq-gcv"/>
                         <outlet property="PerHourRateTop" destination="Ckw-RH-C49" id="ONC-X8-R61"/>
                         <outlet property="PerHourRate_LBL" destination="fX0-zb-9cV" id="4HN-o6-O1e"/>
                         <outlet property="PerHourTitle_LBL" destination="2d4-79-WdB" id="uNz-aW-s8I"/>
@@ -3921,7 +3937,9 @@
     <resources>
         <image name="BackBtn" width="17" height="17"/>
         <image name="DownArrow" width="27" height="27"/>
+        <image name="EnbleCheckBox" width="20" height="20"/>
         <image name="FilterIcon" width="43" height="43"/>
+        <image name="UncheckBox" width="20" height="20"/>
         <image name="WhiteMenuIcon.png" width="56" height="38"/>
         <image name="expense.png" width="50" height="50"/>
         <image name="expenseHistry.png" width="50" height="50"/>

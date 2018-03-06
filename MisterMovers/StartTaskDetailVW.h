@@ -119,5 +119,9 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *SendViewTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *StartBTNTop;
 @property (weak, nonatomic) IBOutlet UILabel *GrandTotalLBL;
+@property (weak, nonatomic) IBOutlet UIButton *OnlineBTN;
+@property (weak, nonatomic) IBOutlet UIButton *CashBTN;
+@property (weak, nonatomic) IBOutlet UITextField *CashPayment_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *OnlinePayment_TXT;
 
 @end
