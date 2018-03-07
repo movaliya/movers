@@ -13,6 +13,7 @@
 #import "StartTaskDetailVW.h"
 #import "CustomAlert.h"
 #import "SignatureVW.h"
+#import "UploadImgView.h"
 
 
 #define SelectedLabelColor [UIColor colorWithRed:255.0/255.0 green:175.0/255.0 blue:77.0/255.0 alpha:1.0]
@@ -388,6 +389,9 @@
     else if ([Task_Status isEqualToString:@"4"])
     {
         //Job Photos
+        UploadImgView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UploadImgView"];
+         vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+        [self.navigationController pushViewController:vcr animated:YES];
         
     }
     else

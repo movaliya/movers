@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTn-2f-Ctc">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -3177,7 +3177,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-Ch-Nyi">
-                                                                <rect key="frame" x="25" y="35.5" width="37.5" height="18"/>
+                                                                <rect key="frame" x="25" y="36" width="37.5" height="17"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3212,7 +3212,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcr-z7-XfU">
-                                                                <rect key="frame" x="25" y="64" width="46" height="21"/>
+                                                                <rect key="frame" x="25" y="64.5" width="46" height="20"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3871,23 +3871,23 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOy-CG-83G">
-                                <rect key="frame" x="10" y="169" width="300" height="230"/>
+                                <rect key="frame" x="10" y="174" width="300" height="220"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-5e-OlT">
-                                        <rect key="frame" x="74.5" y="20" width="150" height="110"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-5e-OlT">
+                                        <rect key="frame" x="99.5" y="20" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="6w5-v0-pUm"/>
-                                            <constraint firstAttribute="height" constant="110" id="7hp-Y5-PsW"/>
+                                            <constraint firstAttribute="width" constant="100" id="6w5-v0-pUm"/>
+                                            <constraint firstAttribute="height" constant="100" id="7hp-Y5-PsW"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Task Is Successfully Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB3-u9-CeV">
-                                        <rect key="frame" x="0.0" y="145" width="300" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="300" height="17.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.29411764709999999" green="0.29411764709999999" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Uz-H5-itT">
-                                        <rect key="frame" x="10" y="177.5" width="280" height="45"/>
+                                        <rect key="frame" x="10" y="167.5" width="280" height="45"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpI-zA-uV7">
                                                 <rect key="frame" x="0.0" y="0.0" width="132.5" height="45"/>
@@ -4125,5 +4125,6 @@
         <image name="profile.png" width="50" height="50"/>
         <image name="refreshicon.png" width="50" height="50"/>
         <image name="runningJob.png" width="50" height="50"/>
+        <image name="success.png" width="300" height="300"/>
     </resources>
 </document>

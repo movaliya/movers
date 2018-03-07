@@ -11,20 +11,18 @@
 @interface AddExtrahoursAlert : UIView
 
 @property (strong, nonatomic) IBOutlet UILabel *lblTitle;
-@property (strong, nonatomic) IBOutlet UILabel *lblDescription;
 @property (strong, nonatomic) IBOutlet UIView *viewMultipleButtonView;
 @property (strong, nonatomic) IBOutlet UIView *viewAlertController;
-@property (strong, nonatomic) IBOutlet UIImageView *imgBackGround;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constYAxes;
-@property (strong, nonatomic) IBOutlet UIView *FromDateView;
-@property (strong, nonatomic) IBOutlet UITextField *FromDate_TXT;
-@property (strong, nonatomic) IBOutlet UIView *ToDateView;
-@property (strong, nonatomic) IBOutlet UITextField *ToDate_TXT;
 @property (strong, nonatomic) IBOutlet UIButton *Cancel_BTN;
-@property (strong, nonatomic) IBOutlet UIButton *Clear_BTN;
-@property (strong, nonatomic) IBOutlet UIButton *Set_BTN;
+@property (strong, nonatomic) IBOutlet UIButton *Submit_BTN;
+@property (weak, nonatomic) IBOutlet UILabel *DriverName_LBL;
+@property (weak, nonatomic) IBOutlet UILabel *HelperName_LBL;
+@property (weak, nonatomic) IBOutlet UIStackView *HelperView;
+@property (weak, nonatomic) IBOutlet UITextField *DriverHour_TXT;
 
+@property (weak, nonatomic) IBOutlet UITextField *HelperHour_TXT;
 
 
 

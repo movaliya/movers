@@ -8,13 +8,24 @@
 
 #import "UploadImgView.h"
 #import "misterMover.pch"
+#import "AddExtrahoursAlert.h"
 
 @interface UploadImgView ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     NSMutableArray *ImageArr,*SetImageArr;
     BOOL ReplaceImage;
     NSInteger indx;
+     AddExtrahoursAlert *ExtraHourAlert;
 }
+@property (strong, nonatomic) UIButton *CancleExtraHourBTN;
+@property (strong, nonatomic) UIButton *SubmitExtraHourBTN;
+
+@property (strong, nonatomic) UILabel *DriverNameLBL;
+@property (strong, nonatomic) UILabel *HelperNameLBL;
+
+@property (strong, nonatomic) UITextField *DriverHourTXT;
+@property (strong, nonatomic) UITextField *HelperHourTXT;
+@property (strong, nonatomic) UIStackView *HelperStackView;
 @end
 
 @implementation UploadImgView
@@ -23,11 +34,67 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    ExtraHourAlert = [[AddExtrahoursAlert alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:ExtraHourAlert];
+    ExtraHourAlert.hidden=YES;
+    
+    self.CancleExtraHourBTN = (UIButton *)[ExtraHourAlert viewWithTag:100];
+    [self.CancleExtraHourBTN addTarget:self action:@selector(CanclePopup_Click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.SubmitExtraHourBTN = (UIButton *)[ExtraHourAlert viewWithTag:101];
+    [self.SubmitExtraHourBTN addTarget:self action:@selector(SubmitPopup_Click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.DriverNameLBL = (UILabel *)[ExtraHourAlert viewWithTag:200];
+    self.DriverHourTXT = (UITextField *)[ExtraHourAlert viewWithTag:201];
+    self.HelperNameLBL = (UILabel *)[ExtraHourAlert viewWithTag:202];
+    self.HelperHourTXT = (UITextField *)[ExtraHourAlert viewWithTag:203];
+    self.HelperStackView = (UIStackView *)[ExtraHourAlert viewWithTag:204];
+    
+   
+    
+    /*
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[self class]]) {
+            [self.navigationController popToViewController:controller animated:YES];
+            break;
+        }
+    }*/
     ReplaceImage=NO;
     SetImageArr=[[NSMutableArray alloc]initWithObjects:@"YES", nil];
     [self SetimageScroll];
+    
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self GetDetailTask];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
 }
-
+-(void)GetDetailTask
+{
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Get_Detail_Task  forKey:@"s"];
+    
+    [dictParams setObject:self.Task_ID  forKey:@"tid"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleDetailTaskResponse:response];
+     }];
+}
+- (void)handleDetailTaskResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        DetailTaskDic=[[response valueForKey:@"result"] mutableCopy];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -73,7 +140,10 @@
                 else
                 {
                     [BTN addTarget:self action:@selector(AddImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
-                    BTN.backgroundColor=[UIColor redColor];
+                    BTN.backgroundColor=[UIColor clearColor];
+                    UIImage *PlusImage = [UIImage imageNamed:@"plusSign.png"];
+                    [BTN setImage:PlusImage forState:UIControlStateNormal];
+                    
                 }
                 
             }
@@ -102,7 +172,9 @@
                 else
                 {
                     [BTN addTarget:self action:@selector(AddImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
-                    BTN.backgroundColor=[UIColor redColor];
+                    BTN.backgroundColor=[UIColor clearColor];
+                    UIImage *PlusImage = [UIImage imageNamed:@"plusSign.png"];
+                    [BTN setImage:PlusImage forState:UIControlStateNormal];
                 }
             }
             else
@@ -142,8 +214,101 @@
 -(void)Upload_click:(id)sender
 {
     
-}
+    if (SetImageArr.count==0)
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:@"Please select job image" delegate:nil];
+    }
+    else
+    {
+        UIAlertController *ExtraHouralert = [UIAlertController alertControllerWithTitle:@"" message:@"Do you want to enter any extra hours?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *No = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+            // No Action
+        }];
+        UIAlertAction *Yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            
+            [self.view endEditing:YES];
+            ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+            ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+            ExtraHourAlert.hidden=NO;
+            [UIView animateWithDuration:0.2 animations:
+             ^{
+                 ExtraHourAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+             }];
+            
+            // YES action
+            /*
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self uploadJobimage];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];*/
+        }];
+        [ExtraHouralert addAction:No];
+        [ExtraHouralert addAction:Yes];
+        [self presentViewController:ExtraHouralert animated:YES completion:nil];
 
+    }
+   
+}
+-(void)uploadJobimage
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+   
+    [KVNProgress show];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Task_Image_Upload  forKey:@"s"];
+    [dictParams setObject:self.Task_ID  forKey:@"tid"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [manager.requestSerializer setValue:@"application/json; text/html" forHTTPHeaderField:@"Accept"];
+    [manager.requestSerializer setValue:@"application/json; text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    
+    [manager POST:[NSString stringWithFormat:@"%@",BaseUrl] parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+     {
+         
+         for(int i=0; i<[SetImageArr count];i++)
+         {
+             NSData *imageData =UIImageJPEGRepresentation( SetImageArr[i], 0.8);
+             NSString *strName = [NSString stringWithFormat:@"name%d",i];
+             
+              [formData appendPartWithFileData:imageData name:@"file" fileName:strName mimeType:@"image/jpeg"];
+         }
+         
+         
+        
+     }
+         progress:^(NSProgress * _Nonnull uploadProgress)
+     {
+     }
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         [KVNProgress dismiss];
+         NSLog(@"JSON: %@", responseObject);
+         if ([[[responseObject objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+         {
+             
+         }
+         else
+         {
+             [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
+         }
+     }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError*  _Nonnull error)
+     {
+         NSLog(@"%@",error.localizedDescription);
+         [KVNProgress dismiss];
+         
+     }];
+    
+}
 -(void)AddImageBTN_Click:(id)sender
 {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -186,6 +351,59 @@
     ReplaceImage=NO;
 
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)SubmitPopup_Click:(id)sender
+{
+    ExtraHourAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    [UIView animateWithDuration:0.2 animations:^{
+        ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            ExtraHourAlert.hidden=YES;
+            
+        }];
+    }];
+}
+- (IBAction)CanclePopup_Click:(id)sender
+{
+    
+    ExtraHourAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    [UIView animateWithDuration:0.2 animations:^{
+        ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            ExtraHourAlert.hidden=YES;
+        }];
+    }];
+}
+-(void)AddExtrahour
+{
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:Base_Key  forKey:@"key"];
+    [dictParams setObject:Add_Extra_hour  forKey:@"s"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    [dictParams setObject:self.Task_ID  forKey:@"tid"];
+    [dictParams setObject:@"2"  forKey:@"extra_hour"];
+    [dictParams setObject:@"" forKey:@"helpers"];
+
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleAddExtrahourResponse:response];
+     }];
+}
+- (void)handleAddExtrahourResponse:(NSDictionary*)response
+{
+    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+    {
+        
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+    }
 }
 
 @end

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -44,37 +44,43 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sCM-Q8-ltk">
                             <rect key="frame" x="5" y="57" width="305" height="40"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fg5-8b-xGZ">
+                                <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fg5-8b-xGZ">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                     <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Extra Hours" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgb-to-1jf">
+                                <textField opaque="NO" clipsSubviews="YES" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Extra Hours" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgb-to-1jf">
                                     <rect key="frame" x="155" y="0.0" width="150" height="40"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="dyG-vK-fua"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="mld-Aa-2sb"/>
                             </constraints>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W0S-ZF-JNV">
+                        <stackView opaque="NO" tag="204" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W0S-ZF-JNV">
                             <rect key="frame" x="5" y="139" width="305" height="40"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYU-HC-ud6">
+                                <label opaque="NO" userInteractionEnabled="NO" tag="202" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYU-HC-ud6">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                     <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Extra Hours" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1L-Ls-BVg">
+                                <textField opaque="NO" clipsSubviews="YES" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Extra Hours" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1L-Ls-BVg">
                                     <rect key="frame" x="155" y="0.0" width="150" height="40"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="1W6-Ao-UlR"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <constraints>
@@ -123,15 +129,15 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="64y-0v-Cjo">
                             <rect key="frame" x="15" y="200" width="285" height="40"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E51-Su-xh3">
+                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E51-Su-xh3">
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="40"/>
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.2470588235" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                     <state key="normal" title="CANCEL"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrK-Pe-hMy">
+                                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrK-Pe-hMy">
                                     <rect key="frame" x="150" y="0.0" width="135" height="40"/>
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.2470588235" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                     <state key="normal" title="SUBMIT"/>
                                 </button>
@@ -186,6 +192,13 @@
                 <constraint firstAttribute="bottom" secondItem="Np2-0s-msr" secondAttribute="bottom" id="oI6-WF-Xw4"/>
             </constraints>
             <connections>
+                <outlet property="Cancel_BTN" destination="E51-Su-xh3" id="8mq-TZ-dfY"/>
+                <outlet property="DriverHour_TXT" destination="wgb-to-1jf" id="AQK-EI-NSW"/>
+                <outlet property="DriverName_LBL" destination="fg5-8b-xGZ" id="PEH-oU-NpD"/>
+                <outlet property="HelperHour_TXT" destination="B1L-Ls-BVg" id="ghi-IT-yAW"/>
+                <outlet property="HelperName_LBL" destination="OYU-HC-ud6" id="RG0-wd-Msl"/>
+                <outlet property="HelperView" destination="W0S-ZF-JNV" id="kXD-RX-0Iy"/>
+                <outlet property="Submit_BTN" destination="TrK-Pe-hMy" id="7Ky-VS-qf0"/>
                 <outlet property="constYAxes" destination="6sz-o5-vNB" id="hAU-l9-thE"/>
                 <outlet property="lblTitle" destination="G7F-be-m42" id="HTL-kE-35J"/>
                 <outlet property="viewAlertController" destination="zCR-qW-wCn" id="tXZ-i5-783"/>

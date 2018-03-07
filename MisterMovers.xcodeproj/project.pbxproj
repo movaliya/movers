@@ -27,6 +27,8 @@
 		2968CE3E2015D5BC006CA19F /* expense.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE3D2015D5BC006CA19F /* expense.png */; };
 		2968CE402015D633006CA19F /* expenseHistry.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE3F2015D633006CA19F /* expenseHistry.png */; };
 		2968CE4220161433006CA19F /* CCKFNavDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2968CE4120161433006CA19F /* CCKFNavDrawer.m */; };
+		298ABF35204FB0D30067D8A6 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = 298ABF34204FB0D30067D8A6 /* success.png */; };
+		298ABF37204FB1F00067D8A6 /* plusSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 298ABF36204FB1F00067D8A6 /* plusSign.png */; };
 		530DC5511EC872C1000D4CA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 530DC5501EC872C1000D4CA2 /* main.m */; };
 		530DC5541EC872C1000D4CA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 530DC5531EC872C1000D4CA2 /* AppDelegate.m */; };
 		530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530DC5581EC872C1000D4CA2 /* Main.storyboard */; };
@@ -156,6 +158,8 @@
 		2968CE3D2015D5BC006CA19F /* expense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expense.png; sourceTree = "<group>"; };
 		2968CE3F2015D633006CA19F /* expenseHistry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expenseHistry.png; sourceTree = "<group>"; };
 		2968CE4120161433006CA19F /* CCKFNavDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCKFNavDrawer.m; sourceTree = "<group>"; };
+		298ABF34204FB0D30067D8A6 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
+		298ABF36204FB1F00067D8A6 /* plusSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusSign.png; sourceTree = "<group>"; };
 		530DC54C1EC872C1000D4CA2 /* MisterMovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisterMovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		530DC5501EC872C1000D4CA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		530DC5521EC872C1000D4CA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -477,6 +481,8 @@
 				53523A791EC9DD8D00EE41E9 /* HomeIcon */,
 				530DC62E1EC89A74000D4CA2 /* WhiteMenuIcon.png */,
 				2968CE2D2015B571006CA19F /* splash.png */,
+				298ABF34204FB0D30067D8A6 /* success.png */,
+				298ABF36204FB1F00067D8A6 /* plusSign.png */,
 				2968CE2B2015B0E6006CA19F /* loginLogo.png */,
 				53523A721EC972FB00EE41E9 /* logo.png */,
 			);
@@ -839,6 +845,7 @@
 				53523A851EC9DE3B00EE41E9 /* inward.png in Resources */,
 				53523A8D1EC9DE8000EE41E9 /* profile.png in Resources */,
 				2968CE3E2015D5BC006CA19F /* expense.png in Resources */,
+				298ABF37204FB1F00067D8A6 /* plusSign.png in Resources */,
 				53523A8F1EC9DE8F00EE41E9 /* stock.png in Resources */,
 				2968CE302015B5BF006CA19F /* ios in Resources */,
 				530DC5D21EC881AF000D4CA2 /* KVNProgressView.xib in Resources */,
@@ -859,6 +866,7 @@
 				53523A7D1EC9DDF000EE41E9 /* attendence_empty.png in Resources */,
 				B1528AB8204F14F500E16D7F /* AlertExtrahour.xib in Resources */,
 				2968CE3C2015D55A006CA19F /* invoice.png in Resources */,
+				298ABF35204FB0D30067D8A6 /* success.png in Resources */,
 				530DC55C1EC872C1000D4CA2 /* Assets.xcassets in Resources */,
 				B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */,
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,

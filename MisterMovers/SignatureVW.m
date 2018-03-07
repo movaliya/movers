@@ -12,6 +12,7 @@
 #import "misterMover.pch"
 #import "AFHTTPSessionManager.h"
 #import "HomeVW.h"
+#import "UploadImgView.h"
 
 
 @interface SignatureVW ()
@@ -176,7 +177,18 @@
           NSLog(@"JSON: %@", responseObject);
         if ([[[responseObject objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
         {
-           [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+            
+            if (self.vehical_id==nil)
+            {
+                UploadImgView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UploadImgView"];
+                [self.navigationController pushViewController:vcr animated:YES];
+            }
+            else
+            {
+                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+            }
+          
+            
         }
         else
         {

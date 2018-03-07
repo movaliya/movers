@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface UploadImgView : UIViewController
+{
+    NSMutableDictionary *DetailTaskDic;
+}
 
 - (IBAction)Back_click:(id)sender;
+@property (strong, nonatomic) NSString *Task_ID;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *ImageScroll;
 @end

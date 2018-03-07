@@ -37,79 +37,20 @@
 {
     [super awakeFromNib];
     
-    self.imgBackGround.image = [self makeBlurBackground];
+   // self.imgBackGround.image = [self makeBlurBackground];
 
     _viewAlertController.layer.cornerRadius = 5;
     _viewMultipleButtonView.layer.cornerRadius = 5;
     _Cancel_BTN.layer.cornerRadius = 5;
-    _Set_BTN.layer.cornerRadius = 5;
-    _Clear_BTN.layer.cornerRadius = 5;
-    [self FromdatePicker];
-     [self todatePicker];
+     _Submit_BTN.layer.cornerRadius = 5;
+   
+    
    
     
     
 //    [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"disableSwipe"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
     
-}
--(void)FromdatePicker
-{
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    [datePicker setDate:[NSDate date]];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    datePicker.backgroundColor=[UIColor whiteColor];
-    [datePicker addTarget:self action:@selector(dateTextField1:) forControlEvents:UIControlEventValueChanged];
-    
-    //UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    //toolbar.barStyle   = UIBarStyleBlackTranslucent;
-    
-    //UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.ToDate_TXT action:@selector(resignFirstResponder)];
-   // UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-   // toolbar.items = @[itemSpace,itemDone];
-    
-   // self.FromDate_TXT.inputAccessoryView = toolbar;
-    [self.FromDate_TXT setInputView:datePicker];
-}
--(void) dateTextField1:(id)sender
-{
-    UIDatePicker *picker = (UIDatePicker*)self.FromDate_TXT.inputView;
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSDate *eventDate = picker.date;
-    [dateFormat setDateFormat:@"dd-MM-yyyy HH:mm"];
-    
-    NSString *dateString = [dateFormat stringFromDate:eventDate];
-    self.FromDate_TXT.text = [NSString stringWithFormat:@"%@",dateString];
-}
--(void)todatePicker
-{
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    [datePicker setDate:[NSDate date]];
-    datePicker.backgroundColor=[UIColor whiteColor];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
-    
-   // UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-   // toolbar.barStyle   = UIBarStyleBlackTranslucent;
-    
-   // UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.ToDate_TXT action:@selector(resignFirstResponder)];
-    //UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-   // toolbar.items = @[itemSpace,itemDone];
-    
-   // self.ToDate_TXT.inputAccessoryView = toolbar;
-    [self.ToDate_TXT setInputView:datePicker];
-}
--(void) dateTextField:(id)sender
-{
-    UIDatePicker *picker = (UIDatePicker*)self.ToDate_TXT.inputView;
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSDate *eventDate = picker.date;
-    [dateFormat setDateFormat:@"dd-MM-yyyy HH:mm"];
-    
-    NSString *dateString = [dateFormat stringFromDate:eventDate];
-    self.ToDate_TXT.text = [NSString stringWithFormat:@"%@",dateString];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -132,7 +73,7 @@
                                       saturationDeltaFactor:1.8f
                                                   maskImage:nil];
     
-    NSLog(@"%@",self.imgBackGround);
+   // NSLog(@"%@",self.imgBackGround);
     
     return blurSnapshotImage;
 
