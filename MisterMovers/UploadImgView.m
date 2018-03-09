@@ -9,6 +9,9 @@
 #import "UploadImgView.h"
 #import "misterMover.pch"
 #import "AddExtrahoursAlert.h"
+#import "JobView.h"
+#import "CompleteTaskVW.h"
+#import "HomeVW.h"
 
 @interface UploadImgView ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -29,12 +32,12 @@
 @end
 
 @implementation UploadImgView
-@synthesize ImageScroll;
+@synthesize ImageScroll,TaskNumberLBL;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    TaskNumberLBL.text=self.Task_No;
     ExtraHourAlert = [[AddExtrahoursAlert alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:ExtraHourAlert];
     ExtraHourAlert.hidden=YES;
@@ -69,6 +72,7 @@
         [self GetDetailTask];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    
 }
 -(void)GetDetailTask
 {
@@ -213,8 +217,17 @@
 
 -(void)Upload_click:(id)sender
 {
+    NSMutableArray *uploadImages=[[NSMutableArray alloc]init];
+    for(int i=0; i<[SetImageArr count];i++)
+    {
+        if ([[SetImageArr objectAtIndex:i] isKindOfClass:[UIImage class]])
+        {
+            [uploadImages addObject:[SetImageArr objectAtIndex:i]];
+        }
+    }
     
-    if (SetImageArr.count==0)
+    
+    if (uploadImages.count==0)
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:@"Please select job image" delegate:nil];
     }
@@ -223,11 +236,28 @@
         UIAlertController *ExtraHouralert = [UIAlertController alertControllerWithTitle:@"" message:@"Do you want to enter any extra hours?" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *No = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            
             // No Action
+            CheckStrForSucess=@"No";
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self uploadJobimage];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
         }];
         UIAlertAction *Yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             
+            CheckStrForSucess=@"Yes";
+            self.DriverNameLBL.text=[DetailTaskDic valueForKey:@"task_leader_name"];
+            helperDetail=[DetailTaskDic valueForKey:@"helpers_details"];
+            if (helperDetail.count==0)
+            {
+                self.HelperStackView.hidden=YES;
+            }
+            else
+            {
+                  self.HelperNameLBL.text=[[helperDetail valueForKey:@"employee_name"]  objectAtIndex:0];
+            }
+         
             [self.view endEditing:YES];
             ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
             ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
@@ -238,12 +268,12 @@
              }];
             
             // YES action
-            /*
             BOOL internet=[AppDelegate connectedToNetwork];
             if (internet)
                 [self uploadJobimage];
             else
-                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];*/
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+           
         }];
         [ExtraHouralert addAction:No];
         [ExtraHouralert addAction:Yes];
@@ -254,6 +284,7 @@
 }
 -(void)uploadJobimage
 {
+       
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
    
     [KVNProgress show];
@@ -264,6 +295,7 @@
     [dictParams setObject:Task_Image_Upload  forKey:@"s"];
     [dictParams setObject:self.Task_ID  forKey:@"tid"];
     [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
+    
     [manager.requestSerializer setValue:@"application/json; text/html" forHTTPHeaderField:@"Accept"];
     [manager.requestSerializer setValue:@"application/json; text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -273,18 +305,18 @@
     
     [manager POST:[NSString stringWithFormat:@"%@",BaseUrl] parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
      {
-         
+        
          for(int i=0; i<[SetImageArr count];i++)
          {
-             NSData *imageData =UIImageJPEGRepresentation( SetImageArr[i], 0.8);
-             NSString *strName = [NSString stringWithFormat:@"name%d",i];
-             
-              [formData appendPartWithFileData:imageData name:@"file" fileName:strName mimeType:@"image/jpeg"];
+             if ([[SetImageArr objectAtIndex:i] isKindOfClass:[UIImage class]])
+             {
+                 NSData *imageData =UIImageJPEGRepresentation( SetImageArr[i], 0.8);
+                 NSString *strName = [NSString stringWithFormat:@"name%d.jpeg",i];
+                 
+                 [formData appendPartWithFileData:imageData name:@"files" fileName:strName mimeType:@"image/jpeg"];
+             }
          }
-         
-         
-        
-     }
+         }
          progress:^(NSProgress * _Nonnull uploadProgress)
      {
      }
@@ -294,7 +326,12 @@
          NSLog(@"JSON: %@", responseObject);
          if ([[[responseObject objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
          {
-             
+             if ([CheckStrForSucess isEqualToString:@"No"])
+             {
+                 CompleteTaskVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CompleteTaskVW"];
+                 [self.navigationController pushViewController:vcr animated:YES];
+                 [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
+             }
          }
          else
          {
@@ -320,7 +357,29 @@
 
 - (IBAction)Back_click:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.CheckPopup2!=nil)
+    {
+        for (UIViewController *controller in self.navigationController.viewControllers)
+        {
+            if ([controller isKindOfClass:[HomeVW class]])
+            {
+                [self.navigationController popToViewController:controller animated:YES];
+                break;
+            }
+        }
+    }
+    else
+    {
+        for (UIViewController *controller in self.navigationController.viewControllers)
+        {
+            if ([controller isKindOfClass:[JobView class]])
+            {
+                [self.navigationController popToViewController:controller animated:YES];
+                break;
+            }
+        }
+    }
+    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -352,17 +411,31 @@
 
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-- (IBAction)SubmitPopup_Click:(id)sender
+- (void)SubmitPopup_Click:(id)sender
 {
-    ExtraHourAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-    [UIView animateWithDuration:0.2 animations:^{
-        ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
-    } completion:^(BOOL finished) {
+    if ([_DriverHourTXT.text isEqualToString:@""])
+    {
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:@"Please enter Driver Hours" delegate:nil];
+    }
+    else
+    {
+        ExtraHourAlert.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
         [UIView animateWithDuration:0.2 animations:^{
-            ExtraHourAlert.hidden=YES;
-            
+            ExtraHourAlert.transform = CGAffineTransformMakeScale(0.01f, 0.01f);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                
+                ExtraHourAlert.hidden=YES;
+                BOOL internet=[AppDelegate connectedToNetwork];
+                if (internet)
+                    [self AddExtrahour];
+                else
+                    [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            }];
         }];
-    }];
+       
+    }
+    
 }
 - (IBAction)CanclePopup_Click:(id)sender
 {
@@ -378,6 +451,26 @@
 }
 -(void)AddExtrahour
 {
+    NSDictionary *json;
+    NSInteger totalHour=0;
+    if (helperDetail.count!=0)
+    {
+         totalHour=[_DriverHourTXT.text integerValue]+[_HelperHourTXT.text integerValue];
+        NSMutableArray *helpersDic=[[NSMutableArray alloc]init];
+        NSMutableDictionary *inddic=[[NSMutableDictionary alloc]init];
+        [inddic setObject:_HelperHourTXT.text forKey:@"hour"];
+        [inddic setObject:[[helperDetail valueForKey:@"id"] objectAtIndex:0] forKey:@"id"];
+        [helpersDic addObject:inddic];
+        NSError* error = nil;
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:helpersDic options:NSJSONWritingPrettyPrinted error:&error];
+        json = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers  error:&error];
+    }
+    else
+    {
+         totalHour=[_DriverHourTXT.text integerValue];
+    }
+    NSString *totalhr=[NSString stringWithFormat:@"%ld",(long)totalHour];
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
     
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
@@ -385,8 +478,15 @@
     [dictParams setObject:Add_Extra_hour  forKey:@"s"];
     [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
     [dictParams setObject:self.Task_ID  forKey:@"tid"];
-    [dictParams setObject:@"2"  forKey:@"extra_hour"];
-    [dictParams setObject:@"" forKey:@"helpers"];
+    [dictParams setObject:totalhr  forKey:@"extra_hour"];
+    if (json.count!=0) {
+         [dictParams setObject:json forKey:@"helpers"];
+    }
+    else
+    {
+         [dictParams setObject:@"" forKey:@"helpers"];
+    }
+   
 
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
@@ -398,7 +498,12 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
-        
+        if ([CheckStrForSucess isEqualToString:@"Yes"])
+        {
+            CompleteTaskVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CompleteTaskVW"];
+            [self.navigationController pushViewController:vcr animated:YES];
+            [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        }
     }
     else
     {

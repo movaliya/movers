@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *JobHrtyDic;
 }
+@property (strong, nonatomic) NSString *CheckPopupVw;
 
 - (IBAction)Back_Click:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *HistoryTBL;

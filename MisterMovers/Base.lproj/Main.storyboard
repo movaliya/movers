@@ -3177,7 +3177,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-Ch-Nyi">
-                                                                <rect key="frame" x="25" y="36" width="37.5" height="17"/>
+                                                                <rect key="frame" x="25" y="35.5" width="37.5" height="18"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3212,7 +3212,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcr-z7-XfU">
-                                                                <rect key="frame" x="25" y="64.5" width="46" height="20"/>
+                                                                <rect key="frame" x="25" y="64" width="46" height="21"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3835,16 +3835,17 @@
                     </view>
                     <connections>
                         <outlet property="ImageScroll" destination="YDx-xS-Cf3" id="sMp-LD-Kbu"/>
+                        <outlet property="TaskNumberLBL" destination="V9n-ob-Kbp" id="zEZ-TR-6gA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4o-cn-1TK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5917.5" y="960.21126760563379"/>
         </scene>
-        <!--View Controller-->
+        <!--Complete TaskVW-->
         <scene sceneID="fmY-2H-RwI">
             <objects>
-                <viewController id="cWJ-Ut-ERt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompleteTaskVW" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cWJ-Ut-ERt" customClass="CompleteTaskVW" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6To-DN-IUK"/>
                         <viewControllerLayoutGuide type="bottom" id="bpM-Ax-DMJ"/>
@@ -3894,12 +3895,18 @@
                                                 <color key="backgroundColor" red="0.24313725490196078" green="0.32941176470588235" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <state key="normal" title="Job History"/>
+                                                <connections>
+                                                    <action selector="JobHistryBtn_Click:" destination="cWJ-Ut-ERt" eventType="touchUpInside" id="eDJ-ar-Bsw"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiG-2x-tzH">
                                                 <rect key="frame" x="147.5" y="0.0" width="132.5" height="45"/>
                                                 <color key="backgroundColor" red="0.24313725490196078" green="0.32941176470588235" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <state key="normal" title="Dashboard"/>
+                                                <connections>
+                                                    <action selector="DashboardBtn_Click:" destination="cWJ-Ut-ERt" eventType="touchUpInside" id="jgx-k2-ZgV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -4104,7 +4111,97 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YBf-Pc-m68" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="1619"/>
+            <point key="canvasLocation" x="506" y="1618"/>
+        </scene>
+        <!--Running JobVW-->
+        <scene sceneID="V4K-Tm-viZ">
+            <objects>
+                <viewController storyboardIdentifier="RunningJobVW" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YNX-bC-FcR" customClass="RunningJobVW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b6X-Y9-6iA"/>
+                        <viewControllerLayoutGuide type="bottom" id="nI3-ia-mAT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZjA-Ks-zox">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kI8-cg-oOt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmt-Qu-4cX">
+                                        <rect key="frame" x="0.0" y="17" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hds-TP-hxL"/>
+                                            <constraint firstAttribute="width" constant="50" id="yyf-9l-dp5"/>
+                                        </constraints>
+                                        <state key="normal" image="BackBtn"/>
+                                        <connections>
+                                            <action selector="BackBtn_Click:" destination="YNX-bC-FcR" eventType="touchUpInside" id="eph-na-HeW"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FW3-zC-hTX">
+                                        <rect key="frame" x="55" y="30" width="80" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.31764705879999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="Lhb-Ed-Gf6"/>
+                                    <constraint firstItem="FW3-zC-hTX" firstAttribute="top" secondItem="kI8-cg-oOt" secondAttribute="top" constant="30" id="VJZ-R4-WTw"/>
+                                    <constraint firstItem="zmt-Qu-4cX" firstAttribute="centerY" secondItem="FW3-zC-hTX" secondAttribute="centerY" id="WJm-sG-hSe"/>
+                                    <constraint firstItem="zmt-Qu-4cX" firstAttribute="leading" secondItem="kI8-cg-oOt" secondAttribute="leading" id="bah-RC-ylS"/>
+                                    <constraint firstItem="FW3-zC-hTX" firstAttribute="leading" secondItem="zmt-Qu-4cX" secondAttribute="trailing" constant="5" id="cxq-AA-kUx"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Da-Fa-saZ">
+                                <rect key="frame" x="270" y="20" width="50" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NDA-qX-Xdq"/>
+                                    <constraint firstAttribute="height" constant="45" id="zsy-kd-xgt"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="FilterBtn_Click:" destination="YNX-bC-FcR" eventType="touchUpInside" id="3cL-YK-ULS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlV-MZ-vrZ">
+                                <rect key="frame" x="93" y="267" width="134" height="34"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" No Running Job"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c37-9a-zVw">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YNX-bC-FcR" id="b7I-j8-fuE"/>
+                                    <outlet property="delegate" destination="YNX-bC-FcR" id="6q1-IX-NTW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kI8-cg-oOt" firstAttribute="top" secondItem="ZjA-Ks-zox" secondAttribute="top" id="0Fs-1f-SLE"/>
+                            <constraint firstItem="c37-9a-zVw" firstAttribute="top" secondItem="kI8-cg-oOt" secondAttribute="bottom" id="1Ol-sa-qax"/>
+                            <constraint firstAttribute="trailing" secondItem="8Da-Fa-saZ" secondAttribute="trailing" id="Esi-D6-Imm"/>
+                            <constraint firstAttribute="trailing" secondItem="c37-9a-zVw" secondAttribute="trailing" id="GAC-hx-drs"/>
+                            <constraint firstItem="8Da-Fa-saZ" firstAttribute="centerY" secondItem="FW3-zC-hTX" secondAttribute="centerY" id="IhI-Ov-aAu"/>
+                            <constraint firstItem="kI8-cg-oOt" firstAttribute="leading" secondItem="ZjA-Ks-zox" secondAttribute="leading" id="NSc-G6-icY"/>
+                            <constraint firstItem="QlV-MZ-vrZ" firstAttribute="centerX" secondItem="ZjA-Ks-zox" secondAttribute="centerX" id="bdI-9r-Epf"/>
+                            <constraint firstItem="c37-9a-zVw" firstAttribute="leading" secondItem="ZjA-Ks-zox" secondAttribute="leading" id="glN-qK-ubZ"/>
+                            <constraint firstAttribute="trailing" secondItem="kI8-cg-oOt" secondAttribute="trailing" id="js6-Mt-34b"/>
+                            <constraint firstItem="QlV-MZ-vrZ" firstAttribute="centerY" secondItem="ZjA-Ks-zox" secondAttribute="centerY" id="ls6-Z4-jpF"/>
+                            <constraint firstItem="nI3-ia-mAT" firstAttribute="top" secondItem="c37-9a-zVw" secondAttribute="bottom" id="oVZ-LF-pj7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="RunningJobTable" destination="c37-9a-zVw" id="yOD-2f-cZq"/>
+                        <outlet property="noDataButton" destination="QlV-MZ-vrZ" id="CkK-cA-J5I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PTJ-7F-o3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2908" y="1911"/>
         </scene>
     </scenes>
     <resources>

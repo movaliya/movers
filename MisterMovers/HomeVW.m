@@ -15,6 +15,7 @@
 #import "InvoiceView.h"
 #import "JobHistory.h"
 #import "UploadImgView.h"
+#import "RunningJobVW.h"
 
 @interface HomeVW ()
 
@@ -47,8 +48,8 @@
     
     if (aButton.tag == 1)
     {
-        UploadImgView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UploadImgView"];
-        [self.navigationController pushViewController:vcr animated:YES];
+        //UploadImgView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UploadImgView"];
+       // [self.navigationController pushViewController:vcr animated:YES];
         // Attendance
     }
     else if (aButton.tag == 2)
@@ -63,7 +64,9 @@
     }
     else if (aButton.tag == 4)
     {
-        // Order History
+        // Running job
+        RunningJobVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RunningJobVW"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else if (aButton.tag == 5)
     {

@@ -10,6 +10,7 @@
 #import "misterMover.pch"
 #import "TodayJobCell.h"
 #import "CustomAlert.h"
+#import "HomeVW.h"
 
 
 @interface JobHistory ()
@@ -224,7 +225,19 @@
 
 - (IBAction)Back_Click:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.CheckPopupVw!=nil)
+    {
+        for (UIViewController *controller in self.navigationController.viewControllers) {
+            if ([controller isKindOfClass:[HomeVW class]]) {
+                [self.navigationController popToViewController:controller animated:NO];
+                break;
+            }
+        }
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark UITableView delegate

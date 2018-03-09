@@ -13,6 +13,8 @@
 #import "AFHTTPSessionManager.h"
 #import "HomeVW.h"
 #import "UploadImgView.h"
+#import "JobView.h"
+#import "HomeVW.h"
 
 
 @interface SignatureVW ()
@@ -35,6 +37,14 @@
     self.TaskTitle_LBL.text=self.Task_No2;
     self.StartBtn.enabled=NO;
     self.StartBtn.alpha=0.5f;
+    
+    /*
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[self class]]) {
+            [self.navigationController popToViewController:controller animated:YES];
+            break;
+        }
+    }*/
 
     // Do any additional setup after loading the view.
 }
@@ -84,15 +94,24 @@
     }
     else
     {
+        
+        UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.signatureView.layer renderInContext:context];
+        UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSData *photoData = UIImageJPEGRepresentation(snapshotImage, 0.8);
+        
         BOOL internet=[AppDelegate connectedToNetwork];
         if (internet)
-            [self StartTask];
+            [self StartTask:photoData];
         else
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     }
     
 }
--(void)StartTask
+-(void)StartTask :(NSData *)imageData
 {
     
     // Get current datetime
@@ -106,44 +125,55 @@
     // Get the date time in NSString
     NSString *dateInString = [dateFormatter stringFromDate:currentDateTime];
     
+    [KVNProgress show];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
-    [dictParams setObject:Base_Key  forKey:@"key"];
-    [dictParams setObject:Start_Task  forKey:@"s"];
-    [dictParams setObject:self.vehical_id  forKey:@"vehical_id"];
-    [dictParams setObject:self.Task_ID  forKey:@"tid"];
-    [dictParams setObject:dateInString  forKey:@"start_date"];
+     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+     [dictParams setObject:Base_Key  forKey:@"key"];
+     [dictParams setObject:Start_Task  forKey:@"s"];
+     //[dictParams setObject:self.vehical_id  forKey:@"vehical_id"];
+     [dictParams setObject:self.Task_ID  forKey:@"tid"];
+     [dictParams setObject:dateInString  forKey:@"start_date"];
+     
+    // [dictParams setObject:@""  forKey:@"file"];
+    [manager.requestSerializer setValue:@"application/json; text/html" forHTTPHeaderField:@"Accept"];
+    [manager.requestSerializer setValue:@"application/json; text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer=[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    
+    [manager POST:[NSString stringWithFormat:@"%@",BaseUrl] parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
      {
-         [self handleStartTaskResponse:response];
+         [formData appendPartWithFileData:imageData name:@"file" fileName:@"Startsignature.jpeg" mimeType:@"image/jpeg"];
+     }
+         progress:^(NSProgress * _Nonnull uploadProgress)
+     {
+     }
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         [KVNProgress dismiss];
+         NSLog(@"JSON: %@", responseObject);
+         if ([[[responseObject objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
+         {
+              [self.navigationController popViewControllerAnimated:YES];
+             [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
+         }
+         else
+         {
+             [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[responseObject objectForKey:@"ack_msg"] delegate:nil];
+         }
+     }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError*  _Nonnull error)
+     {
+         NSLog(@"%@",error.localizedDescription);
+         [KVNProgress dismiss];
+         
      }];
+ 
+    
 }
-- (void)handleStartTaskResponse:(NSDictionary*)response
-{
-    if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
-    {
-         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
-        
-        UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [self.signatureView.layer renderInContext:context];
-        UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        NSData *photoData = UIImageJPEGRepresentation(snapshotImage, 0.8);
-        
-        BOOL internet=[AppDelegate connectedToNetwork];
-        if (internet)
-            [self SignatureUpload:photoData];
-        else
-            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
-    }
-    else
-    {
-        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
-    }
-}
+
 - (NSString *)encodeToBase64String:(UIImage *)image {
     return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 }
@@ -151,11 +181,12 @@
 {
      [KVNProgress show];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
+    NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:Base_Key  forKey:@"key"];
     [dictParams setObject:Signature_Upload  forKey:@"s"];
     [dictParams setObject:self.Task_ID  forKey:@"tid"];
+    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
    // [dictParams setObject:@""  forKey:@"file"];
     [manager.requestSerializer setValue:@"application/json; text/html" forHTTPHeaderField:@"Accept"];
     [manager.requestSerializer setValue:@"application/json; text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -166,7 +197,7 @@
     
     [manager POST:[NSString stringWithFormat:@"%@",BaseUrl] parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
      {
-         [formData appendPartWithFileData:imageData name:@"file" fileName:@"signature.jpeg" mimeType:@"image/jpeg"];
+         [formData appendPartWithFileData:imageData name:@"file" fileName:@"Endsignature.jpeg" mimeType:@"image/jpeg"];
      }
          progress:^(NSProgress * _Nonnull uploadProgress)
     {
@@ -181,14 +212,18 @@
             if (self.vehical_id==nil)
             {
                 UploadImgView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UploadImgView"];
+                vcr.Task_ID=self.Task_ID;
+                 vcr.Task_No=self.Task_No2;
+                if (self.CheckPopup1!=nil)
+                {
+                     vcr.CheckPopup2=self.CheckPopup1;
+                }
                 [self.navigationController pushViewController:vcr animated:YES];
             }
             else
             {
-                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             }
-          
-            
         }
         else
         {
@@ -212,7 +247,38 @@
 
 }
 - (IBAction)BackBtn_click:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.vehical_id==nil)
+    {
+        if (self.CheckPopup1!=nil)
+        {
+            for (UIViewController *controller in self.navigationController.viewControllers)
+            {
+                if ([controller isKindOfClass:[HomeVW class]])
+                {
+                    [self.navigationController popToViewController:controller animated:YES];
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for (UIViewController *controller in self.navigationController.viewControllers)
+            {
+                if ([controller isKindOfClass:[JobView class]])
+                {
+                    [self.navigationController popToViewController:controller animated:YES];
+                    break;
+                }
+            }
+        }
+        
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 
 }
 

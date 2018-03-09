@@ -40,12 +40,11 @@
 @implementation JobView
 @synthesize Today_BTN,Today_LBL,All_BTN,All_LBL,FilterBTN,MainTBL,NoJobsFound_LBL;
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
-
-
+    
     alert = [[CustomAlert alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:alert];
     alert.hidden=YES;
@@ -58,29 +57,33 @@
     
     self.SetBTN = (UIButton *)[alert viewWithTag:102];
     [self.SetBTN addTarget:self action:@selector(PopupSetBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     FilterBTN.hidden=YES;
     NoJobsFound_LBL.hidden=YES;
     
     self.FromDateTXT = (UITextField *)[alert viewWithTag:103];
     self.ToDateTXT = (UITextField *)[alert viewWithTag:104];
     
-    
-   
-    
     UINib *nib = [UINib nibWithNibName:@"TodayJobCell" bundle:nil];
     TodayJobCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     MainTBL.rowHeight = cell.frame.size.height;
     [MainTBL registerNib:nib forCellReuseIdentifier:@"TodayJobCell"];
     
+    Today_LBL.backgroundColor=SelectedLabelColor;
+    [Today_BTN setTitleColor:SelectedLabelColor forState:UIControlStateNormal];
+    
+    All_LBL.backgroundColor=[UIColor clearColor];
+    [All_BTN setTitleColor:Whitecolortitle forState:UIControlStateNormal];
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
         [self GetTodayTask];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
-    
-    
-    
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+  
 }
 
 
@@ -391,6 +394,7 @@
         //Job Photos
         UploadImgView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UploadImgView"];
          vcr.Task_ID=[[TodayTaskDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+         vcr.Task_No=[[TodayTaskDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
         [self.navigationController pushViewController:vcr animated:YES];
         
     }

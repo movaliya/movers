@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291AC20F20526C060040B6A9 /* CompleteTaskVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 291AC20E20526C060040B6A9 /* CompleteTaskVW.m */; };
+		291AC21220527B230040B6A9 /* RunningJobVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 291AC21120527B230040B6A9 /* RunningJobVW.m */; };
 		291FC44B204A8C370044F4D4 /* PrivacyPolicyVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 291FC44A204A8C370044F4D4 /* PrivacyPolicyVW.m */; };
 		291FC44D204A8C740044F4D4 /* PrivacyPolicyVW.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291FC44C204A8C740044F4D4 /* PrivacyPolicyVW.xib */; };
 		291FC453204ADFA10044F4D4 /* policy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 291FC452204ADFA10044F4D4 /* policy.pdf */; };
@@ -16,6 +18,9 @@
 		295A6375203C313500110792 /* UviSignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 295A6374203C313500110792 /* UviSignatureView.m */; };
 		295A6379203C46C000110792 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295A6378203C46C000110792 /* PhotosUI.framework */; };
 		295A637B203C46D100110792 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295A637A203C46D100110792 /* AssetsLibrary.framework */; };
+		2961E607205121C300AC6AFF /* test_001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2961E604205121C300AC6AFF /* test_001.jpg */; };
+		2961E608205121C300AC6AFF /* test_002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2961E605205121C300AC6AFF /* test_002.jpg */; };
+		2961E609205121C300AC6AFF /* test_003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2961E606205121C300AC6AFF /* test_003.jpg */; };
 		2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2B2015B0E6006CA19F /* loginLogo.png */; };
 		2968CE2E2015B571006CA19F /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2D2015B571006CA19F /* splash.png */; };
 		2968CE302015B5BF006CA19F /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2F2015B5BF006CA19F /* ios */; };
@@ -132,6 +137,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		291AC20D20526C060040B6A9 /* CompleteTaskVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteTaskVW.h; sourceTree = "<group>"; };
+		291AC20E20526C060040B6A9 /* CompleteTaskVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteTaskVW.m; sourceTree = "<group>"; };
+		291AC21020527B230040B6A9 /* RunningJobVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningJobVW.h; sourceTree = "<group>"; };
+		291AC21120527B230040B6A9 /* RunningJobVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningJobVW.m; sourceTree = "<group>"; };
 		291FC449204A8C370044F4D4 /* PrivacyPolicyVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyVW.h; sourceTree = "<group>"; };
 		291FC44A204A8C370044F4D4 /* PrivacyPolicyVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyVW.m; sourceTree = "<group>"; };
 		291FC44C204A8C740044F4D4 /* PrivacyPolicyVW.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPolicyVW.xib; sourceTree = "<group>"; };
@@ -146,6 +155,9 @@
 		295A6374203C313500110792 /* UviSignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UviSignatureView.m; sourceTree = "<group>"; };
 		295A6378203C46C000110792 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		295A637A203C46D100110792 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		2961E604205121C300AC6AFF /* test_001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_001.jpg; sourceTree = "<group>"; };
+		2961E605205121C300AC6AFF /* test_002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_002.jpg; sourceTree = "<group>"; };
+		2961E606205121C300AC6AFF /* test_003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_003.jpg; sourceTree = "<group>"; };
 		2965CC7D2031C66B00F3BCBB /* misterMover.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misterMover.pch; sourceTree = "<group>"; };
 		2968CE2B2015B0E6006CA19F /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
 		2968CE2D2015B571006CA19F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
@@ -445,6 +457,8 @@
 				B11BDB40203043D800E97C32 /* JobDetailView.m */,
 				B15CFBDC2041B1490070DF8A /* JobHistory.h */,
 				B15CFBDD2041B1490070DF8A /* JobHistory.m */,
+				291AC21020527B230040B6A9 /* RunningJobVW.h */,
+				291AC21120527B230040B6A9 /* RunningJobVW.m */,
 				B15CFBD92041AC880070DF8A /* InvoiceView.h */,
 				B15CFBDA2041AC880070DF8A /* InvoiceView.m */,
 				B133ECAF2030118E008BC8AE /* ExpenseView.h */,
@@ -455,6 +469,11 @@
 				295A636E203C05DB00110792 /* TremNconditionVW.m */,
 				B1528AB1204EFC7E00E16D7F /* UploadImgView.h */,
 				B1528AB2204EFC7E00E16D7F /* UploadImgView.m */,
+				291AC20D20526C060040B6A9 /* CompleteTaskVW.h */,
+				291AC20E20526C060040B6A9 /* CompleteTaskVW.m */,
+				2961E604205121C300AC6AFF /* test_001.jpg */,
+				2961E605205121C300AC6AFF /* test_002.jpg */,
+				2961E606205121C300AC6AFF /* test_003.jpg */,
 				530DC5581EC872C1000D4CA2 /* Main.storyboard */,
 				2965CC7D2031C66B00F3BCBB /* misterMover.pch */,
 				530DC56B1EC879C9000D4CA2 /* Images */,
@@ -865,10 +884,13 @@
 				2968CE402015D633006CA19F /* expenseHistry.png in Resources */,
 				53523A7D1EC9DDF000EE41E9 /* attendence_empty.png in Resources */,
 				B1528AB8204F14F500E16D7F /* AlertExtrahour.xib in Resources */,
+				2961E607205121C300AC6AFF /* test_001.jpg in Resources */,
 				2968CE3C2015D55A006CA19F /* invoice.png in Resources */,
+				2961E609205121C300AC6AFF /* test_003.jpg in Resources */,
 				298ABF35204FB0D30067D8A6 /* success.png in Resources */,
 				530DC55C1EC872C1000D4CA2 /* Assets.xcassets in Resources */,
 				B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */,
+				2961E608205121C300AC6AFF /* test_002.jpg in Resources */,
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,
 				2968CE2E2015B571006CA19F /* splash.png in Resources */,
 				530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */,
@@ -899,6 +921,7 @@
 				530DC6001EC88249000D4CA2 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				530DC58F1EC88157000D4CA2 /* NSData+ImageContentType.m in Sources */,
 				530DC5F21EC8822C000D4CA2 /* IQNSArray+Sort.m in Sources */,
+				291AC21220527B230040B6A9 /* RunningJobVW.m in Sources */,
 				295A6375203C313500110792 /* UviSignatureView.m in Sources */,
 				530DC5951EC88157000D4CA2 /* SDWebImageManager.m in Sources */,
 				530DC59A1EC88157000D4CA2 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -933,6 +956,7 @@
 				530DC5CB1EC8818A000D4CA2 /* AFSecurityPolicy.m in Sources */,
 				530DC6131EC88271000D4CA2 /* IQToolbar.m in Sources */,
 				530DC6041EC88259000D4CA2 /* IQTextView.m in Sources */,
+				291AC20F20526C060040B6A9 /* CompleteTaskVW.m in Sources */,
 				530DC5941EC88157000D4CA2 /* SDWebImageDownloaderOperation.m in Sources */,
 				B15CFBDE2041B1490070DF8A /* JobHistory.m in Sources */,
 				530DC5F41EC8822C000D4CA2 /* IQUITextFieldView+Additions.m in Sources */,

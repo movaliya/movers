@@ -27,16 +27,13 @@
 @synthesize FirstView,SecondView,TherdView,TherdViewBorder;
 @synthesize StartBtn;
 
-
-
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    
+    [super viewWillAppear:animated];
     SurchargeTitleArr=[[NSMutableArray alloc]init];
     SurchargeArr=[[NSMutableArray alloc]init];
     SurchargeDic=[[NSMutableDictionary alloc]init];
-
+    
     policyAlert = [[PrivacyPolicyVW alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:policyAlert];
     policyAlert.hidden=YES;
@@ -46,7 +43,7 @@
     
     self.SubmitpolicyBTN = (UIButton *)[policyAlert viewWithTag:201];
     [self.SubmitpolicyBTN addTarget:self action:@selector(SubmitPolicyBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     
     [FirstView.layer setShadowColor:[UIColor blackColor].CGColor];
     [FirstView.layer setShadowOpacity:0.8];
@@ -78,6 +75,11 @@
         [self GetDetailTask];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
 }
 -(void)GetDetailTask
@@ -424,6 +426,13 @@
     }
     else
     {
+        //grandTotl
+        
+        NSString *Onlinetotal=self.OnlinePayment_TXT.text;
+        NSString *cashtotal=self.CashPayment_TXT.text;
+        NSInteger cashNonlineTotal=[Onlinetotal integerValue]+[cashtotal integerValue];
+        NSString *grantTotalLBL=self.GrandTotalLBL.text;
+        grantTotalLBL = [grantTotalLBL stringByReplacingOccurrencesOfString:@": $ " withString:@""];
         //SEND enble
         if([self.CashPayment_TXT.text isEqualToString:@""] && self.CashBTN.selected)
         {
@@ -432,6 +441,18 @@
         else if ([self.OnlinePayment_TXT.text isEqualToString:@""]&& self.OnlineBTN.selected)
         {
              [AppDelegate showErrorMessageWithTitle:@"" message:@"Please enter online payment." delegate:nil];
+        }
+        else if ([Onlinetotal integerValue]>[grantTotalLBL integerValue] && self.OnlineBTN.selected)
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Online payment is greater then grand total." delegate:nil];
+        }
+        else if ([cashtotal integerValue]>[grantTotalLBL integerValue] && self.CashBTN.selected)
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment is greater then grand total." delegate:nil];
+        }
+        else if (cashNonlineTotal>[grantTotalLBL integerValue])
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment and Online payment is greater then grand total." delegate:nil];
         }
         else
         {
@@ -508,6 +529,11 @@
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self GetDetailTask];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
          [self ShowSendView];
     }
     else
@@ -517,8 +543,9 @@
 }
 -(void)SNDTask
 {
-    //NSMutableArray *title=[[NSMutableArray alloc]initWithObjects:@"table",@"sofa",@"tanki", nil];
-    //NSMutableArray *charge=[[NSMutableArray alloc]initWithObjects:@"100",@"200",@"300", nil];
+  
+    StartBtn.backgroundColor = [UIColor colorWithRed:63.0/255.0 green:82.0/255.0 blue:169.0/255.0 alpha:1.0];
+    [StartBtn setTitle:@"SEND" forState:UIControlStateNormal];
     
     NSMutableArray *task_items=[[NSMutableArray alloc]init];
     for (int k=0; k<SurchargeTitleArr.count; k++)
@@ -561,6 +588,11 @@
         SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
         vcr.Task_ID=[DetailTaskDic valueForKey:@"id"];
         vcr.Task_No2=[DetailTaskDic valueForKey:@"task_no"];
+        if (self.CheckPopup!=nil)
+        {
+            vcr.CheckPopup1=self.CheckPopup;
+        }
+        
         [self.navigationController pushViewController:vcr animated:YES];
     }
     else
@@ -627,6 +659,9 @@
 
 -(void)ShowSendView
 {
+    StartBtn.backgroundColor = [UIColor colorWithRed:63.0/255.0 green:82.0/255.0 blue:169.0/255.0 alpha:1.0];
+    [StartBtn setTitle:@"SEND" forState:UIControlStateNormal];
+    
     UIImage *btnImage1 = [UIImage imageNamed:@"EnbleCheckBox"];
     UIImage *selected = [UIImage imageNamed:@"UncheckBox"];
     
@@ -640,12 +675,12 @@
     self.SendView.hidden=NO;
     self.TotalTop.constant=10;
     self.TotalTitle_LBL.text=@"Total";
-     self.Total_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"task_subtotal"]];
+     self.Total_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_total_hour_charge"]];
     
     NSString *Extraitem1=[DetailTaskDic valueForKey:@"quotation_extra_charge_title1"];
     NSString *Extraitem2=[DetailTaskDic valueForKey:@"quotation_extra_charge_title2"];
     NSString *Extraitem3=[DetailTaskDic valueForKey:@"quotation_extra_charge_title3"];
-    NSInteger ExtraitemTotal=0;
+    ExtraitemTotal=0;
     //Extra Item
     if (![Extraitem1 isEqualToString:@""])
     {
@@ -684,7 +719,7 @@
         self.Extra3Top.constant=0;
         self.ExtraTitle3_LBL.text=@"";
     }
-     ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"task_grandtotal"] integerValue];
+     ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] integerValue];
     
     self.GrandTotalLBL.text=[NSString stringWithFormat:@": $ %ld",(long)ExtraitemTotal];
     self.AddSurchargeHight.constant=35.0f;
@@ -722,7 +757,7 @@
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
-    
+    NSInteger tempExtraTotal=0;
     if (SurchargeArr.count>0)
     {
         int y = 6;
@@ -739,6 +774,8 @@
             UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-20, 18)];
             HelperPhoneNo.text=[NSString stringWithFormat:@"$ %@",[SurchargeArr objectAtIndex:i]];
             //HelperPhoneNo.text=@"23233223232";
+            
+             tempExtraTotal=tempExtraTotal+[[SurchargeArr objectAtIndex:i] integerValue];
             HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
             HelperPhoneNo.textAlignment=NSTextAlignmentCenter;
@@ -759,6 +796,8 @@
             
             y=y+30;
         }
+       grandTotl=tempExtraTotal+ExtraitemTotal;
+        self.GrandTotalLBL.text=[NSString stringWithFormat:@": $ %ld",(long)grandTotl];
         self.SendScrollHight.constant=y-5;
     }
 }

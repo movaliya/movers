@@ -12,6 +12,7 @@
 @interface SignatureVW : UIViewController
 
 @property (strong, nonatomic) NSString *Task_No2;
+@property (strong, nonatomic) NSString *CheckPopup1;
 @property (strong, nonatomic) NSString *Task_ID;
 @property (strong, nonatomic) NSString *vehical_id;
 @property (weak, nonatomic) IBOutlet UIButton *StartBtn;

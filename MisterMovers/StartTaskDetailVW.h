@@ -12,14 +12,19 @@
 {
     NSMutableDictionary *DetailTaskDic;
     NSString *Task_Status;
+    NSInteger ExtraitemTotal;
+    NSInteger grandTotl;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *TaskTitle;
 @property (weak, nonatomic) IBOutlet UILabel *JobNo_LBL;
 @property (weak, nonatomic) IBOutlet UILabel *JobTitle_LBL;
 
+
 @property (strong, nonatomic) NSString *Task_ID;
 @property (strong, nonatomic) NSString *Task_NO;
+@property (strong, nonatomic) NSString *CheckPopup;
+
 
 @property (strong, nonatomic) IBOutlet UIView *FirstView;
 @property (strong, nonatomic) IBOutlet UIView *SecondView;
