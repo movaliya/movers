@@ -10,6 +10,8 @@
 
 @interface NotificationVW : UIViewController
 {
+    NSMutableDictionary *NotificationDic;
 }
+@property (strong, nonatomic) IBOutlet UITableView *NotifTBL;
 
 @end
