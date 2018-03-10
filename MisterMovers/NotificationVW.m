@@ -10,18 +10,22 @@
 #import "Notification_Cell.h"
 #import "misterMover.pch"
 #import "NotificationDispCell.h"
+#import "StartTaskDetailVW.h"
+#import "SignatureVW.h"
+#import "UploadImgView.h"
 
 @interface NotificationVW ()
 
 @end
 
 @implementation NotificationVW
-@synthesize NotifTBL;
+@synthesize NotifTBL,NoNotification_LBL;
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+     NoNotification_LBL.hidden=YES;
     UINib *nib = [UINib nibWithNibName:@"NotificationDispCell" bundle:nil];
     NotificationDispCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     NotifTBL.rowHeight = cell.frame.size.height;
@@ -46,6 +50,7 @@
     
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:Base_Key  forKey:@"key"];
+     [dictParams setObject:get_notification  forKey:@"s"];
     [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
    
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
@@ -58,17 +63,81 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
-        //NoJobsFound_LBL.hidden=YES;
+        NoNotification_LBL.hidden=YES;
         NotificationDic=[[response valueForKey:@"result"] mutableCopy];
-        //[MainTBL reloadData];
+        [NotifTBL reloadData];
     }
     else
     {
-       // NoJobsFound_LBL.hidden=NO;
-        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        NoNotification_LBL.hidden=NO;
+        //[AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
+#pragma mark UITableView delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return NotificationDic.count;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"NotificationDispCell";
+    NotificationDispCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell=nil;
+    if (cell == nil)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+    }
+    
+    //cell.NotifTitle_LBL.text=[[NotificationDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+    //cell.NotifDescription_LBL.text=[NSString stringWithFormat:@": %@",[[NotificationDic valueForKey:@"task_title"] objectAtIndex:indexPath.section]];
+    
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSString *Task_Status=[[NotificationDic valueForKey:@"task_status"]objectAtIndex:indexPath.section];
+    if ([Task_Status isEqualToString:@"3"])
+    {
+        //End Signature
+        SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
+        vcr.Task_ID=[[NotificationDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+        vcr.Task_No2=[[NotificationDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+        [self.navigationController pushViewController:vcr animated:YES];
+    }
+    else if ([Task_Status isEqualToString:@"4"])
+    {
+        //Job Photos
+        UploadImgView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UploadImgView"];
+        vcr.Task_ID=[[NotificationDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+        vcr.Task_No=[[NotificationDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+        [self.navigationController pushViewController:vcr animated:YES];
+        
+    }
+    else
+    {
+        StartTaskDetailVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartTaskDetailVW"];
+        NSLog(@"taskid=%@",[[NotificationDic valueForKey:@"id"] objectAtIndex:indexPath.section]);
+        vcr.Task_ID=[[NotificationDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+        vcr.Task_NO=[[NotificationDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+        
+        [self.navigationController pushViewController:vcr animated:YES];
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
