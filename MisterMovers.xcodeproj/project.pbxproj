@@ -123,6 +123,9 @@
 		B137AC072042A32400DD2B2D /* CustomAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = B137AC052042A32400DD2B2D /* CustomAlert.xib */; };
 		B137AC0A2042ABAC00DD2B2D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B137AC092042ABAC00DD2B2D /* UIImage+ImageEffects.m */; };
 		B137AC0E2042ACAE00DD2B2D /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */; };
+		B13AE0D32053CA6100DECAA5 /* NotificationDispCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B13AE0D12053CA6100DECAA5 /* NotificationDispCell.m */; };
+		B13AE0D42053CA6100DECAA5 /* NotificationDispCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13AE0D22053CA6100DECAA5 /* NotificationDispCell.xib */; };
+		B13AE0D72053CD2E00DECAA5 /* jobHistryDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B13AE0D62053CD2E00DECAA5 /* jobHistryDetailView.m */; };
 		B1528AB3204EFC7E00E16D7F /* UploadImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1528AB2204EFC7E00E16D7F /* UploadImgView.m */; };
 		B1528AB7204F14F500E16D7F /* AlertExtrahour.m in Sources */ = {isa = PBXBuildFile; fileRef = B1528AB4204F14F500E16D7F /* AlertExtrahour.m */; };
 		B1528AB8204F14F500E16D7F /* AlertExtrahour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1528AB6204F14F500E16D7F /* AlertExtrahour.xib */; };
@@ -339,6 +342,11 @@
 		B137AC0C2042ACAE00DD2B2D /* UIControl+BlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+BlocksKit.h"; sourceTree = "<group>"; };
 		B137AC0D2042ACAE00DD2B2D /* UIControl+BlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+BlocksKit.m"; sourceTree = "<group>"; };
 		B137AC0F2042AD1800DD2B2D /* BKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKDefines.h; sourceTree = "<group>"; };
+		B13AE0D02053CA6100DECAA5 /* NotificationDispCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationDispCell.h; sourceTree = "<group>"; };
+		B13AE0D12053CA6100DECAA5 /* NotificationDispCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationDispCell.m; sourceTree = "<group>"; };
+		B13AE0D22053CA6100DECAA5 /* NotificationDispCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationDispCell.xib; sourceTree = "<group>"; };
+		B13AE0D52053CD2E00DECAA5 /* jobHistryDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jobHistryDetailView.h; sourceTree = "<group>"; };
+		B13AE0D62053CD2E00DECAA5 /* jobHistryDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jobHistryDetailView.m; sourceTree = "<group>"; };
 		B1528AB1204EFC7E00E16D7F /* UploadImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImgView.h; sourceTree = "<group>"; };
 		B1528AB2204EFC7E00E16D7F /* UploadImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImgView.m; sourceTree = "<group>"; };
 		B1528AB4204F14F500E16D7F /* AlertExtrahour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertExtrahour.m; sourceTree = "<group>"; };
@@ -457,6 +465,8 @@
 				B11BDB40203043D800E97C32 /* JobDetailView.m */,
 				B15CFBDC2041B1490070DF8A /* JobHistory.h */,
 				B15CFBDD2041B1490070DF8A /* JobHistory.m */,
+				B13AE0D52053CD2E00DECAA5 /* jobHistryDetailView.h */,
+				B13AE0D62053CD2E00DECAA5 /* jobHistryDetailView.m */,
 				291AC21020527B230040B6A9 /* RunningJobVW.h */,
 				291AC21120527B230040B6A9 /* RunningJobVW.m */,
 				B15CFBD92041AC880070DF8A /* InvoiceView.h */,
@@ -785,6 +795,9 @@
 				53523A961EC9F88700EE41E9 /* Notification_Cell.h */,
 				53523A971EC9F88700EE41E9 /* Notification_Cell.m */,
 				53523A981EC9F88700EE41E9 /* Notification_Cell.xib */,
+				B13AE0D02053CA6100DECAA5 /* NotificationDispCell.h */,
+				B13AE0D12053CA6100DECAA5 /* NotificationDispCell.m */,
+				B13AE0D22053CA6100DECAA5 /* NotificationDispCell.xib */,
 				B133ECAA20300192008BC8AE /* TodayJobCell.h */,
 				B133ECAB20300192008BC8AE /* TodayJobCell.m */,
 				B133ECAC20300192008BC8AE /* TodayJobCell.xib */,
@@ -893,6 +906,7 @@
 				2961E608205121C300AC6AFF /* test_002.jpg in Resources */,
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,
 				2968CE2E2015B571006CA19F /* splash.png in Resources */,
+				B13AE0D42053CA6100DECAA5 /* NotificationDispCell.xib in Resources */,
 				530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */,
 				291FC453204ADFA10044F4D4 /* policy.pdf in Resources */,
 				2968CE322015C71A006CA19F /* refreshicon.png in Resources */,
@@ -921,6 +935,7 @@
 				530DC6001EC88249000D4CA2 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				530DC58F1EC88157000D4CA2 /* NSData+ImageContentType.m in Sources */,
 				530DC5F21EC8822C000D4CA2 /* IQNSArray+Sort.m in Sources */,
+				B13AE0D32053CA6100DECAA5 /* NotificationDispCell.m in Sources */,
 				291AC21220527B230040B6A9 /* RunningJobVW.m in Sources */,
 				295A6375203C313500110792 /* UviSignatureView.m in Sources */,
 				530DC5951EC88157000D4CA2 /* SDWebImageManager.m in Sources */,
@@ -928,6 +943,7 @@
 				53523A941EC9F7EE00EE41E9 /* NotificationVW.m in Sources */,
 				530DC5931EC88157000D4CA2 /* SDWebImageDownloader.m in Sources */,
 				530DC6141EC88271000D4CA2 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				B13AE0D72053CD2E00DECAA5 /* jobHistryDetailView.m in Sources */,
 				B11BDB442030609600E97C32 /* ExpenseHistoryView.m in Sources */,
 				B137AC0E2042ACAE00DD2B2D /* UIControl+BlocksKit.m in Sources */,
 				530DC5B81EC8816C000D4CA2 /* UIProgressView+AFNetworking.m in Sources */,
