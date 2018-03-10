@@ -62,6 +62,7 @@
          [self handleDetailTaskResponse:response];
      }];
 }
+
 - (void)handleDetailTaskResponse:(NSDictionary*)response
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
