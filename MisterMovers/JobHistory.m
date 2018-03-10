@@ -11,6 +11,7 @@
 #import "TodayJobCell.h"
 #import "CustomAlert.h"
 #import "HomeVW.h"
+#import "jobHistryDetailView.h"
 
 
 @interface JobHistory ()
@@ -278,7 +279,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    jobHistryDetailView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"jobHistryDetailView"];
+    NSLog(@"taskid=%@",[[JobHrtyDic valueForKey:@"id"] objectAtIndex:indexPath.section]);
+    vcr.Task_ID=[[JobHrtyDic valueForKey:@"id"] objectAtIndex:indexPath.section];
+    vcr.Task_NO=[[JobHrtyDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+    
+    [self.navigationController pushViewController:vcr animated:YES];
     
 }
 @end

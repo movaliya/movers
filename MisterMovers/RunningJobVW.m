@@ -74,7 +74,7 @@
     {
         noDataButton.hidden=NO;
         [RunningJobTable reloadData];
-        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+       // [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
 #pragma mark UITableView delegate

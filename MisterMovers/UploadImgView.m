@@ -605,7 +605,7 @@
 }
 -(void)AddExtrahour
 {
-    NSDictionary *json;
+    NSString *json;
     NSInteger totalHour=0;
     if (helperDetail.count!=0)
     {
@@ -632,8 +632,8 @@
     [dictParams setObject:Add_Extra_hour  forKey:@"s"];
     [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
     [dictParams setObject:self.Task_ID  forKey:@"tid"];
-    [dictParams setObject:totalhr  forKey:@"extra_hour"];
-    if (json.count!=0) {
+    [dictParams setObject:_DriverHourTXT.text  forKey:@"extra_hour"];
+    if (json.length!=0) {
          [dictParams setObject:json forKey:@"helpers"];
     }
     else

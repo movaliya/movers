@@ -398,6 +398,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2961E97A20542C99006AA13A /* WebImage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = WebImage;
+			sourceTree = "<group>";
+		};
 		530DC5431EC872C1000D4CA2 = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +493,7 @@
 				2961E606205121C300AC6AFF /* test_003.jpg */,
 				530DC5581EC872C1000D4CA2 /* Main.storyboard */,
 				2965CC7D2031C66B00F3BCBB /* misterMover.pch */,
+				2961E97A20542C99006AA13A /* WebImage */,
 				530DC56B1EC879C9000D4CA2 /* Images */,
 				530DC55B1EC872C1000D4CA2 /* Assets.xcassets */,
 				530DC55D1EC872C1000D4CA2 /* LaunchScreen.storyboard */,

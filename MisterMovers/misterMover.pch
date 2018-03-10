@@ -13,6 +13,7 @@
 #import "AFNetworking.h"
 #import "CommonWS.h"
 #import "KVNProgress.h"
+#import "UIImageView+WebCache.h"
 
 // AFNetworking
 #import <SystemConfiguration/SystemConfiguration.h>
