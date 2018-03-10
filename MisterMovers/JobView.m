@@ -120,7 +120,7 @@
          NoJobsFound_LBL.hidden=NO;
         TodayTaskDic=[[NSMutableDictionary alloc]init];
         [MainTBL reloadData];
-        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        //[AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
 

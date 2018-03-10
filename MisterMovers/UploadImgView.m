@@ -206,7 +206,7 @@
     }
     else if (isIPhone5)
     {
-        int x = 10,y=15;
+        int x = 10,y=10;
         for (int i=0; i<SetImageArr.count; i++)
         {
             if (x<250)
@@ -240,9 +240,9 @@
             }
             else
             {
-                y=y+140;
+                y=y+155;
                 x=10;
-                UIButton *BTN=[[UIButton alloc]initWithFrame:CGRectMake(x,  y, 130, 130)];
+                UIButton *BTN=[[UIButton alloc]initWithFrame:CGRectMake(x,  y, 145, 145)];
                 BTN.tag =i;
                 if (SetImageArr.count-1==i)
                 {
@@ -266,11 +266,87 @@
                 }
                 [self.ImageScroll addSubview:BTN];
                 
-                x=x+140;
+                x=x+155;
             }
         }
         
-        y=y+220;
+        y=y+190;
+        
+        UIButton *UploadBTN=[[UIButton alloc]initWithFrame:CGRectMake(10,  y-30, SCREEN_WIDTH-20, 40)];
+        [UploadBTN addTarget:self action:@selector(Upload_click:) forControlEvents:UIControlEventTouchUpInside];
+        UploadBTN.backgroundColor=[UIColor colorWithRed:62.0f/255.0f green:84.0f/255.0f blue:175.0f/255.0f alpha:1.0f];
+        [UploadBTN setTitle:@"UPLOAD IMAGE" forState:UIControlStateNormal];
+        [self.ImageScroll addSubview:UploadBTN];
+        
+        [self.ImageScroll setContentSize:CGSizeMake(SCREEN_WIDTH, y+20)];
+    }
+    else if (IS_IPHONE_6P)
+    {
+        int x = 15,y=10;
+        for (int i=0; i<SetImageArr.count; i++)
+        {
+            if (x<400)
+            {
+                UIButton *BTN=[[UIButton alloc]initWithFrame:CGRectMake(x,  y, 185, 185)];
+                BTN.tag =i;
+                if (SetImageArr.count-1==i)
+                {
+                    if ([[SetImageArr objectAtIndex:i] isKindOfClass:[UIImage class]])
+                    {
+                        [BTN addTarget:self action:@selector(ImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+                        [BTN setBackgroundImage:[SetImageArr objectAtIndex:i] forState:UIControlStateNormal];
+                    }
+                    else
+                    {
+                        [BTN addTarget:self action:@selector(AddImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+                        BTN.backgroundColor=[UIColor clearColor];
+                        UIImage *PlusImage = [UIImage imageNamed:@"plusSign.png"];
+                        [BTN setImage:PlusImage forState:UIControlStateNormal];
+                        
+                    }
+                }
+                else
+                {
+                    [BTN addTarget:self action:@selector(ImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+                    [BTN setBackgroundImage:[SetImageArr objectAtIndex:i] forState:UIControlStateNormal];
+                }
+                [self.ImageScroll addSubview:BTN];
+                
+                x=x+200;
+            }
+            else
+            {
+                y=y+200;
+                x=15;
+                UIButton *BTN=[[UIButton alloc]initWithFrame:CGRectMake(x,  y, 185, 185)];
+                BTN.tag =i;
+                if (SetImageArr.count-1==i)
+                {
+                    if ([[SetImageArr objectAtIndex:i] isKindOfClass:[UIImage class]])
+                    {
+                        [BTN addTarget:self action:@selector(ImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+                        [BTN setBackgroundImage:[SetImageArr objectAtIndex:i] forState:UIControlStateNormal];
+                    }
+                    else
+                    {
+                        [BTN addTarget:self action:@selector(AddImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+                        BTN.backgroundColor=[UIColor clearColor];
+                        UIImage *PlusImage = [UIImage imageNamed:@"plusSign.png"];
+                        [BTN setImage:PlusImage forState:UIControlStateNormal];
+                    }
+                }
+                else
+                {
+                    [BTN addTarget:self action:@selector(ImageBTN_Click:) forControlEvents:UIControlEventTouchUpInside];
+                    [BTN setBackgroundImage:[SetImageArr objectAtIndex:i] forState:UIControlStateNormal];
+                }
+                [self.ImageScroll addSubview:BTN];
+                
+                x=x+200;
+            }
+        }
+        
+        y=y+240;
         
         UIButton *UploadBTN=[[UIButton alloc]initWithFrame:CGRectMake(10,  y-30, SCREEN_WIDTH-20, 40)];
         [UploadBTN addTarget:self action:@selector(Upload_click:) forControlEvents:UIControlEventTouchUpInside];
