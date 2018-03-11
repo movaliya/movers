@@ -322,10 +322,7 @@
         {
             [AppDelegate showErrorMessageWithTitle:@"Alert..!" message:@"From date is greater than To date" delegate:nil];
         }
-    }
-    
-    
-    
+    }    
 }
 
 #pragma mark UITableView delegate
