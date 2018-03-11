@@ -426,7 +426,7 @@
     for (int i=0; i<1; i++)
     {
         UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 18)];
-        HelperName.text=[NSString stringWithFormat:@"%@",@"Jignesh"];
+        HelperName.text=[NSString stringWithFormat:@"%@",[DetailTaskDic valueForKey:@"task_leader_name"]];
         //HelperName.text=@"Kaushik";
         HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
         HelperName.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
@@ -434,7 +434,7 @@
         [self.DriverScrollVw addSubview:HelperName];
         
         UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-5, 18)];
-        HelperPhoneNo.text=[NSString stringWithFormat:@"$ %@",@"70"];
+        HelperPhoneNo.text=[NSString stringWithFormat:@" %@",[DetailTaskDic valueForKey:@"task_extra_hour"]];
         //HelperPhoneNo.text=@"23233223232";
         
         HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
@@ -453,6 +453,9 @@
 }
 -(void)SetPhotoimageScroll
 {
+    
+    NSArray *task_images=[DetailTaskDic valueForKey:@"task_images"];
+    
     NSArray* subviews = [[NSArray alloc] initWithArray: self.JobPhotoScrollVW.subviews];
     for (UIView* view in subviews)
     {
@@ -477,12 +480,16 @@
     if (IS_IPHONE_6)
     {
         int x = 20,y=15;
-        for (int i=0; i<5; i++)
+        for (int i=0; i<task_images.count; i++)
         {
+            NSString *Urlstr=[[task_images valueForKey:@"image_path"]objectAtIndex:i];
+           
+            
             if (x<300)
             {
                 UIImageView *BTN=[[UIImageView alloc]initWithFrame:CGRectMake(x,  y, 160, 160)];
-                BTN.image=[UIImage imageNamed:@"test_001.jpg"];
+                [BTN sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+                [BTN setShowActivityIndicatorView:YES];
                 [self.JobPhotoScrollVW addSubview:BTN];
                 
                 
@@ -493,7 +500,8 @@
                 y=y+175;
                 x=20;
                 UIImageView *BTN=[[UIImageView alloc]initWithFrame:CGRectMake(x,  y, 160, 160)];
-                BTN.image=[UIImage imageNamed:@"test_001.jpg"];
+                [BTN sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+                [BTN setShowActivityIndicatorView:YES];
                 [self.JobPhotoScrollVW addSubview:BTN];
                 x=x+175;
             }
@@ -507,12 +515,14 @@
     else if (isIPhone5)
     {
         int x = 10,y=10;
-        for (int i=0; i<5; i++)
+        for (int i=0; i<task_images.count; i++)
         {
+            NSString *Urlstr=[[task_images valueForKey:@"image_path"]objectAtIndex:i];
             if (x<250)
             {
                 UIImageView *BTN=[[UIImageView alloc]initWithFrame:CGRectMake(x,  y, 160, 160)];
-                BTN.image=[UIImage imageNamed:@"test_001.jpg"];
+                [BTN sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+                [BTN setShowActivityIndicatorView:YES];
                 [self.JobPhotoScrollVW addSubview:BTN];
                 x=x+155;
             }
@@ -521,7 +531,8 @@
                 y=y+155;
                 x=10;
                 UIImageView *BTN=[[UIImageView alloc]initWithFrame:CGRectMake(x,  y, 160, 160)];
-                BTN.image=[UIImage imageNamed:@"test_001.jpg"];
+                [BTN sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+                [BTN setShowActivityIndicatorView:YES];
                 [self.JobPhotoScrollVW addSubview:BTN];
                 x=x+155;
             }
@@ -534,13 +545,16 @@
     }
     else if (IS_IPHONE_6P)
     {
+        
         int x = 15,y=10;
-        for (int i=0; i<5; i++)
+        for (int i=0; i<task_images.count; i++)
         {
+            NSString *Urlstr=[[task_images valueForKey:@"image_path"]objectAtIndex:i];
             if (x<400)
             {
                 UIImageView *BTN=[[UIImageView alloc]initWithFrame:CGRectMake(x,  y, 160, 160)];
-                BTN.image=[UIImage imageNamed:@"test_001.jpg"];
+                [BTN sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+                [BTN setShowActivityIndicatorView:YES];
                 [self.JobPhotoScrollVW addSubview:BTN];
                 
                 x=x+200;
@@ -550,7 +564,8 @@
                 y=y+200;
                 x=15;
                 UIImageView *BTN=[[UIImageView alloc]initWithFrame:CGRectMake(x,  y, 160, 160)];
-                BTN.image=[UIImage imageNamed:@"test_001.jpg"];
+                [BTN sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+                [BTN setShowActivityIndicatorView:YES];
                 [self.JobPhotoScrollVW addSubview:BTN];
                 x=x+200;
             }
