@@ -9,10 +9,15 @@
 #import "NotificationDispCell.h"
 
 @implementation NotificationDispCell
-
+@synthesize CellViewBG;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [CellViewBG.layer setShadowColor:[UIColor blackColor].CGColor];
+    [CellViewBG.layer setShadowOpacity:0.8];
+    [CellViewBG.layer setShadowRadius:2.0];
+    [CellViewBG.layer setShadowOffset:CGSizeMake(1.0,1.0)];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

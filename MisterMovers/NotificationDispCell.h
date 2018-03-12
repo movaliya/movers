@@ -11,5 +11,6 @@
 @interface NotificationDispCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *NotifTitle_LBL;
 @property (weak, nonatomic) IBOutlet UILabel *NotifDescription_LBL;
+@property (weak, nonatomic) IBOutlet UIView *CellViewBG;
 
 @end

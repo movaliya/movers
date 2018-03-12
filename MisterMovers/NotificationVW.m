@@ -69,14 +69,14 @@
     }
     else
     {
-        NoNotification_LBL.hidden=YES;
+        NoNotification_LBL.hidden=NO;
         //[AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }
 }
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return NotificationDic.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -100,8 +100,8 @@
     //cell.NotifTitle_LBL.text=[[NotificationDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
     //cell.NotifDescription_LBL.text=[NSString stringWithFormat:@": %@",[[NotificationDic valueForKey:@"task_title"] objectAtIndex:indexPath.section]];
     
-    cell.NotifTitle_LBL.text=[NSString stringWithFormat:@": %@",@"asjfdkjakdhaskj dsajkjaksdj aksjd kasjdkas kadjskdjaksjdkasjdkajsk kaj djaskdj akjjaksjkdjakdj sijaisj"];
-    cell.NotifDescription_LBL.text=[NSString stringWithFormat:@": %@",@"asjfdkjakdhaskj dsajkjaksdj aksjd kasjdkas kadjskdjaksjdkasjdkajsk kaj djaskdj akjjaksjkdjakdj sijaisj"];
+    //cell.NotifTitle_LBL.text=[NSString stringWithFormat:@": %@",@"asjfdkjakdhaskj dsajkjaksdj aksjd kasjdkas kadjskdjaksjdkasjdkajsk kaj djaskdj akjjaksjkdjakdj sijaisj"];
+    //cell.NotifDescription_LBL.text=[NSString stringWithFormat:@": %@",@"asjfdkjakdhaskj dsajkjaksdj aksjd kasjdkas kadjskdjaksjdkasjdkajsk kaj djaskdj akjjaksjkdjakdj sijaisj"];
     
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
