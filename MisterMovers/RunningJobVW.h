@@ -13,6 +13,7 @@
     NSMutableDictionary *runningJobDic;
 }
 @property (weak, nonatomic) IBOutlet UITableView *RunningJobTable;
-@property (weak, nonatomic) IBOutlet UIButton *noDataButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *noDataLBL;
 
 @end

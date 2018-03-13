@@ -80,7 +80,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //timer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(updateCountdown) userInfo:nil repeats: YES];
+    //secondsLeft=0;
+
     
+}
+-(void) updateCountdown {
+    int hours, minutes, seconds;
+    
+    secondsLeft--;
+    hours = secondsLeft / 3600;
+    minutes = (secondsLeft % 3600) / 60;
+    seconds = (secondsLeft %3600) % 60;
+    NSString *Timstr=[NSString stringWithFormat:@"%d:%d",hours, minutes];
+    Timstr=[Timstr stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    NSLog(@"timer==%@", Timstr);
+    //countDownlabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
 }
 -(void)GetDetailTask
 {
@@ -114,7 +129,7 @@
     
     self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
     self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
-    self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_actual_hour"]];
+   
     
     if (![[DetailTaskDic valueForKey:@"task_ended_date"]isEqualToString:@""])
     {
@@ -130,6 +145,11 @@
     if ([Task_Status isEqualToString:@"0"])
     {
         [self HideSendView];
+        self.DurationHourTitle_LBL.text=@"";
+        self.DurationHour_LBL.text=@"";
+        self.DurationHourTop.constant=0;
+        
+        
         StartBtn.backgroundColor = [UIColor colorWithRed:25.0/255.0 green:123.0/255.0 blue:48.0/255.0 alpha:1.0];
         [StartBtn setTitle:@"START" forState:UIControlStateNormal];
 
@@ -138,6 +158,10 @@
     else if ([Task_Status isEqualToString:@"1"])
     {
         [self HideSendView];
+        self.DurationHourTitle_LBL.text=@"Duration Hours";
+        self.DurationHourTop.constant=10;
+        
+         self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_actual_hour"]];
         StartBtn.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
         [StartBtn setTitle:@"END" forState:UIControlStateNormal];
 

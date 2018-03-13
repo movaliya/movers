@@ -18,13 +18,13 @@
 @end
 
 @implementation RunningJobVW
-@synthesize RunningJobTable,noDataButton;
+@synthesize RunningJobTable,noDataLBL;
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    noDataButton.hidden=YES;
+    noDataLBL.hidden=YES;
     UINib *nib = [UINib nibWithNibName:@"TodayJobCell" bundle:nil];
     TodayJobCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     RunningJobTable.rowHeight = cell.frame.size.height;
@@ -66,13 +66,13 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
-        noDataButton.hidden=YES;
+        noDataLBL.hidden=YES;
         runningJobDic=[[response valueForKey:@"result"] mutableCopy];
         [RunningJobTable reloadData];
     }
     else
     {
-        noDataButton.hidden=NO;
+        noDataLBL.hidden=NO;
         [RunningJobTable reloadData];
        // [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
     }

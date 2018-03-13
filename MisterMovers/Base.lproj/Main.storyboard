@@ -3203,7 +3203,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-Ch-Nyi">
-                                                                <rect key="frame" x="25" y="35.5" width="37.5" height="18"/>
+                                                                <rect key="frame" x="25" y="36" width="37.5" height="17"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3238,7 +3238,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcr-z7-XfU">
-                                                                <rect key="frame" x="25" y="64" width="46" height="21"/>
+                                                                <rect key="frame" x="25" y="64.5" width="46" height="20"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -4191,11 +4191,17 @@
                                     <action selector="FilterBtn_Click:" destination="YNX-bC-FcR" eventType="touchUpInside" id="3cL-YK-ULS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlV-MZ-vrZ">
-                                <rect key="frame" x="93" y="267" width="134" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" No Running Job" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggp-RE-ySr">
+                                <rect key="frame" x="91" y="269" width="139" height="30"/>
                                 <color key="backgroundColor" red="0.2470588235" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title=" No Running Job"/>
-                            </button>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="OiK-Id-dcf"/>
+                                    <constraint firstAttribute="height" constant="30" id="s2A-UW-yaq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c37-9a-zVw">
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -4212,22 +4218,22 @@
                             <constraint firstAttribute="trailing" secondItem="8Da-Fa-saZ" secondAttribute="trailing" id="Esi-D6-Imm"/>
                             <constraint firstAttribute="trailing" secondItem="c37-9a-zVw" secondAttribute="trailing" id="GAC-hx-drs"/>
                             <constraint firstItem="8Da-Fa-saZ" firstAttribute="centerY" secondItem="FW3-zC-hTX" secondAttribute="centerY" id="IhI-Ov-aAu"/>
+                            <constraint firstItem="Ggp-RE-ySr" firstAttribute="centerX" secondItem="ZjA-Ks-zox" secondAttribute="centerX" id="KyI-N6-kKF"/>
                             <constraint firstItem="kI8-cg-oOt" firstAttribute="leading" secondItem="ZjA-Ks-zox" secondAttribute="leading" id="NSc-G6-icY"/>
-                            <constraint firstItem="QlV-MZ-vrZ" firstAttribute="centerX" secondItem="ZjA-Ks-zox" secondAttribute="centerX" id="bdI-9r-Epf"/>
+                            <constraint firstItem="Ggp-RE-ySr" firstAttribute="centerY" secondItem="ZjA-Ks-zox" secondAttribute="centerY" id="e72-kJ-BKy"/>
                             <constraint firstItem="c37-9a-zVw" firstAttribute="leading" secondItem="ZjA-Ks-zox" secondAttribute="leading" id="glN-qK-ubZ"/>
                             <constraint firstAttribute="trailing" secondItem="kI8-cg-oOt" secondAttribute="trailing" id="js6-Mt-34b"/>
-                            <constraint firstItem="QlV-MZ-vrZ" firstAttribute="centerY" secondItem="ZjA-Ks-zox" secondAttribute="centerY" id="ls6-Z4-jpF"/>
                             <constraint firstItem="nI3-ia-mAT" firstAttribute="top" secondItem="c37-9a-zVw" secondAttribute="bottom" id="oVZ-LF-pj7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="RunningJobTable" destination="c37-9a-zVw" id="yOD-2f-cZq"/>
-                        <outlet property="noDataButton" destination="QlV-MZ-vrZ" id="CkK-cA-J5I"/>
+                        <outlet property="noDataLBL" destination="Ggp-RE-ySr" id="8BH-n5-ECt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTJ-7F-o3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2908" y="1911"/>
+            <point key="canvasLocation" x="2906.25" y="1910.9154929577464"/>
         </scene>
         <!--Job Histry Detail View-->
         <scene sceneID="WWV-po-VfK">

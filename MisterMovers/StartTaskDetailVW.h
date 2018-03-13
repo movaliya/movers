@@ -14,6 +14,8 @@
     NSString *Task_Status;
     NSInteger ExtraitemTotal;
     NSInteger grandTotl;
+    NSTimer *timer;
+    int secondsLeft;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *TaskTitle;

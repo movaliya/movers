@@ -135,18 +135,35 @@
     SelectJobTBL.hidden=YES;
     if (textField==JobTXT)
     {
-        SelectedTextfield=@"OTHER";
-        JobTableTop.constant=0.0f;
-        SelectJobTBL.hidden=NO;
-        [SelectJobTBL reloadData];
+        if (jobDict.count==0)
+        {
+            [AppDelegate showErrorMessageWithTitle:@"Alert" message:@"No Job Found." delegate:nil];
+        }
+        else
+        {
+            //ExpenseTXT.text=@"Please Select Expense Type.";
+            SelectedTextfield=@"OTHER";
+            JobTableTop.constant=0.0f;
+            SelectJobTBL.hidden=NO;
+            [SelectJobTBL reloadData];
+        }
+       
         return NO;
     }
     if (textField==ExpenseTXT)
     {
-        SelectedTextfield=@"EXPENSE";
-        SelectJobTBL.hidden=NO;
-        JobTableTop.constant=89.0f;
-        [SelectJobTBL reloadData];
+        if (taskID==nil)
+        {
+            [AppDelegate showErrorMessageWithTitle:@"Alert" message:@"Please Select Job First." delegate:nil];
+        }
+        else
+        {
+            SelectedTextfield=@"EXPENSE";
+            SelectJobTBL.hidden=NO;
+            JobTableTop.constant=89.0f;
+            [SelectJobTBL reloadData];
+        }
+        
         return NO;
     }
     if (textField==FeaulPaymentType_TXT)
@@ -159,10 +176,18 @@
     }
     if (textField==Helper_TXT)
     {
-        SelectedTextfield=@"HELPER";
-        SelectJobTBL.hidden=NO;
-        JobTableTop.constant=175.0f;
-        [SelectJobTBL reloadData];
+        if (HelperDetailDict.count==0)
+        {
+            [AppDelegate showErrorMessageWithTitle:@"Alert" message:@"There is No Helper." delegate:nil];
+        }
+        else
+        {
+            SelectedTextfield=@"HELPER";
+            SelectJobTBL.hidden=NO;
+            JobTableTop.constant=175.0f;
+            [SelectJobTBL reloadData];
+        }
+        
         return NO;
     }
     return YES;
@@ -248,6 +273,16 @@
             JobTXT.text=[[jobDict valueForKey:@"task_title"] objectAtIndex:indexPath.row];
             taskID=[NSString stringWithFormat:@"%@",[[jobDict valueForKey:@"id"] objectAtIndex:indexPath.row]];
             
+            if ([ExpenseTXT.text isEqualToString:@"Helper"])
+            {
+                 Helper_TXT.text=@"";
+                BOOL internet=[AppDelegate connectedToNetwork];
+                if (internet)
+                    [self Get_Task_Detail:taskID];
+                else
+                    [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            }
+            
             if ([[jobDict valueForKey:@"task_vehicle_no"] objectAtIndex:indexPath.row] != (id)[NSNull null])
             {
                VehicleNameSTR=[NSString stringWithFormat:@"%@",[[jobDict valueForKey:@"task_vehicle_no"] objectAtIndex:indexPath.row]];
@@ -318,6 +353,7 @@
                 }
                 else
                 {
+                    Helper_TXT.text=@"";
                     BOOL internet=[AppDelegate connectedToNetwork];
                     if (internet)
                         [self Get_Task_Detail:taskID];
