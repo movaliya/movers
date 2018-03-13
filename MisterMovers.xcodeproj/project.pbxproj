@@ -34,6 +34,7 @@
 		2968CE4220161433006CA19F /* CCKFNavDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2968CE4120161433006CA19F /* CCKFNavDrawer.m */; };
 		298ABF35204FB0D30067D8A6 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = 298ABF34204FB0D30067D8A6 /* success.png */; };
 		298ABF37204FB1F00067D8A6 /* plusSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 298ABF36204FB1F00067D8A6 /* plusSign.png */; };
+		45B645F3935EEC552D757463 /* libPods-MisterMovers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A829AD337AE86EA46E6CB2A9 /* libPods-MisterMovers.a */; };
 		530DC5511EC872C1000D4CA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 530DC5501EC872C1000D4CA2 /* main.m */; };
 		530DC5541EC872C1000D4CA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 530DC5531EC872C1000D4CA2 /* AppDelegate.m */; };
 		530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530DC5581EC872C1000D4CA2 /* Main.storyboard */; };
@@ -322,6 +323,9 @@
 		53523A961EC9F88700EE41E9 /* Notification_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification_Cell.h; sourceTree = "<group>"; };
 		53523A971EC9F88700EE41E9 /* Notification_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification_Cell.m; sourceTree = "<group>"; };
 		53523A981EC9F88700EE41E9 /* Notification_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Notification_Cell.xib; sourceTree = "<group>"; };
+		53F25EDC8F123F71454FF0DA /* Pods-MisterMovers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisterMovers.release.xcconfig"; path = "Pods/Target Support Files/Pods-MisterMovers/Pods-MisterMovers.release.xcconfig"; sourceTree = "<group>"; };
+		A829AD337AE86EA46E6CB2A9 /* libPods-MisterMovers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MisterMovers.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC69583F8899F3A52ED6037B /* Pods-MisterMovers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MisterMovers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MisterMovers/Pods-MisterMovers.debug.xcconfig"; sourceTree = "<group>"; };
 		B11BDB3F203043D800E97C32 /* JobDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailView.h; sourceTree = "<group>"; };
 		B11BDB40203043D800E97C32 /* JobDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailView.m; sourceTree = "<group>"; };
 		B11BDB422030609600E97C32 /* ExpenseHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpenseHistoryView.h; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 			files = (
 				295A637B203C46D100110792 /* AssetsLibrary.framework in Frameworks */,
 				295A6379203C46C000110792 /* PhotosUI.framework in Frameworks */,
+				45B645F3935EEC552D757463 /* libPods-MisterMovers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +399,7 @@
 			children = (
 				295A637A203C46D100110792 /* AssetsLibrary.framework */,
 				295A6378203C46C000110792 /* PhotosUI.framework */,
+				A829AD337AE86EA46E6CB2A9 /* libPods-MisterMovers.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				530DC54E1EC872C1000D4CA2 /* MisterMovers */,
 				530DC54D1EC872C1000D4CA2 /* Products */,
 				295A6377203C46C000110792 /* Frameworks */,
+				CF37C1D84AFA1BE50DEDCE05 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -819,6 +826,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		CF37C1D84AFA1BE50DEDCE05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC69583F8899F3A52ED6037B /* Pods-MisterMovers.debug.xcconfig */,
+				53F25EDC8F123F71454FF0DA /* Pods-MisterMovers.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -826,9 +842,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 530DC5631EC872C1000D4CA2 /* Build configuration list for PBXNativeTarget "MisterMovers" */;
 			buildPhases = (
+				53EFA664563A046A70920BE8 /* [CP] Check Pods Manifest.lock */,
 				530DC5481EC872C1000D4CA2 /* Sources */,
 				530DC5491EC872C1000D4CA2 /* Frameworks */,
 				530DC54A1EC872C1000D4CA2 /* Resources */,
+				92F20F3D2C0DF74BBB4A2B7D /* [CP] Embed Pods Frameworks */,
+				B4A9EAD3ABBBB03E20EAEFEF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -925,6 +944,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53EFA664563A046A70920BE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MisterMovers-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92F20F3D2C0DF74BBB4A2B7D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MisterMovers/Pods-MisterMovers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4A9EAD3ABBBB03E20EAEFEF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MisterMovers/Pods-MisterMovers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		530DC5481EC872C1000D4CA2 /* Sources */ = {
@@ -1131,6 +1201,7 @@
 		};
 		530DC5641EC872C1000D4CA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC69583F8899F3A52ED6037B /* Pods-MisterMovers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1149,6 +1220,7 @@
 		};
 		530DC5651EC872C1000D4CA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53F25EDC8F123F71454FF0DA /* Pods-MisterMovers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
