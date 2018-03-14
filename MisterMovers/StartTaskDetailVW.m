@@ -736,6 +736,11 @@
     self.TotalTop.constant=0;
     self.Total_LBL.text=@"";
     self.TotalTitle_LBL.text=@"";
+    self.totalDotLBL.text=@"";
+    
+    self.extraitemDotLBL.text=@"";
+    self.durationhrDotLBL.text=@"";
+    self.MinimumHorDotLBL.text=@"";
     
     self.Extra1Top.constant=0;
     self.ExtraTitle1_LBL.text=@"";
@@ -771,7 +776,8 @@
     self.SendView.hidden=NO;
     self.TotalTop.constant=10;
     self.TotalTitle_LBL.text=@"Total";
-     self.Total_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_total_hour_charge"]];
+     self.totalDotLBL.text=@":";
+     self.Total_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_total_hour_charge"]];
     
     NSString *Extraitem1=[DetailTaskDic valueForKey:@"quotation_extra_charge_title1"];
     NSString *Extraitem2=[DetailTaskDic valueForKey:@"quotation_extra_charge_title2"];
@@ -782,7 +788,8 @@
     {
         self.Extra1Top.constant=10;
         self.ExtraTitle1_LBL.text=Extraitem1;
-        self.Extra1_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge1"]];
+         self.extraitemDotLBL.text=@":";
+        self.Extra1_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge1"]];
         ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge1"] integerValue];
     }
     else
@@ -794,7 +801,9 @@
     {
         self.Extra2Top.constant=10;
         self.ExtraTitle2_LBL.text=Extraitem2;
-        self.Extra2_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge2"]];
+        self.MinimumHorDotLBL.text=@":";
+
+        self.Extra2_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge2"]];
         ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge2"] integerValue];
     }
     else
@@ -806,7 +815,8 @@
     {
         self.Extra3Top.constant=10;
         self.ExtraTitle3_LBL.text=Extraitem3;
-        self.Extra3_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge3"]];
+        self.durationhrDotLBL.text=@":";
+        self.Extra3_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge3"]];
         ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge3"] integerValue];
 
     }
@@ -818,8 +828,10 @@
      ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] integerValue];
     
     self.GrandTotalLBL.text=[NSString stringWithFormat:@": $ %ld",(long)ExtraitemTotal];
+    self.DiscountLBL.text= [NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"task_discount"]];
+   
     self.AddSurchargeHight.constant=35.0f;
-    self.SendCaseViewHight.constant=90.0f;
+    self.SendCaseViewHight.constant=150.0f;
     self.SendViewTop.constant=12;
     self.StartBTNTop.constant=15;
 }
@@ -934,6 +946,8 @@
     }
     self.OnlineBTN.selected = !self.OnlineBTN.selected;
 
+}
+- (IBAction)RefreshBtn_Click:(id)sender {
 }
 
 
