@@ -21,6 +21,9 @@
 		2961E607205121C300AC6AFF /* test_001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2961E604205121C300AC6AFF /* test_001.jpg */; };
 		2961E608205121C300AC6AFF /* test_002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2961E605205121C300AC6AFF /* test_002.jpg */; };
 		2961E609205121C300AC6AFF /* test_003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2961E606205121C300AC6AFF /* test_003.jpg */; };
+		2968040E2058EB5000C3544A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2968040D2058EB5000C3544A /* GoogleService-Info.plist */; };
+		296804142059851A00C3544A /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 296804132059851A00C3544A /* check.png */; };
+		296804162059852400C3544A /* uncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 296804152059852400C3544A /* uncheck.png */; };
 		2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2B2015B0E6006CA19F /* loginLogo.png */; };
 		2968CE2E2015B571006CA19F /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2D2015B571006CA19F /* splash.png */; };
 		2968CE302015B5BF006CA19F /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE2F2015B5BF006CA19F /* ios */; };
@@ -163,6 +166,10 @@
 		2961E605205121C300AC6AFF /* test_002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_002.jpg; sourceTree = "<group>"; };
 		2961E606205121C300AC6AFF /* test_003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_003.jpg; sourceTree = "<group>"; };
 		2965CC7D2031C66B00F3BCBB /* misterMover.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misterMover.pch; sourceTree = "<group>"; };
+		2968040C2058E5CF00C3544A /* MisterMovers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MisterMovers.entitlements; sourceTree = "<group>"; };
+		2968040D2058EB5000C3544A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		296804132059851A00C3544A /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		296804152059852400C3544A /* uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck.png; sourceTree = "<group>"; };
 		2968CE2B2015B0E6006CA19F /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
 		2968CE2D2015B571006CA19F /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		2968CE2F2015B5BF006CA19F /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
@@ -432,6 +439,8 @@
 		530DC54E1EC872C1000D4CA2 /* MisterMovers */ = {
 			isa = PBXGroup;
 			children = (
+				2968040D2058EB5000C3544A /* GoogleService-Info.plist */,
+				2968040C2058E5CF00C3544A /* MisterMovers.entitlements */,
 				291FC452204ADFA10044F4D4 /* policy.pdf */,
 				B137AC0F2042AD1800DD2B2D /* BKDefines.h */,
 				B137AC0C2042ACAE00DD2B2D /* UIControl+BlocksKit.h */,
@@ -522,6 +531,8 @@
 		530DC56B1EC879C9000D4CA2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				296804132059851A00C3544A /* check.png */,
+				296804152059852400C3544A /* uncheck.png */,
 				53523A791EC9DD8D00EE41E9 /* HomeIcon */,
 				530DC62E1EC89A74000D4CA2 /* WhiteMenuIcon.png */,
 				2968CE2D2015B571006CA19F /* splash.png */,
@@ -871,6 +882,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7PFD68G63X;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -912,6 +928,7 @@
 				53523A891EC9DE7300EE41E9 /* notification_list.png in Resources */,
 				53523A7F1EC9DDF500EE41E9 /* attendence.png in Resources */,
 				53523A871EC9DE4100EE41E9 /* logout.png in Resources */,
+				296804142059851A00C3544A /* check.png in Resources */,
 				B15CFBD82041A9B50070DF8A /* InvoiceCell.xib in Resources */,
 				291FC44D204A8C740044F4D4 /* PrivacyPolicyVW.xib in Resources */,
 				530DC6171EC88283000D4CA2 /* IQKeyboardManager.bundle in Resources */,
@@ -929,6 +946,7 @@
 				2961E609205121C300AC6AFF /* test_003.jpg in Resources */,
 				298ABF35204FB0D30067D8A6 /* success.png in Resources */,
 				530DC55C1EC872C1000D4CA2 /* Assets.xcassets in Resources */,
+				296804162059852400C3544A /* uncheck.png in Resources */,
 				B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */,
 				2961E608205121C300AC6AFF /* test_002.jpg in Resources */,
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,
@@ -938,6 +956,7 @@
 				291FC453204ADFA10044F4D4 /* policy.pdf in Resources */,
 				2968CE322015C71A006CA19F /* refreshicon.png in Resources */,
 				B1528ABD204F177B00E16D7F /* AddExtrahoursAlert.xib in Resources */,
+				2968040E2058EB5000C3544A /* GoogleService-Info.plist in Resources */,
 				53523A731EC972FB00EE41E9 /* logo.png in Resources */,
 				2968CE2C2015B0E6006CA19F /* loginLogo.png in Resources */,
 			);
@@ -1204,8 +1223,10 @@
 			baseConfigurationReference = AC69583F8899F3A52ED6037B /* Pods-MisterMovers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MisterMovers/MisterMovers.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7PFD68G63X;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = MisterMovers/Info.plist;
@@ -1223,8 +1244,10 @@
 			baseConfigurationReference = 53F25EDC8F123F71454FF0DA /* Pods-MisterMovers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MisterMovers/MisterMovers.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7PFD68G63X;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = MisterMovers/Info.plist;

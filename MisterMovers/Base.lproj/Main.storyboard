@@ -3132,7 +3132,7 @@
                                                         <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": " textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTu-CH-Hop">
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="215" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=": " textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTu-CH-Hop">
                                                         <rect key="frame" x="149" y="140" width="155" height="18"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                         <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3203,7 +3203,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JB-Ch-Nyi">
-                                                                <rect key="frame" x="25" y="36" width="37.5" height="17"/>
+                                                                <rect key="frame" x="25" y="35" width="37.5" height="19"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3232,13 +3232,13 @@
                                                                     <constraint firstAttribute="height" constant="20" id="I9R-Sw-GTz"/>
                                                                     <constraint firstAttribute="width" constant="20" id="xVn-WU-XLj"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button" image="EnbleCheckBox"/>
+                                                                <state key="normal" image="check.png"/>
                                                                 <connections>
                                                                     <action selector="CashBtn_Click:" destination="KtJ-nt-mFy" eventType="touchUpInside" id="e4H-dO-gcN"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcr-z7-XfU">
-                                                                <rect key="frame" x="25" y="64.5" width="46" height="20"/>
+                                                                <rect key="frame" x="25" y="65" width="46" height="19"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3258,7 +3258,7 @@
                                                                     <constraint firstAttribute="width" constant="20" id="VEi-VV-0uQ"/>
                                                                     <constraint firstAttribute="height" constant="20" id="dnk-x0-cbO"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button" image="UncheckBox"/>
+                                                                <state key="normal" image="uncheck.png"/>
                                                                 <connections>
                                                                     <action selector="OnlineBtn_click:" destination="KtJ-nt-mFy" eventType="touchUpInside" id="ubA-YS-P5W"/>
                                                                 </connections>
@@ -3585,6 +3585,7 @@
                         <outlet property="VehicleRegTop" destination="wmA-qb-M0P" id="iLD-QH-lbw"/>
                         <outlet property="address1Top" destination="6cy-92-f5W" id="k4Q-KL-MzJ"/>
                         <outlet property="address2Top" destination="CjG-hL-QOH" id="LVH-ge-rZq"/>
+                        <outlet property="mainScrollView" destination="63R-rw-jo3" id="SMN-Fl-Dxt"/>
                         <outlet property="pickupAdreess_LBL" destination="OrC-zc-aRH" id="3Vk-tI-v0c"/>
                         <outlet property="preferredDate_LBL" destination="Dha-K8-Mkn" id="mlU-h3-CWp"/>
                         <outlet property="vehicleReg_LBL" destination="EO8-iI-I7b" id="WC2-lW-sh3"/>
@@ -4758,8 +4759,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnA-J5-cVf">
                                                         <rect key="frame" x="5" y="142" width="299" height="33"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver Etra Hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMh-Q7-htX">
-                                                                <rect key="frame" x="83.5" y="5" width="132.5" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver Extra Hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMh-Q7-htX">
+                                                                <rect key="frame" x="79.5" y="5" width="141" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="NvQ-xb-8JJ"/>
                                                                 </constraints>
@@ -5045,10 +5046,9 @@
     <resources>
         <image name="BackBtn" width="17" height="17"/>
         <image name="DownArrow" width="27" height="27"/>
-        <image name="EnbleCheckBox" width="20" height="20"/>
         <image name="FilterIcon" width="43" height="43"/>
-        <image name="UncheckBox" width="20" height="20"/>
         <image name="WhiteMenuIcon.png" width="56" height="38"/>
+        <image name="check.png" width="40" height="40"/>
         <image name="expense.png" width="50" height="50"/>
         <image name="expenseHistry.png" width="50" height="50"/>
         <image name="invoice.png" width="50" height="50"/>
@@ -5061,5 +5061,6 @@
         <image name="refreshicon.png" width="50" height="50"/>
         <image name="runningJob.png" width="50" height="50"/>
         <image name="success.png" width="300" height="300"/>
+        <image name="uncheck.png" width="40" height="40"/>
     </resources>
 </document>

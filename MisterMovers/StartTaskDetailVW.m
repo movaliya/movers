@@ -10,6 +10,7 @@
 #import "misterMover.pch"
 #import "PrivacyPolicyVW.h"
 #import "SignatureVW.h"
+
 @interface StartTaskDetailVW ()
 {
     PrivacyPolicyVW *policyAlert;
@@ -80,12 +81,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //timer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(updateCountdown) userInfo:nil repeats: YES];
-    //secondsLeft=0;
+    
+    /*
+     self.DurationHour_LBL=[[UILabel alloc] init];
+    self.DurationHour_LBL.tag=215;
+    if ( [KmyappDelegate.Mytimer isValid])
+    {
+        // [timer invalidate], timer=nil;
+    }
+    else
+    {
+        [self performSelector:@selector(temptimer) withObject:nil afterDelay:5.0];
+    }*/
+
 
     
 }
--(void) updateCountdown {
+-(void)temptimer
+{
+    KmyappDelegate.Mytimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target:self selector:@selector(updateCountdown:) userInfo:nil repeats: YES];
+    [[NSRunLoop mainRunLoop] addTimer: KmyappDelegate.Mytimer forMode:NSRunLoopCommonModes];
+    
+    secondsLeft=0;
+}
+
+
+-(void) updateCountdown:(NSTimer*) theTimer{
     int hours, minutes, seconds;
     
     secondsLeft--;
@@ -94,8 +115,38 @@
     seconds = (secondsLeft %3600) % 60;
     NSString *Timstr=[NSString stringWithFormat:@"%d:%d",hours, minutes];
     Timstr=[Timstr stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    [self updateDuration:Timstr];
+   // self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@ Hours",Timstr];
     NSLog(@"timer==%@", Timstr);
+    
+    
     //countDownlabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+}
+-(void)updateDuration:(NSString *)time
+{
+    
+    NSArray* subviews = [[NSArray alloc] initWithArray: self.TherdView.subviews];
+    for (UIView* view in subviews)
+    {
+        if ([view isKindOfClass:[UIView class]])
+        {
+            if ([view isKindOfClass:[UILabel class]])
+            {
+                UILabel *newLbl = (UILabel *)view;
+                if(newLbl.tag == 215){
+                   
+                    if (newLbl==self.DurationHour_LBL) {
+                          self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@ Hours",time];
+                    }
+                }
+            }
+           
+        }
+    }
+    
+   
+
+    
 }
 -(void)GetDetailTask
 {
@@ -164,6 +215,17 @@
          self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_actual_hour"]];
         StartBtn.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
         [StartBtn setTitle:@"END" forState:UIControlStateNormal];
+        /*
+        if ( [KmyappDelegate.Mytimer isValid])
+        {
+           // [timer invalidate], timer=nil;
+        }
+        else
+        {
+            KmyappDelegate.Mytimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(updateCountdown) userInfo:nil repeats: YES];
+            secondsLeft=0;
+        }*/
+    
 
     }
     else
@@ -474,9 +536,14 @@
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment is greater then grand total." delegate:nil];
         }
+       
         else if (cashNonlineTotal>[grantTotalLBL integerValue])
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment and Online payment is greater then grand total." delegate:nil];
+        }
+        else if (cashNonlineTotal<[grantTotalLBL integerValue])
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Payment is lesser then grand total." delegate:nil];
         }
         else
         {
@@ -552,6 +619,11 @@
 {
     if ([[[response objectForKey:@"ack"]stringValue ] isEqualToString:@"1"])
     {
+        if ( [KmyappDelegate.Mytimer isValid])
+        {
+             [KmyappDelegate.Mytimer invalidate], KmyappDelegate.Mytimer=nil;
+        }
+        
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
         BOOL internet=[AppDelegate connectedToNetwork];
         if (internet)
@@ -686,8 +758,8 @@
     StartBtn.backgroundColor = [UIColor colorWithRed:63.0/255.0 green:82.0/255.0 blue:169.0/255.0 alpha:1.0];
     [StartBtn setTitle:@"SEND" forState:UIControlStateNormal];
     
-    UIImage *btnImage1 = [UIImage imageNamed:@"EnbleCheckBox"];
-    UIImage *selected = [UIImage imageNamed:@"UncheckBox"];
+    UIImage *btnImage1 = [UIImage imageNamed:@"check.png"];
+    UIImage *selected = [UIImage imageNamed:@"uncheck.png"];
     
     [self.CashBTN setImage:btnImage1 forState:UIControlStateSelected];
     [self.CashBTN setImage:selected forState:UIControlStateNormal];

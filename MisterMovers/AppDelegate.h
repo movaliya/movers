@@ -8,11 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
+#import <UserNotifications/UserNotifications.h>
+@import Firebase;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,FIRMessagingDelegate>
+{
+    UIBackgroundTaskIdentifier locationUpdater;
+    int timer_value;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSString *strDeviceToken;
+@property(nonatomic, strong) NSTimer *Mytimer;
 
+-(int)updateTimer;
+//-(void)updateCountdown;
 +(BOOL)connectedToNetwork;
 + (AppDelegate *)sharedInstance;
 +(BOOL)IsValidEmail:(NSString *)checkString;

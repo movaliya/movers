@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "40X40Un-1.png",
+      "filename" : "Refresh_icon1-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "40X40Un-2.png",
+      "filename" : "Refresh_icon1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "40X40Un.png",
+      "filename" : "Refresh_icon2.png",
       "scale" : "3x"
     }
   ],

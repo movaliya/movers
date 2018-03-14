@@ -94,20 +94,28 @@
     }
     else
     {
-        
-        UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [self.signatureView.layer renderInContext:context];
-        UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        NSData *photoData = UIImageJPEGRepresentation(snapshotImage, 0.8);
-        
-        BOOL internet=[AppDelegate connectedToNetwork];
-        if (internet)
-            [self StartTask:photoData];
+        if ( [KmyappDelegate.Mytimer isValid])
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"One Job is Running. Please End job first." delegate:nil];
+        }
         else
-            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        {
+            UIGraphicsBeginImageContextWithOptions(self.signatureView.bounds.size, YES, 0.0f);
+            CGContextRef context = UIGraphicsGetCurrentContext();
+            [self.signatureView.layer renderInContext:context];
+            UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            NSData *photoData = UIImageJPEGRepresentation(snapshotImage, 0.8);
+            
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self StartTask:photoData];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        }
+        
+       
     }
     
 }

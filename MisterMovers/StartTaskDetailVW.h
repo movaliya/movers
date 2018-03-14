@@ -14,9 +14,9 @@
     NSString *Task_Status;
     NSInteger ExtraitemTotal;
     NSInteger grandTotl;
-    NSTimer *timer;
     int secondsLeft;
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *TaskTitle;
 @property (weak, nonatomic) IBOutlet UILabel *JobNo_LBL;

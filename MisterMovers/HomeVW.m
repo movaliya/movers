@@ -40,6 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // [[FIRMessaging messaging] subscribeToTopic:@"rasoicheddar"];
 }
 
 - (IBAction)Home_Icon_Method:(id)sender
