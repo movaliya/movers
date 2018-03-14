@@ -772,6 +772,12 @@
     [self.OnlineBTN setImage:btnImage1 forState:UIControlStateSelected];
     [self.OnlineBTN setImage:selected forState:UIControlStateNormal];
     self.OnlinePayment_TXT.hidden=YES;
+    self.onlinepayLINE.hidden=YES;
+    
+    [self.CreditBTN setImage:btnImage1 forState:UIControlStateSelected];
+    [self.CreditBTN setImage:selected forState:UIControlStateNormal];
+    self.CreaditTXT.hidden=YES;
+    self.CreditePayLINE.hidden=YES;
     
     self.SendView.hidden=NO;
     self.TotalTop.constant=10;
@@ -794,6 +800,7 @@
     }
     else
     {
+        self.extraitemDotLBL.text=@"";
         self.Extra1Top.constant=0;
         self.ExtraTitle1_LBL.text=@"";
     }
@@ -808,6 +815,7 @@
     }
     else
     {
+         self.MinimumHorDotLBL.text=@"";
         self.Extra2Top.constant=0;
         self.ExtraTitle2_LBL.text=@"";
     }
@@ -822,16 +830,31 @@
     }
     else
     {
+        self.durationhrDotLBL.text=@"";
         self.Extra3Top.constant=0;
         self.ExtraTitle3_LBL.text=@"";
     }
      ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] integerValue];
     
-    self.GrandTotalLBL.text=[NSString stringWithFormat:@": $ %ld",(long)ExtraitemTotal];
-    self.DiscountLBL.text= [NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"task_discount"]];
+    self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %ld",(long)ExtraitemTotal];
+    self.DiscountLBL.text= [NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"task_discount"]];
    
     self.AddSurchargeHight.constant=35.0f;
-    self.SendCaseViewHight.constant=150.0f;
+    
+    if ([[DetailTaskDic valueForKey:@"customer_credit_flag"] isEqualToString:@""])
+    {
+         self.SendCaseViewHight.constant=117.0f;
+        self.CreaditTXT.hidden=YES;
+        self.CreditePayLINE.hidden=YES;
+        self.CreditBTN.hidden=YES;
+         self.creditTitleLBL.hidden=YES;
+        
+    }
+    else
+    {
+         self.SendCaseViewHight.constant=150.0f;
+    }
+   
     self.SendViewTop.constant=12;
     self.StartBTNTop.constant=15;
 }
@@ -905,7 +928,7 @@
             y=y+30;
         }
        grandTotl=tempExtraTotal+ExtraitemTotal;
-        self.GrandTotalLBL.text=[NSString stringWithFormat:@": $ %ld",(long)grandTotl];
+        self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %ld",(long)grandTotl];
         self.SendScrollHight.constant=y-5;
     }
 }
@@ -923,11 +946,13 @@
     {
        
         self.CashPayment_TXT.hidden=YES;
+        self.CashpayLINE.hidden=YES;
         self.CashPayment_TXT.text=@"";
     }
     else
     {
          self.CashPayment_TXT.hidden=NO;
+        self.CashpayLINE.hidden=NO;
     }
     self.CashBTN.selected = !self.CashBTN.selected;
     
@@ -937,17 +962,36 @@
     if (self.OnlineBTN.selected)
     {
         self.OnlinePayment_TXT.hidden=YES;
+        self.onlinepayLINE.hidden=YES;
         self.OnlinePayment_TXT.text=@"";
     }
     else
     {
         self.OnlinePayment_TXT.hidden=NO;
+        self.onlinepayLINE.hidden=NO;
+
 
     }
     self.OnlineBTN.selected = !self.OnlineBTN.selected;
 
 }
-- (IBAction)RefreshBtn_Click:(id)sender {
+- (IBAction)CreditBtn_Click:(id)sender
+{
+    if (self.CreditBTN.selected)
+    {
+        self.CreaditTXT.hidden=YES;
+        self.CreditePayLINE.hidden=YES;
+        self.CreaditTXT.text=@"";
+    }
+    else
+    {
+        self.CreaditTXT.hidden=NO;
+        self.CreditePayLINE.hidden=NO;
+    }
+    self.CreditBTN.selected = !self.CreditBTN.selected;
+}
+- (IBAction)RefreshBtn_Click:(id)sender
+{
 }
 
 

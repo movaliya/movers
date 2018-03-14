@@ -5,9 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -3304,7 +3301,7 @@
                                                                 </constraints>
                                                                 <state key="normal" image="uncheck.png"/>
                                                                 <connections>
-                                                                    <action selector="OnlineBtn_click:" destination="KtJ-nt-mFy" eventType="touchUpInside" id="Pz3-Ed-5Xy"/>
+                                                                    <action selector="CreditBtn_Click:" destination="KtJ-nt-mFy" eventType="touchUpInside" id="Ir3-3n-hKe"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oid-Qc-xMr">
@@ -3667,6 +3664,10 @@
                         <outlet property="Address2_LBL" destination="hCa-qw-rxX" id="Bsh-ue-mhw"/>
                         <outlet property="CashBTN" destination="MYf-aC-rg3" id="WuG-VA-O9t"/>
                         <outlet property="CashPayment_TXT" destination="PdC-Jv-EPG" id="oKo-oz-Q5B"/>
+                        <outlet property="CashpayLINE" destination="oid-Qc-xMr" id="aPc-hW-euG"/>
+                        <outlet property="CreaditTXT" destination="ZwR-ee-fvz" id="2Jd-y5-k7r"/>
+                        <outlet property="CreditBTN" destination="vI8-2h-gTX" id="8sc-uL-B1d"/>
+                        <outlet property="CreditePayLINE" destination="324-DO-AQi" id="0Hb-vx-mQI"/>
                         <outlet property="CustomerEmailTitle_LBL" destination="c2Q-gj-JWp" id="teK-Ue-3Ie"/>
                         <outlet property="CustomerEmailTop" destination="brN-JC-Bep" id="YzT-ll-XYv"/>
                         <outlet property="CustomerEmail_LBL" destination="sil-8h-sZ6" id="OXl-wb-nA4"/>
@@ -3739,11 +3740,13 @@
                         <outlet property="VehicleRegTop" destination="wmA-qb-M0P" id="iLD-QH-lbw"/>
                         <outlet property="address1Top" destination="6cy-92-f5W" id="k4Q-KL-MzJ"/>
                         <outlet property="address2Top" destination="CjG-hL-QOH" id="LVH-ge-rZq"/>
+                        <outlet property="creditTitleLBL" destination="vYV-xt-Egq" id="4Cj-xA-cnw"/>
                         <outlet property="discountDotLBL" destination="yvP-cc-aAh" id="jda-1A-48G"/>
                         <outlet property="durationhrDotLBL" destination="gp4-A7-xQc" id="sZK-er-RdC"/>
                         <outlet property="extraitemDotLBL" destination="O0C-BF-8G1" id="C9e-tX-Ttr"/>
                         <outlet property="grandTotalDotLBL" destination="SiA-MS-YAD" id="J9A-dn-dl4"/>
                         <outlet property="mainScrollView" destination="63R-rw-jo3" id="SMN-Fl-Dxt"/>
+                        <outlet property="onlinepayLINE" destination="J6E-gu-uzS" id="11a-tc-gPp"/>
                         <outlet property="pickupAdreess_LBL" destination="OrC-zc-aRH" id="3Vk-tI-v0c"/>
                         <outlet property="preferredDate_LBL" destination="Dha-K8-Mkn" id="mlU-h3-CWp"/>
                         <outlet property="totalDotLBL" destination="4FD-J7-mbg" id="dzD-Rj-gcy"/>
