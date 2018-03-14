@@ -867,7 +867,7 @@
             HelperName.textAlignment=NSTextAlignmentLeft;
             [self.SendScroll addSubview:HelperName];
             
-            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-20, 18)];
+            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2-30, y, screenWidth/2-20, 18)];
             HelperPhoneNo.text=[NSString stringWithFormat:@"$ %@",[SurchargeArr objectAtIndex:i]];
             //HelperPhoneNo.text=@"23233223232";
             
