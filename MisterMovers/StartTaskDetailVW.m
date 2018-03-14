@@ -864,7 +864,7 @@
             //HelperName.text=@"Kaushik";
             HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperName.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
-            HelperName.textAlignment=NSTextAlignmentCenter;
+            HelperName.textAlignment=NSTextAlignmentLeft;
             [self.SendScroll addSubview:HelperName];
             
             UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-20, 18)];
@@ -874,7 +874,7 @@
              tempExtraTotal=tempExtraTotal+[[SurchargeArr objectAtIndex:i] integerValue];
             HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
-            HelperPhoneNo.textAlignment=NSTextAlignmentCenter;
+            HelperPhoneNo.textAlignment=NSTextAlignmentRight;
             [self.SendScroll addSubview:HelperPhoneNo];
             
             UIButton *CloseBTN=[[UIButton alloc]initWithFrame:CGRectMake(screenWidth-42, y, 15, 15)];
