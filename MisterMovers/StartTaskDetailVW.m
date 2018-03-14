@@ -381,21 +381,30 @@
         int y = 6;
         for (int i=0; i<helpers_details.count; i++)
         {
-            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 15)];
+            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(2, y, screenWidth/2, 15)];
             HelperName.text=[[helpers_details objectAtIndex:i] valueForKey:@"employee_name"];
             //HelperName.text=@"Kaushik";
             HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperName.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
-            HelperName.textAlignment=NSTextAlignmentCenter;
+            HelperName.textAlignment=NSTextAlignmentLeft;
             [self.Scroll_Helper addSubview:HelperName];
             
-            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2, 15)];
+
+            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/-5, y, screenWidth/2-20, 15)];
             HelperPhoneNo.text=[[helpers_details objectAtIndex:i] valueForKey:@"employee_phone"];
             //HelperPhoneNo.text=@"23233223232";
             HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
-            HelperPhoneNo.textAlignment=NSTextAlignmentCenter;
+            HelperPhoneNo.textAlignment=NSTextAlignmentRight;
             [self.Scroll_Helper addSubview:HelperPhoneNo];
+            
+            UILabel *DoteLBL=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2-15, y, 5, 18)];
+            DoteLBL.text=@":";
+            DoteLBL.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            DoteLBL.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+            DoteLBL.textAlignment=NSTextAlignmentRight;
+            [self.Scroll_Helper addSubview:DoteLBL];
+            
             
             if (helpers_details.count-1!=i)
             {
@@ -883,13 +892,21 @@
             HelperPhoneNo.text=[NSString stringWithFormat:@"$ %@",[SurchargeArr objectAtIndex:i]];
             //HelperPhoneNo.text=@"23233223232";
             
-             tempExtraTotal=tempExtraTotal+[[SurchargeArr objectAtIndex:i] integerValue];
+            tempExtraTotal=tempExtraTotal+[[SurchargeArr objectAtIndex:i] integerValue];
             HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
             HelperPhoneNo.textAlignment=NSTextAlignmentRight;
             [self.SendScroll addSubview:HelperPhoneNo];
+
+            UILabel *DoteLBL=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2-20, y, 5, 18)];
+            DoteLBL.text=@":";
+            DoteLBL.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            DoteLBL.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+            DoteLBL.textAlignment=NSTextAlignmentRight;
+            [self.SendScroll addSubview:DoteLBL];
+
             
-            UIButton *CloseBTN=[[UIButton alloc]initWithFrame:CGRectMake(screenWidth-42, y, 15, 15)];
+            UIButton *CloseBTN=[[UIButton alloc]initWithFrame:CGRectMake(screenWidth-42, y+2, 15, 15)];
             [CloseBTN setTitle:@"x" forState:UIControlStateNormal];
             CloseBTN.titleLabel.font=[UIFont boldSystemFontOfSize:18];
             [CloseBTN setTitleColor:[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
