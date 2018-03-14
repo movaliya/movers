@@ -130,5 +130,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *CashBTN;
 @property (weak, nonatomic) IBOutlet UITextField *CashPayment_TXT;
 @property (weak, nonatomic) IBOutlet UITextField *OnlinePayment_TXT;
+@property (weak, nonatomic) IBOutlet UILabel *totalDotLBL;
+@property (weak, nonatomic) IBOutlet UILabel *extraitemDotLBL;
+@property (weak, nonatomic) IBOutlet UILabel *durationhrDotLBL;
+@property (weak, nonatomic) IBOutlet UILabel *MinimumHorDotLBL;
+@property (weak, nonatomic) IBOutlet UILabel *discountDotLBL;
+@property (weak, nonatomic) IBOutlet UILabel *grandTotalDotLBL;
+@property (weak, nonatomic) IBOutlet UILabel *DiscountLBL;
+@property (weak, nonatomic) IBOutlet UIButton *RefreshBTN;
 
 @end
