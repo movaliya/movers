@@ -469,7 +469,7 @@
         NSString *cashtotal=self.CashPayment_TXT.text;
         NSInteger cashNonlineTotal=[Onlinetotal integerValue]+[cashtotal integerValue];
         NSString *grantTotalLBL=self.GrandTotalLBL.text;
-        grantTotalLBL = [grantTotalLBL stringByReplacingOccurrencesOfString:@": $ " withString:@""];
+        grantTotalLBL = [grantTotalLBL stringByReplacingOccurrencesOfString:@"$ " withString:@""];
         //SEND enble
         if([self.CashPayment_TXT.text isEqualToString:@""] && self.CashBTN.selected)
         {
