@@ -69,20 +69,45 @@
     MainTBL.rowHeight = cell.frame.size.height;
     [MainTBL registerNib:nib forCellReuseIdentifier:@"TodayJobCell"];
     
-    Today_LBL.backgroundColor=SelectedLabelColor;
-    [Today_BTN setTitleColor:SelectedLabelColor forState:UIControlStateNormal];
+   
     
-    All_LBL.backgroundColor=[UIColor clearColor];
-    [All_BTN setTitleColor:Whitecolortitle forState:UIControlStateNormal];
-    BOOL internet=[AppDelegate connectedToNetwork];
-    if (internet)
-        [self GetTodayTask];
+    if ([buttonTabTitle isEqualToString:@"all"])
+    {
+        All_LBL.backgroundColor=SelectedLabelColor;
+        [All_BTN setTitleColor:SelectedLabelColor forState:UIControlStateNormal];
+        
+        Today_LBL.backgroundColor=[UIColor clearColor];
+        [Today_BTN setTitleColor:Whitecolortitle forState:UIControlStateNormal];
+        
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self GetAllTask];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    }
     else
-        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    {
+        Today_LBL.backgroundColor=SelectedLabelColor;
+        [Today_BTN setTitleColor:SelectedLabelColor forState:UIControlStateNormal];
+        
+        All_LBL.backgroundColor=[UIColor clearColor];
+        [All_BTN setTitleColor:Whitecolortitle forState:UIControlStateNormal];
+        
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self GetTodayTask];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    }
+    
+    
+   
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
   
 }
 
@@ -177,6 +202,7 @@
     MainTBL.hidden=NO;
     if ([sender isEqual:Today_BTN])
     {
+        buttonTabTitle=@"today";
         Today_LBL.backgroundColor=SelectedLabelColor;
         [Today_BTN setTitleColor:SelectedLabelColor forState:UIControlStateNormal];
         
@@ -191,6 +217,7 @@
     }
     else if ([sender isEqual:All_BTN])
     {
+        buttonTabTitle=@"all";
         FilterBTN.hidden=NO;
        // MainTBL.hidden=YES;
         All_LBL.backgroundColor=SelectedLabelColor;

@@ -14,15 +14,14 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate,FIRMessagingDelegate>
 {
     UIBackgroundTaskIdentifier locationUpdater;
-    int timer_value;
+    int secondsLeft;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *strDeviceToken;
 @property(nonatomic, strong) NSTimer *Mytimer;
-
--(int)updateTimer;
-//-(void)updateCountdown;
+@property (strong, nonatomic) NSString *TimerValue;
+-(void)updateCountdown;
 +(BOOL)connectedToNetwork;
 + (AppDelegate *)sharedInstance;
 +(BOOL)IsValidEmail:(NSString *)checkString;

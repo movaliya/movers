@@ -14,7 +14,9 @@
     NSString *Task_Status;
     NSInteger ExtraitemTotal;
     NSInteger grandTotl;
+    NSInteger tempExtraTotal;
     int secondsLeft;
+    NSTimer *TMPTimer;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 

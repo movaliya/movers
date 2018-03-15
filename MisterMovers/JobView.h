@@ -11,6 +11,7 @@
 @interface JobView : UIViewController
 {
     NSMutableDictionary *TodayTaskDic;
+    NSString *buttonTabTitle;
 }
 - (IBAction)Back_Click:(id)sender;
 

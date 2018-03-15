@@ -38,7 +38,6 @@
     
     //ios@test.com
    // 123
-    timer_value=0;
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // [FIRApp configure];
@@ -190,28 +189,22 @@
 {
     return UIStatusBarStyleLightContent;
 }
--(int)updateTimer
-{
-    timer_value--;
-    return timer_value;
+-(void) updateCountdown{
+    int hours, minutes, seconds;
     
+    secondsLeft--;
+    hours = secondsLeft / 3600;
+    minutes = (secondsLeft % 3600) / 60;
+    seconds = (secondsLeft %3600) % 60;
+    NSString *Timstr=[NSString stringWithFormat:@"%d:%d",hours, minutes];
+    Timstr=[Timstr stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    self.TimerValue=Timstr;
+    //[self updateDuration:Timstr];
+    NSLog(@"timer==%@", Timstr);
+    
+    //countDownlabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
 }
--(void)updateCountdown
-{
-    
-    int Time=[self updateTimer];
-    
-    //int minute=Time/60;
-    //int second=Time-(minute*60);
-    
-    int hours = Time / 3600;
-    int minutes = (Time % 3600) / 60;
-    
-    NSString *strValue=[NSString stringWithFormat:@"%d:%d Hours",hours,minutes];
-    NSLog(@"%@",strValue);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DoUpdateLabel" object:strValue userInfo:nil];
-    
-}
+
 - (BOOL)prefersStatusBarHidden {
     
     return YES;

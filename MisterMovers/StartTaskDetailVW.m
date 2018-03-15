@@ -82,72 +82,19 @@
 {
     [super viewDidLoad];
     
-    /*
-     self.DurationHour_LBL=[[UILabel alloc] init];
-    self.DurationHour_LBL.tag=215;
-    if ( [KmyappDelegate.Mytimer isValid])
-    {
-        // [timer invalidate], timer=nil;
-    }
-    else
-    {
-        [self performSelector:@selector(temptimer) withObject:nil afterDelay:5.0];
-    }*/
-
-
     
 }
--(void)temptimer
-{
-    KmyappDelegate.Mytimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target:self selector:@selector(updateCountdown:) userInfo:nil repeats: YES];
-    [[NSRunLoop mainRunLoop] addTimer: KmyappDelegate.Mytimer forMode:NSRunLoopCommonModes];
-    
-    secondsLeft=0;
-}
-
-
--(void) updateCountdown:(NSTimer*) theTimer{
-    int hours, minutes, seconds;
-    
-    secondsLeft--;
-    hours = secondsLeft / 3600;
-    minutes = (secondsLeft % 3600) / 60;
-    seconds = (secondsLeft %3600) % 60;
-    NSString *Timstr=[NSString stringWithFormat:@"%d:%d",hours, minutes];
-    Timstr=[Timstr stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    [self updateDuration:Timstr];
-   // self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@ Hours",Timstr];
-    NSLog(@"timer==%@", Timstr);
-    
-    
-    //countDownlabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
-}
--(void)updateDuration:(NSString *)time
+-(void)TmpCountdown
 {
     
-    NSArray* subviews = [[NSArray alloc] initWithArray: self.TherdView.subviews];
-    for (UIView* view in subviews)
-    {
-        if ([view isKindOfClass:[UIView class]])
-        {
-            if ([view isKindOfClass:[UILabel class]])
-            {
-                UILabel *newLbl = (UILabel *)view;
-                if(newLbl.tag == 215){
-                   
-                    if (newLbl==self.DurationHour_LBL) {
-                          self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@ Hours",time];
-                    }
-                }
-            }
-           
-        }
-    }
-    
-   
-
-    
+    self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@ Hours",KmyappDelegate.TimerValue];
 }
+-(void)appdegatValu
+{
+    [KmyappDelegate updateCountdown];
+    self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@ Hours",KmyappDelegate.TimerValue];
+}
+
 -(void)GetDetailTask
 {
     
@@ -177,7 +124,7 @@
 
 -(void)FilluptheTaskDetail
 {
-    
+    self.RefreshBTN.hidden=YES;
     self.TaskTitle.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_title"]];
     self.preferredDate_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_start_date"]];
    
@@ -211,22 +158,17 @@
         [self HideSendView];
         self.DurationHourTitle_LBL.text=@"Duration Hours";
         self.DurationHourTop.constant=10;
-        
-         self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_actual_hour"]];
         StartBtn.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
         [StartBtn setTitle:@"END" forState:UIControlStateNormal];
-        /*
+        
         if ( [KmyappDelegate.Mytimer isValid])
         {
-           // [timer invalidate], timer=nil;
+            TMPTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(TmpCountdown) userInfo:nil repeats: YES];
         }
         else
         {
-            KmyappDelegate.Mytimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(updateCountdown) userInfo:nil repeats: YES];
-            secondsLeft=0;
-        }*/
-    
-
+            KmyappDelegate.Mytimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(appdegatValu) userInfo:nil repeats: YES];
+        }
     }
     else
     {
@@ -390,7 +332,7 @@
             [self.Scroll_Helper addSubview:HelperName];
             
 
-            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/-5, y, screenWidth/2-20, 15)];
+            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2-5, y, screenWidth/2-20, 15)];
             HelperPhoneNo.text=[[helpers_details objectAtIndex:i] valueForKey:@"employee_phone"];
             //HelperPhoneNo.text=@"23233223232";
             HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
@@ -632,7 +574,10 @@
         {
              [KmyappDelegate.Mytimer invalidate], KmyappDelegate.Mytimer=nil;
         }
-        
+        if ( [TMPTimer isValid])
+        {
+            [TMPTimer invalidate], TMPTimer=nil;
+        }
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
         BOOL internet=[AppDelegate connectedToNetwork];
         if (internet)
@@ -710,9 +655,20 @@
 - (IBAction)backBtn_Click:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+    if ( [TMPTimer isValid])
+    {
+        [TMPTimer invalidate], TMPTimer=nil;
+    }
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ( [TMPTimer isValid])
+    {
+        [TMPTimer invalidate], TMPTimer=nil;
+    }
     
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -741,6 +697,7 @@
 
 -(void)HideSendView
 {
+     self.RefreshBTN.hidden=YES;
     self.SendView.hidden=YES;
     self.TotalTop.constant=0;
     self.Total_LBL.text=@"";
@@ -769,6 +726,8 @@
 
 -(void)ShowSendView
 {
+    
+    self.RefreshBTN.hidden=NO;
     StartBtn.backgroundColor = [UIColor colorWithRed:63.0/255.0 green:82.0/255.0 blue:169.0/255.0 alpha:1.0];
     [StartBtn setTitle:@"SEND" forState:UIControlStateNormal];
     
@@ -793,6 +752,9 @@
     self.TotalTitle_LBL.text=@"Total";
      self.totalDotLBL.text=@":";
      self.Total_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_total_hour_charge"]];
+    
+    // self.DurationHour_LBL.text=[NSString stringWithFormat:@"%@",[DetailTaskDic valueForKey:@"task_duration"]];
+     self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_actual_hour"]];
     
     NSString *Extraitem1=[DetailTaskDic valueForKey:@"quotation_extra_charge_title1"];
     NSString *Extraitem2=[DetailTaskDic valueForKey:@"quotation_extra_charge_title2"];
@@ -844,8 +806,10 @@
         self.ExtraTitle3_LBL.text=@"";
     }
      ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] integerValue];
-    
-    self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %ld",(long)ExtraitemTotal];
+     grandTotl=tempExtraTotal+ExtraitemTotal;
+    NSInteger discountint=[[DetailTaskDic valueForKey:@"task_discount"] integerValue];
+    grandTotl=grandTotl-discountint;
+    self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %ld",(long)grandTotl];
     self.DiscountLBL.text= [NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"task_discount"]];
    
     self.AddSurchargeHight.constant=35.0f;
@@ -897,7 +861,7 @@
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
-    NSInteger tempExtraTotal=0;
+    tempExtraTotal=0;
     if (SurchargeArr.count>0)
     {
         int y = 6;
@@ -945,6 +909,8 @@
             y=y+30;
         }
        grandTotl=tempExtraTotal+ExtraitemTotal;
+        NSInteger discountint=[[DetailTaskDic valueForKey:@"task_discount"] integerValue];
+        grandTotl=grandTotl-discountint;
         self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %ld",(long)grandTotl];
         self.SendScrollHight.constant=y-5;
     }
@@ -1009,6 +975,11 @@
 }
 - (IBAction)RefreshBtn_Click:(id)sender
 {
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self GetDetailTask];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
 }
 
 
