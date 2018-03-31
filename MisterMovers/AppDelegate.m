@@ -39,6 +39,12 @@
     //ios@test.com
    // 123
     
+   // Gmail account:
+    //mistermovers.au@gmail.com
+    //Password: Mister@2442
+    //kamal.parmar4@gmail.com
+    
+    
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // [FIRApp configure];
     [FIRMessaging messaging].delegate = self;
@@ -98,6 +104,7 @@
 }
 - (void)messaging:(FIRMessaging *)messaging didReceiveRegistrationToken:(NSString *)fcmToken {
     NSLog(@"FCM registration token: %@", fcmToken);
+    self.FCMDeviceToken = fcmToken;
     
     // TODO: If necessary send token to application server.
     // Note: This callback is fired at each app startup and whenever a new token is generated.

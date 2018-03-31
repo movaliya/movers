@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *strDeviceToken;
+@property (strong, nonatomic) NSString *FCMDeviceToken;
 @property(nonatomic, strong) NSTimer *Mytimer;
 @property (strong, nonatomic) NSString *TimerValue;
 -(void)updateCountdown;

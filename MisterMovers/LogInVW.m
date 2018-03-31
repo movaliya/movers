@@ -29,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
      [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     [usernm_View.layer setCornerRadius:3.0f];
@@ -89,14 +91,23 @@
 
 -(void)CallForloging
 {
-  
+    if (KmyappDelegate.FCMDeviceToken)
+    {
+        
+    }
+    
+//https://mistermover.com.au/development/service/service_user.php?key=1226&s=1&email=ram@gmail.com&password=ram&imei=12345&refreshToken=fdghjvdjgvdrgturgfhg
+    
+    NSUUID  *UUID = [NSUUID UUID];
+    NSString* stringUUID = [UUID UUIDString];
+
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:Base_Key  forKey:@"key"];
     [dictParams setObject:user_login  forKey:@"s"];
     [dictParams setObject:UserName_TXT.text  forKey:@"email"];
     [dictParams setObject:Password_TXT.text  forKey:@"password"];
-    [dictParams setObject:@"IOS"  forKey:@"imei"];
-    [dictParams setObject:@"fdghjvdjgvdrgturgfhg"  forKey:@"refreshToken"];
+    [dictParams setObject:stringUUID  forKey:@"imei"];
+    [dictParams setObject:KmyappDelegate.FCMDeviceToken  forKey:@"refreshToken"];
     
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)

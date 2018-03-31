@@ -121,6 +121,12 @@
     {
         //TitleArr=[[NSMutableArray alloc] initWithObjects:@"Export Database",@"Import Database",@"Logout",@"My Account",@"Share",@"Send", nil];
          TitleArr=[[NSMutableArray alloc] initWithObjects:makeStrVersion, nil];
+        if ([KmyappDelegate isUserLoggedIn] == YES)
+        {
+            NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
+            self.drawerView.Username_LBL.text=[UserSaveData valueForKey:@"first_name"];
+            self.drawerView.NumberEmp_LBL.text=[UserSaveData valueForKey:@"phone"];
+        }
     }
     
     //ImgArr=[[NSMutableArray alloc] initWithObjects:@"ExportIcon",@"importicon",@"importicon",@"settingicon",@"shareicon",@"sendIcon" ,nil];
