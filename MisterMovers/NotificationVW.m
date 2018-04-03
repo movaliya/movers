@@ -97,7 +97,7 @@
         
     }
     
-    cell.NotifTitle_LBL.text=[[NotificationDic valueForKey:@"notification_title"] objectAtIndex:indexPath.section];
+    cell.NotifTitle_LBL.text=[NSString stringWithFormat:@": %@",[[NotificationDic valueForKey:@"notification_title"] objectAtIndex:indexPath.section]];
     cell.NotifDescription_LBL.text=[NSString stringWithFormat:@": %@",[[NotificationDic valueForKey:@"notification_description"] objectAtIndex:indexPath.section]];
     
     //cell.NotifTitle_LBL.text=[NSString stringWithFormat:@": %@",@"asjfdkjakdhaskj dsajkjaksdj aksjd kasjdkas kadjskdjaksjdkasjdkajsk kaj djaskdj akjjaksjkdjakdj sijaisj"];
@@ -112,12 +112,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSString *Task_Status=[[NotificationDic valueForKey:@"task_status"]objectAtIndex:indexPath.section];
+    NSString *Task_Status=@"0";
     if ([Task_Status isEqualToString:@"3"])
     {
         //End Signature
         SignatureVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignatureVW"];
-        vcr.Task_ID=[[NotificationDic valueForKey:@"reference_id"] objectAtIndex:indexPath.section];
+        vcr.Task_ID=[[NotificationDic valueForKey:@"id"] objectAtIndex:indexPath.section];
        // vcr.Task_No2=[[NotificationDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
         [self.navigationController pushViewController:vcr animated:YES];
     }
@@ -135,7 +135,9 @@
         StartTaskDetailVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartTaskDetailVW"];
         NSLog(@"taskid=%@",[[NotificationDic valueForKey:@"id"] objectAtIndex:indexPath.section]);
         vcr.Task_ID=[[NotificationDic valueForKey:@"reference_id"] objectAtIndex:indexPath.section];
-        //vcr.Task_NO=[[NotificationDic valueForKey:@"task_no"] objectAtIndex:indexPath.section];
+        
+        NSString *jobStr=[NSString stringWithFormat:@"MM/JOB%@",[[NotificationDic valueForKey:@"reference_id"] objectAtIndex:indexPath.section]];
+        vcr.Task_NO=jobStr;
         
         [self.navigationController pushViewController:vcr animated:YES];
     }

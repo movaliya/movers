@@ -34,7 +34,7 @@
     
     HelperArr=[[NSMutableArray alloc] initWithObjects:@"Lisa",@"Jaini",@"Laura", nil];
     ExpenseArr=[[NSMutableArray alloc] initWithObjects:@"Fuel and oil",@"Helper",@"Other", nil];
-    FeaulPaymentArr=[[NSMutableArray alloc] initWithObjects:@"Please select payment type",@"Cash",@"Card", nil];
+    FeaulPaymentArr=[[NSMutableArray alloc] initWithObjects:@"Please select payment type",@"Cash", nil];
     SelectJobTBL.layer.cornerRadius=3.0f;
     SelectJobTBL.layer.borderColor=[[UIColor blueColor] CGColor];
     SelectJobTBL.layer.borderWidth=1.0f;

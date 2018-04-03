@@ -609,6 +609,7 @@
     NSInteger totalHour=0;
     if (helperDetail.count!=0)
     {
+
          totalHour=[_DriverHourTXT.text integerValue]+[_HelperHourTXT.text integerValue];
         NSMutableArray *helpersDic=[[NSMutableArray alloc]init];
         NSMutableDictionary *inddic=[[NSMutableDictionary alloc]init];
