@@ -153,7 +153,16 @@
         y=y+41;
     }
     [ExtraHourAlert.HelperExtraHourScroll setContentSize:CGSizeMake(20, y)];
-    ExtraHourAlert.ExtraHourHight.constant=220+y;
+    
+    if (220+y>=SCREEN_HEIGHT-50)
+    {
+        ExtraHourAlert.ExtraHourHight.constant=220+y;
+    }
+    else
+    {
+        ExtraHourAlert.ExtraHourHight.constant=300;
+    }
+    
 
     
 }
