@@ -29,6 +29,8 @@
 @property (strong, nonatomic) UITextField *DriverHourTXT;
 @property (strong, nonatomic) UITextField *HelperHourTXT;
 @property (strong, nonatomic) UIStackView *HelperStackView;
+
+
 @end
 
 @implementation UploadImgView
@@ -74,6 +76,9 @@
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     
 }
+
+
+
 -(void)GetDetailTask
 {
     
@@ -102,6 +107,55 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)AddExtraHoursScroll
+{
+    NSArray* subviews = [[NSArray alloc] initWithArray: ExtraHourAlert.HelperExtraHourScroll.subviews];
+    for (UIView* view in subviews)
+    {
+        if ([view isKindOfClass:[UIView class]])
+        {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UIImageView class]])
+        {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UIButton class]])
+        {
+            [view removeFromSuperview];
+        }
+        if ([view isKindOfClass:[UILabel class]])
+        {
+            [view removeFromSuperview];
+        }
+    }
+    
+    int x = 5,y=0;
+    for (int i=0; i<helperDetail.count; i++)
+    {
+        UILabel *Title_LBL=[[UILabel alloc]initWithFrame:CGRectMake(x, y, SCREEN_WIDTH/2-5, 40)];
+        Title_LBL.text=[[helperDetail objectAtIndex:i] valueForKey:@"employee_name"];
+        Title_LBL.font=[UIFont systemFontOfSize:13];
+        [ExtraHourAlert.HelperExtraHourScroll addSubview:Title_LBL];
+        
+        UITextField *Hour_TXT=[[UITextField alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, y, SCREEN_WIDTH/2-5, 40)];
+        Hour_TXT.placeholder=@"Add Extra Hours";
+        Hour_TXT.keyboardType = UIKeyboardTypeNumberPad;
+        Hour_TXT.tag=i;
+        [ExtraHourAlert.HelperExtraHourScroll addSubview:Hour_TXT];
+        
+        UILabel *Line_LBL=[[UILabel alloc]initWithFrame:CGRectMake(0, y+41, SCREEN_WIDTH, 1)];
+        Line_LBL.backgroundColor=[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f];
+        [ExtraHourAlert.HelperExtraHourScroll addSubview:Line_LBL];
+        
+        y=y+41;
+    }
+    [ExtraHourAlert.HelperExtraHourScroll setContentSize:CGSizeMake(20, y)];
+    ExtraHourAlert.ExtraHourHight.constant=220+y;
+
+    
 }
 
 -(void)SetimageScroll
@@ -422,11 +476,12 @@
              }];
             
             // YES action
-            BOOL internet=[AppDelegate connectedToNetwork];
-            if (internet)
-                [self uploadJobimage];
-            else
-                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            [self AddExtraHoursScroll];
+//            BOOL internet=[AppDelegate connectedToNetwork];
+//            if (internet)
+//                [self uploadJobimage];
+//            else
+//                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
            
         }];
         [ExtraHouralert addAction:No];
@@ -605,21 +660,49 @@
 }
 -(void)AddExtrahour
 {
+    NSMutableArray *HourArr=[[NSMutableArray alloc]init];
+    
+    NSArray* subviews = [[NSArray alloc] initWithArray: ExtraHourAlert.HelperExtraHourScroll.subviews];
+    for (UIView* view in subviews)
+    {
+        if ([view isKindOfClass:[UITextField class]])
+        {
+            UITextField *TXT=(UITextField *)view;
+            for (int i=0; i<helperDetail.count; i++)
+            {
+                if (TXT.tag==i)
+                {
+                    NSLog(@"TEXT==%@",TXT.text);
+                    
+                    if (![TXT.text isEqualToString:@""])
+                    {
+                        NSMutableDictionary *inddic22=[[NSMutableDictionary alloc]init];
+
+                        [inddic22 setObject:TXT.text forKey:@"hour"];
+                        [inddic22 setObject:[[helperDetail objectAtIndex:i] valueForKey:@"employee_id"] forKey:@"id"];
+                        [HourArr addObject:inddic22];
+                    }
+                }
+            }
+        }
+    }
+    
     NSDictionary *json;
     NSInteger totalHour=0;
     if (helperDetail.count!=0)
     {
 
          totalHour=[_DriverHourTXT.text integerValue]+[_HelperHourTXT.text integerValue];
-        NSMutableArray *helpersDic=[[NSMutableArray alloc]init];
         NSMutableDictionary *inddic=[[NSMutableDictionary alloc]init];
-        [inddic setObject:_HelperHourTXT.text forKey:@"hour"];
-        [inddic setObject:[[helperDetail valueForKey:@"id"] objectAtIndex:0] forKey:@"id"];
-        [helpersDic addObject:inddic];
+        [inddic setObject:HourArr forKey:@"Key"];
+        NSDictionary *dic=[HourArr mutableCopy];
         NSError* error = nil;
         
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:helpersDic options:NSJSONWritingPrettyPrinted error:&error];
-        json = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers  error:&error];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+        
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"");
+        
     }
     else
     {

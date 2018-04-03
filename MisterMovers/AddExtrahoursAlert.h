@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *HelperHour_TXT;
 
 
+@property (strong, nonatomic) IBOutlet UIScrollView *HelperExtraHourScroll;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *HelperHourScrollHight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ExtraHourHight;
 
 - (id)initWithFrame:(CGRect)frame;
 - (UIImage*)makeBlurBackground;
