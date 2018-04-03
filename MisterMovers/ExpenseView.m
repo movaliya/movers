@@ -314,7 +314,7 @@
         else if ([SelectedTextfield isEqualToString:@"HELPER"])
         {
             Helper_TXT.text=[[HelperDetailDict valueForKey:@"employee_name"] objectAtIndex:indexPath.row];
-            helperID=[NSString stringWithFormat:@"%@",[[HelperDetailDict valueForKey:@"id"] objectAtIndex:indexPath.row]];
+            helperID=[NSString stringWithFormat:@"%@",[[HelperDetailDict valueForKey:@"employee_id"] objectAtIndex:indexPath.row]];
         }
         else
         {
