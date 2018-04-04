@@ -138,6 +138,7 @@
         
         NSString *jobStr=[NSString stringWithFormat:@"MM/JOB%@",[[NotificationDic valueForKey:@"reference_id"] objectAtIndex:indexPath.section]];
         vcr.Task_NO=jobStr;
+        vcr.CheckPopup=@"Notification";
         
         [self.navigationController pushViewController:vcr animated:YES];
     }

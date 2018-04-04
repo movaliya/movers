@@ -576,7 +576,18 @@
 
 - (IBAction)Back_click:(id)sender
 {
-    if (self.CheckPopup2!=nil)
+    if ([self.CheckPopup2 isEqualToString:@"RunningView"])
+    {
+        for (UIViewController *controller in self.navigationController.viewControllers)
+        {
+            if ([controller isKindOfClass:[HomeVW class]])
+            {
+                [self.navigationController popToViewController:controller animated:YES];
+                break;
+            }
+        }
+    }
+    else if ([self.CheckPopup2 isEqualToString:@"Notification"])
     {
         for (UIViewController *controller in self.navigationController.viewControllers)
         {
