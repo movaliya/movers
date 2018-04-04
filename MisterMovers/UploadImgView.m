@@ -160,7 +160,7 @@
     }
     else
     {
-        ExtraHourAlert.ExtraHourHight.constant=300;
+        ExtraHourAlert.ExtraHourHight.constant=450;
     }
     
 
@@ -486,11 +486,12 @@
             
             // YES action
             [self AddExtraHoursScroll];
-//            BOOL internet=[AppDelegate connectedToNetwork];
-//            if (internet)
-//                [self uploadJobimage];
-//            else
-//                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self uploadJobimage];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
            
         }];
         [ExtraHouralert addAction:No];
@@ -687,8 +688,8 @@
                     {
                         NSMutableDictionary *inddic22=[[NSMutableDictionary alloc]init];
 
+                        [inddic22 setObject:[[helperDetail objectAtIndex:i] valueForKey:@"id"] forKey:@"id"];
                         [inddic22 setObject:TXT.text forKey:@"hour"];
-                        [inddic22 setObject:[[helperDetail objectAtIndex:i] valueForKey:@"employee_id"] forKey:@"id"];
                         [HourArr addObject:inddic22];
                     }
                 }
@@ -698,6 +699,7 @@
     
     NSDictionary *json;
     NSInteger totalHour=0;
+    NSString *jsonString;
     if (helperDetail.count!=0)
     {
 
@@ -705,11 +707,14 @@
         NSMutableDictionary *inddic=[[NSMutableDictionary alloc]init];
         [inddic setObject:HourArr forKey:@"Key"];
         NSDictionary *dic=[HourArr mutableCopy];
+        
         NSError* error = nil;
-        
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+       // jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+       // jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+       // jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         NSLog(@"");
         
     }
@@ -717,7 +722,7 @@
     {
          totalHour=[_DriverHourTXT.text integerValue];
     }
-    NSString *totalhr=[NSString stringWithFormat:@"%ld",(long)totalHour];
+   
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
     
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
@@ -726,14 +731,15 @@
     [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
     [dictParams setObject:self.Task_ID  forKey:@"tid"];
     [dictParams setObject:_DriverHourTXT.text  forKey:@"extra_hour"];
-    if (json.count!=0) {
-         [dictParams setObject:json forKey:@"helpers"];
+    if (jsonString.length!=0) {
+         [dictParams setObject:jsonString forKey:@"helpers"];
     }
     else
     {
          [dictParams setObject:@"" forKey:@"helpers"];
     }
-   
+    
+
 
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
