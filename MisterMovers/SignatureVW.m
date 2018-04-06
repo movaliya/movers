@@ -29,9 +29,12 @@
     if (self.vehical_id==nil)
     {
         self.customerSignatureTitle.text=@"Customer Signature End";
+        [self.StartBtn setTitle:@"END" forState:UIControlStateNormal];
+
     }
     else
     {
+        [self.StartBtn setTitle:@"START" forState:UIControlStateNormal];
          self.customerSignatureTitle.text=@"Customer Signature Start";
     }
     self.TaskTitle_LBL.text=self.Task_No2;
