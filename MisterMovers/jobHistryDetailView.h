@@ -114,4 +114,12 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *JobPhotoScrollVW;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *JobPhotoScroll_Height;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *HelperHoursScroll;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *HelperHoursScrollHight;
+
+@property (strong, nonatomic) IBOutlet UILabel *HelperExtrahourTitle;
+@property (strong, nonatomic) IBOutlet UIView *HelperExtraHourView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *HelperExtraHourViewTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *HelperExtraHourViewBotto;
+
 @end

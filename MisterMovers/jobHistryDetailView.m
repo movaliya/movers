@@ -241,13 +241,20 @@
         int y = 6;
         for (int i=0; i<helpers_details.count; i++)
         {
-            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 15)];
+            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 18)];
             HelperName.text=[[helpers_details objectAtIndex:i] valueForKey:@"employee_name"];
             //HelperName.text=@"Kaushik";
             HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperName.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
             HelperName.textAlignment=NSTextAlignmentCenter;
             [self.Scroll_Helper addSubview:HelperName];
+            
+            UILabel *DoteLBL=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2-15, y, 5, 18)];
+            DoteLBL.text=@":";
+            DoteLBL.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            DoteLBL.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+            DoteLBL.textAlignment=NSTextAlignmentRight;
+            [self.Scroll_Helper addSubview:DoteLBL];
             
             UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2, 15)];
             HelperPhoneNo.text=[[helpers_details objectAtIndex:i] valueForKey:@"employee_phone"];
@@ -267,6 +274,48 @@
             y=y+30;
         }
         self.ScrollHight.constant=y-5;
+    }
+    
+    
+    //Helper Extra Hours
+    if (helpers_details.count>0)
+    {
+        int y = 6;
+        for (int i=0; i<helpers_details.count; i++)
+        {
+            UILabel *HelperName=[[UILabel alloc]initWithFrame:CGRectMake(0, y, screenWidth/2, 18)];
+            HelperName.text=[[helpers_details objectAtIndex:i] valueForKey:@"employee_name"];
+            //HelperName.text=@"Kaushik";
+            HelperName.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            HelperName.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
+            HelperName.textAlignment=NSTextAlignmentCenter;
+            [self.HelperHoursScroll addSubview:HelperName];
+            
+            UILabel *DoteLBL=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2-15, y, 5, 18)];
+            DoteLBL.text=@":";
+            DoteLBL.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            DoteLBL.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+            DoteLBL.textAlignment=NSTextAlignmentRight;
+            [self.HelperHoursScroll addSubview:DoteLBL];
+            
+            UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2, 18)];
+            HelperPhoneNo.text=[[helpers_details objectAtIndex:i] valueForKey:@"extra_hour"];
+            //HelperPhoneNo.text=@"23233223232";
+            HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+            HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+            HelperPhoneNo.textAlignment=NSTextAlignmentCenter;
+            [self.HelperHoursScroll addSubview:HelperPhoneNo];
+            
+            if (helpers_details.count-1!=i)
+            {
+                UILabel *LineLBL=[[UILabel alloc]initWithFrame:CGRectMake(0, y+23, TherdView.frame.size.width, 0.5)];
+                LineLBL.backgroundColor=[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f];
+                [self.HelperHoursScroll addSubview:LineLBL];
+                
+            }
+            y=y+30;
+        }
+        self.HelperHoursScrollHight.constant=y-5;
     }
     
     // MinimumHour
@@ -433,6 +482,13 @@
         HelperName.textAlignment=NSTextAlignmentCenter;
         [self.DriverScrollVw addSubview:HelperName];
         
+        UILabel *DoteLBL=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2-15, y, 5, 18)];
+        DoteLBL.text=@":";
+        DoteLBL.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
+        DoteLBL.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
+        DoteLBL.textAlignment=NSTextAlignmentRight;
+        [self.DriverScrollVw addSubview:DoteLBL];
+        
         UILabel *HelperPhoneNo=[[UILabel alloc]initWithFrame:CGRectMake(screenWidth/2, y, screenWidth/2-5, 18)];
         HelperPhoneNo.text=[NSString stringWithFormat:@" %@",[DetailTaskDic valueForKey:@"task_extra_hour"]];
         //HelperPhoneNo.text=@"23233223232";
@@ -441,6 +497,11 @@
         HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
         HelperPhoneNo.textAlignment=NSTextAlignmentCenter;
         [self.DriverScrollVw addSubview:HelperPhoneNo];
+        
+        
+        UILabel *LineLBL=[[UILabel alloc]initWithFrame:CGRectMake(0, y+25, TherdView.frame.size.width, 0.5)];
+        LineLBL.backgroundColor=[UIColor colorWithRed:191.0f/255.0f green:191.0f/255.0f blue:191.0f/255.0f alpha:1.0f];
+        [self.DriverScrollVw addSubview:LineLBL];
         
         
         y=y+30;
