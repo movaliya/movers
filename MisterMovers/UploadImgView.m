@@ -142,7 +142,7 @@
         
         UITextField *Hour_TXT=[[UITextField alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, y, SCREEN_WIDTH/2-5, 40)];
         Hour_TXT.placeholder=@"Add Extra Hours";
-        Hour_TXT.keyboardType = UIKeyboardTypeNumberPad;
+        Hour_TXT.keyboardType = UIKeyboardTypeDecimalPad;
         Hour_TXT.tag=i;
         [ExtraHourAlert.HelperExtraHourScroll addSubview:Hour_TXT];
         

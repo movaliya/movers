@@ -35,6 +35,8 @@
 		2968CE3E2015D5BC006CA19F /* expense.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE3D2015D5BC006CA19F /* expense.png */; };
 		2968CE402015D633006CA19F /* expenseHistry.png in Resources */ = {isa = PBXBuildFile; fileRef = 2968CE3F2015D633006CA19F /* expenseHistry.png */; };
 		2968CE4220161433006CA19F /* CCKFNavDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2968CE4120161433006CA19F /* CCKFNavDrawer.m */; };
+		296D96E9208B1158008A35A4 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 296D96E8208B1158008A35A4 /* account.png */; };
+		296D96EC208B11B7008A35A4 /* AccountVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 296D96EB208B11B7008A35A4 /* AccountVW.m */; };
 		298ABF35204FB0D30067D8A6 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = 298ABF34204FB0D30067D8A6 /* success.png */; };
 		298ABF37204FB1F00067D8A6 /* plusSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 298ABF36204FB1F00067D8A6 /* plusSign.png */; };
 		45B645F3935EEC552D757463 /* libPods-MisterMovers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A829AD337AE86EA46E6CB2A9 /* libPods-MisterMovers.a */; };
@@ -181,6 +183,9 @@
 		2968CE3D2015D5BC006CA19F /* expense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expense.png; sourceTree = "<group>"; };
 		2968CE3F2015D633006CA19F /* expenseHistry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expenseHistry.png; sourceTree = "<group>"; };
 		2968CE4120161433006CA19F /* CCKFNavDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCKFNavDrawer.m; sourceTree = "<group>"; };
+		296D96E8208B1158008A35A4 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
+		296D96EA208B11B7008A35A4 /* AccountVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountVW.h; sourceTree = "<group>"; };
+		296D96EB208B11B7008A35A4 /* AccountVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountVW.m; sourceTree = "<group>"; };
 		298ABF34204FB0D30067D8A6 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
 		298ABF36204FB1F00067D8A6 /* plusSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusSign.png; sourceTree = "<group>"; };
 		530DC54C1EC872C1000D4CA2 /* MisterMovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisterMovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,6 +509,8 @@
 				B1528AB2204EFC7E00E16D7F /* UploadImgView.m */,
 				291AC20D20526C060040B6A9 /* CompleteTaskVW.h */,
 				291AC20E20526C060040B6A9 /* CompleteTaskVW.m */,
+				296D96EA208B11B7008A35A4 /* AccountVW.h */,
+				296D96EB208B11B7008A35A4 /* AccountVW.m */,
 				2961E604205121C300AC6AFF /* test_001.jpg */,
 				2961E605205121C300AC6AFF /* test_002.jpg */,
 				2961E606205121C300AC6AFF /* test_003.jpg */,
@@ -795,6 +802,7 @@
 		53523A791EC9DD8D00EE41E9 /* HomeIcon */ = {
 			isa = PBXGroup;
 			children = (
+				296D96E8208B1158008A35A4 /* account.png */,
 				2968CE332015D2FD006CA19F /* job.png */,
 				2968CE372015D446006CA19F /* runningJob.png */,
 				2968CE392015D4EF006CA19F /* jobhisry.png */,
@@ -950,6 +958,7 @@
 				B153429220415AF20041A8EB /* ExpenseCellHistory.xib in Resources */,
 				2961E608205121C300AC6AFF /* test_002.jpg in Resources */,
 				2968CE3A2015D4EF006CA19F /* jobhisry.png in Resources */,
+				296D96E9208B1158008A35A4 /* account.png in Resources */,
 				2968CE2E2015B571006CA19F /* splash.png in Resources */,
 				B13AE0D42053CA6100DECAA5 /* NotificationDispCell.xib in Resources */,
 				530DC55A1EC872C1000D4CA2 /* Main.storyboard in Resources */,
@@ -1040,6 +1049,7 @@
 				53523A941EC9F7EE00EE41E9 /* NotificationVW.m in Sources */,
 				530DC5931EC88157000D4CA2 /* SDWebImageDownloader.m in Sources */,
 				530DC6141EC88271000D4CA2 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				296D96EC208B11B7008A35A4 /* AccountVW.m in Sources */,
 				B13AE0D72053CD2E00DECAA5 /* jobHistryDetailView.m in Sources */,
 				B11BDB442030609600E97C32 /* ExpenseHistoryView.m in Sources */,
 				B137AC0E2042ACAE00DD2B2D /* UIControl+BlocksKit.m in Sources */,
