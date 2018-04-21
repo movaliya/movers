@@ -55,7 +55,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)BackBtn_Click:(id)sender {
+- (IBAction)BackBtn_Click:(id)sender
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 /*
