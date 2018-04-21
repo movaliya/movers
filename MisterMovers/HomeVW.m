@@ -16,12 +16,40 @@
 #import "JobHistory.h"
 #import "UploadImgView.h"
 #import "RunningJobVW.h"
+#import "AccountVW.h"
 
 @interface HomeVW ()
 
 @end
 
 @implementation HomeVW
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations // iOS 6 autorotation fix
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation // iOS 6 autorotation fix
+{
+    return UIInterfaceOrientationPortrait;
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -98,6 +126,13 @@
     else if (aButton.tag == 10)
     {
         
+        AccountVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AccountVW"];
+        [self.navigationController pushViewController:vcr animated:YES];
+        
+    }
+    else if (aButton.tag == 11)
+    {
+        
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Are you sure want to Logout?" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *Cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
@@ -109,7 +144,7 @@
             // Logout action
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"LoginUserDic"];
             [self.navigationController popToRootViewControllerAnimated:NO];
-           
+            
         }];
         [alert addAction:Cancel];
         [alert addAction:Logout];

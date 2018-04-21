@@ -143,6 +143,7 @@
 		B15CFBD82041A9B50070DF8A /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15CFBD62041A9B50070DF8A /* InvoiceCell.xib */; };
 		B15CFBDB2041AC880070DF8A /* InvoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B15CFBDA2041AC880070DF8A /* InvoiceView.m */; };
 		B15CFBDE2041B1490070DF8A /* JobHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B15CFBDD2041B1490070DF8A /* JobHistory.m */; };
+		B18B68AB208B330C000D8D32 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B68AA208B330C000D8D32 /* CustomNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -381,6 +382,8 @@
 		B15CFBDA2041AC880070DF8A /* InvoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvoiceView.m; sourceTree = "<group>"; };
 		B15CFBDC2041B1490070DF8A /* JobHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobHistory.h; sourceTree = "<group>"; };
 		B15CFBDD2041B1490070DF8A /* JobHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobHistory.m; sourceTree = "<group>"; };
+		B18B68A9208B330C000D8D32 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
+		B18B68AA208B330C000D8D32 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +476,8 @@
 				530DC5E41EC88213000D4CA2 /* IQKeyboardManager */,
 				530DC5521EC872C1000D4CA2 /* AppDelegate.h */,
 				530DC5531EC872C1000D4CA2 /* AppDelegate.m */,
+				B18B68A9208B330C000D8D32 /* CustomNavigationController.h */,
+				B18B68AA208B330C000D8D32 /* CustomNavigationController.m */,
 				530DC5661EC873AC000D4CA2 /* LogInVW.h */,
 				530DC5671EC873AC000D4CA2 /* LogInVW.m */,
 				530DC61C1EC88373000D4CA2 /* ForgotPassVW.h */,
@@ -1063,6 +1068,7 @@
 				530DC5541EC872C1000D4CA2 /* AppDelegate.m in Sources */,
 				530DC5B31EC8816C000D4CA2 /* AFImageDownloader.m in Sources */,
 				53523A761EC98D0200EE41E9 /* ProfileVIEW.m in Sources */,
+				B18B68AB208B330C000D8D32 /* CustomNavigationController.m in Sources */,
 				530DC5BA1EC8816C000D4CA2 /* UIWebView+AFNetworking.m in Sources */,
 				530DC5511EC872C1000D4CA2 /* main.m in Sources */,
 				530DC5921EC88157000D4CA2 /* SDWebImageDecoder.m in Sources */,
