@@ -24,4 +24,6 @@
 
 @property (strong, nonatomic) CCKFNavDrawer *rootNav;
 @property (weak, nonatomic) IBOutlet UITableView *AccountTBL;
+@property (strong, nonatomic) CCKFNavDrawer *rootNav;
+
 @end

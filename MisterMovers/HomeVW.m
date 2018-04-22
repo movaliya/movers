@@ -64,7 +64,16 @@
     self.rootNav = (CCKFNavDrawer *)self.navigationController;
     [self.rootNav setCCKFNavDrawerDelegate:self];
     [self.rootNav.pan_gr setEnabled:NO];
+    
+    [self performSelector:@selector(Setlockoriantation) withObject:nil afterDelay:0.5];
 }
+
+-(void)Setlockoriantation
+{
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
