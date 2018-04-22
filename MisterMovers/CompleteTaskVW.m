@@ -17,6 +17,36 @@
 
 @implementation CompleteTaskVW
 
+- (NSUInteger)supportedInterfaceOrientations // iOS 6 autorotation fix
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation // iOS 6 autorotation fix
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+-(void)Setlockoriantation
+{
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self performSelector:@selector(Setlockoriantation) withObject:nil afterDelay:0.1];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

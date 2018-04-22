@@ -20,11 +20,44 @@
 
 @implementation NotificationVW
 @synthesize NotifTBL,NoNotification_LBL;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations // iOS 6 autorotation fix
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation // iOS 6 autorotation fix
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+-(void)Setlockoriantation
+{
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [self performSelector:@selector(Setlockoriantation) withObject:nil afterDelay:0.1];
+
      NoNotification_LBL.hidden=YES;
     UINib *nib = [UINib nibWithNibName:@"NotificationDispCell" bundle:nil];
     NotificationDispCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];

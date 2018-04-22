@@ -19,12 +19,45 @@
 @synthesize UserName_TXT,Password_TXT,LoginBtn;
 @synthesize usernm_View,password_View;
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations // iOS 6 autorotation fix
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation // iOS 6 autorotation fix
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+-(void)Setlockoriantation
+{
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.rootNav = (CCKFNavDrawer *)self.navigationController;
     [self.rootNav setCCKFNavDrawerDelegate:self];
     [self.rootNav.pan_gr setEnabled:NO];
+    [self performSelector:@selector(Setlockoriantation) withObject:nil afterDelay:0.1];
 }
 
 - (void)viewDidLoad {

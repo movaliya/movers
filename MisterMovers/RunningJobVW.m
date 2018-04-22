@@ -20,10 +20,35 @@
 @implementation RunningJobVW
 @synthesize RunningJobTable,noDataLBL;
 
+- (NSUInteger)supportedInterfaceOrientations // iOS 6 autorotation fix
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation // iOS 6 autorotation fix
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+-(void)Setlockoriantation
+{
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    [self performSelector:@selector(Setlockoriantation) withObject:nil afterDelay:0.1];
     noDataLBL.hidden=YES;
     UINib *nib = [UINib nibWithNibName:@"TodayJobCell" bundle:nil];
     TodayJobCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
