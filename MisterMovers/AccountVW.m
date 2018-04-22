@@ -43,6 +43,7 @@
     return UIInterfaceOrientationMaskLandscape;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -58,9 +59,8 @@
 {
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
-    [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"userid"];
     
-    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",AccountBaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@userid=%@",AccountBaseUrl,[UserSaveData valueForKey:@"id"]] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {
          [self handleAccountResponse:response];
      }];
@@ -74,7 +74,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"message"] delegate:nil];
     }
 }
 
