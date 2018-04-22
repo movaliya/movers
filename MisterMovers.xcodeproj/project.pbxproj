@@ -133,6 +133,8 @@
 		B13AE0D32053CA6100DECAA5 /* NotificationDispCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B13AE0D12053CA6100DECAA5 /* NotificationDispCell.m */; };
 		B13AE0D42053CA6100DECAA5 /* NotificationDispCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13AE0D22053CA6100DECAA5 /* NotificationDispCell.xib */; };
 		B13AE0D72053CD2E00DECAA5 /* jobHistryDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B13AE0D62053CD2E00DECAA5 /* jobHistryDetailView.m */; };
+		B1502507208C600F003DEEE9 /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1502505208C600F003DEEE9 /* AccountCell.m */; };
+		B1502508208C600F003DEEE9 /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1502506208C600F003DEEE9 /* AccountCell.xib */; };
 		B1528AB3204EFC7E00E16D7F /* UploadImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1528AB2204EFC7E00E16D7F /* UploadImgView.m */; };
 		B1528AB7204F14F500E16D7F /* AlertExtrahour.m in Sources */ = {isa = PBXBuildFile; fileRef = B1528AB4204F14F500E16D7F /* AlertExtrahour.m */; };
 		B1528AB8204F14F500E16D7F /* AlertExtrahour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1528AB6204F14F500E16D7F /* AlertExtrahour.xib */; };
@@ -366,6 +368,9 @@
 		B13AE0D22053CA6100DECAA5 /* NotificationDispCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationDispCell.xib; sourceTree = "<group>"; };
 		B13AE0D52053CD2E00DECAA5 /* jobHistryDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jobHistryDetailView.h; sourceTree = "<group>"; };
 		B13AE0D62053CD2E00DECAA5 /* jobHistryDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jobHistryDetailView.m; sourceTree = "<group>"; };
+		B1502504208C600F003DEEE9 /* AccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
+		B1502505208C600F003DEEE9 /* AccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
+		B1502506208C600F003DEEE9 /* AccountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
 		B1528AB1204EFC7E00E16D7F /* UploadImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImgView.h; sourceTree = "<group>"; };
 		B1528AB2204EFC7E00E16D7F /* UploadImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImgView.m; sourceTree = "<group>"; };
 		B1528AB4204F14F500E16D7F /* AlertExtrahour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertExtrahour.m; sourceTree = "<group>"; };
@@ -849,6 +854,9 @@
 				B15CFBD42041A9B50070DF8A /* InvoiceCell.h */,
 				B15CFBD52041A9B50070DF8A /* InvoiceCell.m */,
 				B15CFBD62041A9B50070DF8A /* InvoiceCell.xib */,
+				B1502504208C600F003DEEE9 /* AccountCell.h */,
+				B1502505208C600F003DEEE9 /* AccountCell.m */,
+				B1502506208C600F003DEEE9 /* AccountCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -958,6 +966,7 @@
 				53523A7D1EC9DDF000EE41E9 /* attendence_empty.png in Resources */,
 				B1528AB8204F14F500E16D7F /* AlertExtrahour.xib in Resources */,
 				2961E607205121C300AC6AFF /* test_001.jpg in Resources */,
+				B1502508208C600F003DEEE9 /* AccountCell.xib in Resources */,
 				2968CE3C2015D55A006CA19F /* invoice.png in Resources */,
 				2961E609205121C300AC6AFF /* test_003.jpg in Resources */,
 				298ABF35204FB0D30067D8A6 /* success.png in Resources */,
@@ -1107,6 +1116,7 @@
 				B15CFBD72041A9B50070DF8A /* InvoiceCell.m in Sources */,
 				530DC61B1EC882A8000D4CA2 /* CommonWS.m in Sources */,
 				B15CFBDB2041AC880070DF8A /* InvoiceView.m in Sources */,
+				B1502507208C600F003DEEE9 /* AccountCell.m in Sources */,
 				530DC6101EC88271000D4CA2 /* IQBarButtonItem.m in Sources */,
 				530DC5911EC88157000D4CA2 /* SDWebImageCompat.m in Sources */,
 				530DC6321EC89BFD000D4CA2 /* HomeVW.m in Sources */,

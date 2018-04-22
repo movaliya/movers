@@ -39,6 +39,7 @@
 
 #pragma mark - VC lifecycle
 
+
 - (BOOL)shouldAutorotate
 {
     return self.topViewController.shouldAutorotate;

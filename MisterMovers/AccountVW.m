@@ -8,6 +8,7 @@
 
 #import "AccountVW.h"
 #import "misterMover.pch"
+#import "AccountCell.h"
 
 
 @interface AccountVW ()
@@ -47,6 +48,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UINib *nib = [UINib nibWithNibName:@"AccountCell" bundle:nil];
+    AccountCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    self.AccountTBL.rowHeight = cell.frame.size.height;
+    [self.AccountTBL registerNib:nib forCellReuseIdentifier:@"AccountCell"];
+    
     
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
@@ -89,14 +96,41 @@
 
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark UITableView delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 10;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"AccountCell";
+    AccountCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell=nil;
+    if (cell == nil)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+    }
+    
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+}
+
 
 @end
