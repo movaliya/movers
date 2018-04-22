@@ -19,8 +19,9 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
+
 
 - (BOOL)shouldAutorotate
 {
@@ -29,6 +30,7 @@
 
 - (NSUInteger)supportedInterfaceOrientations // iOS 6 autorotation fix
 {
+    [self.rootNav closeNavigationDrawer];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
         return UIInterfaceOrientationMaskLandscape;
@@ -41,13 +43,21 @@
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation // iOS 6 autorotation fix
 {
-    return UIInterfaceOrientationMaskLandscape;
+    return UIInterfaceOrientationLandscapeLeft;
 }
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.rootNav = (CCKFNavDrawer *)self.navigationController;
+    [self.rootNav setCCKFNavDrawerDelegate:self];
+    
+    
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
     
     UINib *nib = [UINib nibWithNibName:@"AccountCell" bundle:nil];
     AccountCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
@@ -75,6 +85,7 @@
 
 - (void)handleAccountResponse:(NSDictionary*)response
 {
+    [self.rootNav closeNavigationDrawer];
     if ([[[response objectForKey:@"success"]stringValue ] isEqualToString:@"1"])
     {
         accountDict=[[response valueForKey:@"report"] mutableCopy];

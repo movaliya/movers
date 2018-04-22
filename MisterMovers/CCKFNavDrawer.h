@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) UIPanGestureRecognizer *pan_gr;
 @property (weak, nonatomic)id<CCKFNavDrawerDelegate> CCKFNavDrawerDelegate;
-
+- (void)closeNavigationDrawer;
 - (void)drawerToggle;
 
 @end

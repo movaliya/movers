@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "misterMover.pch"
 
-@interface AccountVW : UIViewController
+@interface AccountVW : UIViewController<CCKFNavDrawerDelegate>
 
 {
     NSMutableDictionary *accountDict;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *AccountTBL;
+@property (strong, nonatomic) CCKFNavDrawer *rootNav;
+
 @end
