@@ -12,9 +12,9 @@
 {
     NSMutableDictionary *DetailTaskDic;
     NSString *Task_Status;
-    NSInteger ExtraitemTotal;
-    NSInteger grandTotl;
-    NSInteger tempExtraTotal;
+    float ExtraitemTotal;
+    float grandTotl;
+    float tempExtraTotal;
     int secondsLeft;
     NSTimer *TMPTimer;
 }

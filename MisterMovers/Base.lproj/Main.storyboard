@@ -1603,7 +1603,7 @@
                                                                 <color key="tintColor" red="0.24313725489999999" green="0.25098039220000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="FGq-aX-bx7" id="zTm-1O-ZPd"/>
                                                                 </connections>
@@ -1767,7 +1767,7 @@
                                                                 <color key="tintColor" red="0.24313725489999999" green="0.25098039220000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="FGq-aX-bx7" id="gpn-l1-K0B"/>
                                                                 </connections>
@@ -1930,7 +1930,7 @@
                                                                 <color key="tintColor" red="0.24313725489999999" green="0.25098039220000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="FGq-aX-bx7" id="Fqo-ce-iMn"/>
                                                                 </connections>
@@ -3265,7 +3265,7 @@
                                                                 </constraints>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="KtJ-nt-mFy" id="0wp-pL-j6c"/>
                                                                 </connections>
@@ -3296,7 +3296,7 @@
                                                                 <rect key="frame" x="146" y="94" width="147" height="16"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="KtJ-nt-mFy" id="Scj-B6-7Pb"/>
                                                                 </connections>
@@ -3349,7 +3349,7 @@
                                                                 <rect key="frame" x="146" y="123" width="147" height="16"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="KtJ-nt-mFy" id="e13-fQ-cgS"/>
                                                                 </connections>
@@ -3486,7 +3486,7 @@
                                                                 <rect key="frame" x="151" y="0.0" width="117" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-wU-a6b">
                                                                 <rect key="frame" x="141" y="0.0" width="5" height="30"/>

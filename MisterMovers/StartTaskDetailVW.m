@@ -491,7 +491,7 @@
         
         NSString *Onlinetotal=self.OnlinePayment_TXT.text;
         NSString *cashtotal=self.CashPayment_TXT.text;
-        NSInteger cashNonlineTotal=[Onlinetotal integerValue]+[cashtotal integerValue];
+        float cashNonlineTotal=[Onlinetotal floatValue]+[cashtotal floatValue];
         NSString *grantTotalLBL=self.GrandTotalLBL.text;
         grantTotalLBL = [grantTotalLBL stringByReplacingOccurrencesOfString:@"$ " withString:@""];
         //SEND enble
@@ -503,20 +503,20 @@
         {
              [AppDelegate showErrorMessageWithTitle:@"" message:@"Please enter online payment." delegate:nil];
         }
-        else if ([Onlinetotal integerValue]>[grantTotalLBL integerValue] && self.OnlineBTN.selected)
+        else if ([Onlinetotal floatValue]>[grantTotalLBL floatValue] && self.OnlineBTN.selected)
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Online payment is greater then grand total." delegate:nil];
         }
-        else if ([cashtotal integerValue]>[grantTotalLBL integerValue] && self.CashBTN.selected)
+        else if ([cashtotal floatValue]>[grantTotalLBL floatValue] && self.CashBTN.selected)
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment is greater then grand total." delegate:nil];
         }
        
-        else if (cashNonlineTotal>[grantTotalLBL integerValue])
+        else if (cashNonlineTotal>[grantTotalLBL floatValue])
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment and Online payment is greater then grand total." delegate:nil];
         }
-        else if (cashNonlineTotal<[grantTotalLBL integerValue])
+        else if (cashNonlineTotal<[grantTotalLBL floatValue])
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Payment is lesser then grand total." delegate:nil];
         }
@@ -791,7 +791,7 @@
         self.ExtraTitle1_LBL.text=Extraitem1;
          self.extraitemDotLBL.text=@":";
         self.Extra1_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge1"]];
-        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge1"] integerValue];
+        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge1"] floatValue];
     }
     else
     {
@@ -806,7 +806,7 @@
         self.MinimumHorDotLBL.text=@":";
 
         self.Extra2_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge2"]];
-        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge2"] integerValue];
+        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge2"] floatValue];
     }
     else
     {
@@ -820,7 +820,7 @@
         self.ExtraTitle3_LBL.text=Extraitem3;
         self.durationhrDotLBL.text=@":";
         self.Extra3_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_extra_charge3"]];
-        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge3"] integerValue];
+        ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_extra_charge3"] floatValue];
 
     }
     else
@@ -829,11 +829,11 @@
         self.Extra3Top.constant=0;
         self.ExtraTitle3_LBL.text=@"";
     }
-     ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] integerValue];
+     ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] floatValue];
      grandTotl=tempExtraTotal+ExtraitemTotal;
-    NSInteger discountint=[[DetailTaskDic valueForKey:@"task_discount"] integerValue];
+    float discountint=[[DetailTaskDic valueForKey:@"task_discount"] floatValue];
     grandTotl=grandTotl-discountint;
-    self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %ld",(long)grandTotl];
+    self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %.02f",grandTotl];
     self.DiscountLBL.text= [NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"task_discount"]];
    
     self.AddSurchargeHight.constant=35.0f;
@@ -903,7 +903,7 @@
             HelperPhoneNo.text=[NSString stringWithFormat:@"$ %@",[SurchargeArr objectAtIndex:i]];
             //HelperPhoneNo.text=@"23233223232";
             
-            tempExtraTotal=tempExtraTotal+[[SurchargeArr objectAtIndex:i] integerValue];
+            tempExtraTotal=tempExtraTotal+[[SurchargeArr objectAtIndex:i] floatValue];
             HelperPhoneNo.textColor=[UIColor colorWithRed:116.0f/255.0f green:116.0f/255.0f blue:116.0f/255.0f alpha:1.0f];
             HelperPhoneNo.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f];
             HelperPhoneNo.textAlignment=NSTextAlignmentRight;
@@ -932,10 +932,10 @@
             
             y=y+30;
         }
-       grandTotl=tempExtraTotal+ExtraitemTotal;
-        NSInteger discountint=[[DetailTaskDic valueForKey:@"task_discount"] integerValue];
+        grandTotl=tempExtraTotal+ExtraitemTotal;
+        float discountint=[[DetailTaskDic valueForKey:@"task_discount"] floatValue];
         grandTotl=grandTotl-discountint;
-        self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %ld",(long)grandTotl];
+        self.GrandTotalLBL.text=[NSString stringWithFormat:@"$ %.02f",grandTotl];
         self.SendScrollHight.constant=y-5;
     }
 }
