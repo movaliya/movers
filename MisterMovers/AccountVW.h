@@ -13,6 +13,8 @@
 
 {
     NSMutableDictionary *accountDict;
+    NSMutableArray *ForSortData;
+    NSArray *sortedArray;
 }
 @property (weak, nonatomic) IBOutlet UILabel *AccountNO_LBL;
 @property (weak, nonatomic) IBOutlet UILabel *DriverName_LBL;

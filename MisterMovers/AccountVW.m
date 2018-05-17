@@ -103,12 +103,29 @@
     {
         
         accountDict=[[response valueForKey:@"report"] mutableCopy];
+        ForSortData=[[NSMutableArray alloc]init];
+        for (NSDictionary *dic in accountDict)
+        {
+            [ForSortData addObject:dic];
+        }
+        
+        sortedArray = [ForSortData sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            if ([[obj1 valueForKey:@"accountid"] integerValue] > [[obj2 valueForKey:@"accountid"] integerValue]) {
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            if ([[obj1 valueForKey:@"accountid"] integerValue] < [[obj2 valueForKey:@"accountid"] integerValue]) {
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+            return (NSComparisonResult)NSOrderedSame;
+        }];
+
+        NSLog(@"dic=%@",sortedArray);
         
         float DebitINT = 0,CreditINT=0;
-        for (int PP=0; PP<accountDict.count; PP++)
+        for (int PP=0; PP<sortedArray.count; PP++)
         {
-            DebitINT=DebitINT+[[[accountDict valueForKey:@"debit"] objectAtIndex:PP]floatValue];
-            CreditINT=CreditINT+[[[accountDict valueForKey:@"credit"] objectAtIndex:PP]floatValue];
+            DebitINT=DebitINT+[[[sortedArray valueForKey:@"debit"] objectAtIndex:PP]floatValue];
+            CreditINT=CreditINT+[[[sortedArray valueForKey:@"credit"] objectAtIndex:PP]floatValue];
         }
         self.CreditTotal_LBL.text=[NSString stringWithFormat:@"%.02f",CreditINT];
         self.DebitTotal_LBL.text=[NSString stringWithFormat:@"%.02f",DebitINT];
@@ -125,6 +142,7 @@
     }
     else
     {
+          //[self.navigationController popViewControllerAnimated:YES];
         [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"message"] delegate:nil];
     }
 }
@@ -163,11 +181,11 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     }
-    cell.SRNo_LBL.text=[[accountDict valueForKey:@"accountid"]objectAtIndex:indexPath.section];
-    cell.Date_LBL.text=[[accountDict valueForKey:@"created_date"]objectAtIndex:indexPath.section];
-    cell.Description_LBL.text=[[accountDict valueForKey:@"details"]objectAtIndex:indexPath.section];
-    cell.debitamount_LBL.text=[[accountDict valueForKey:@"debit"]objectAtIndex:indexPath.section];
-    cell.CreditAmount_LBL.text=[[accountDict valueForKey:@"credit"]objectAtIndex:indexPath.section];
+    cell.SRNo_LBL.text=[[sortedArray valueForKey:@"accountid"]objectAtIndex:indexPath.section];
+    cell.Date_LBL.text=[[sortedArray valueForKey:@"created_date"]objectAtIndex:indexPath.section];
+    cell.Description_LBL.text=[[sortedArray valueForKey:@"details"]objectAtIndex:indexPath.section];
+    cell.debitamount_LBL.text=[[sortedArray valueForKey:@"debit"]objectAtIndex:indexPath.section];
+    cell.CreditAmount_LBL.text=[[sortedArray valueForKey:@"credit"]objectAtIndex:indexPath.section];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;

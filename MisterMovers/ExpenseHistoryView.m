@@ -87,7 +87,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:[response objectForKey:@"ack_msg"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:AlertTitleError message:@"NO HISTORY FOUND" delegate:nil];
     }
 }
 - (void)didReceiveMemoryWarning

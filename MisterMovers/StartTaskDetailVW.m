@@ -491,7 +491,9 @@
         
         NSString *Onlinetotal=self.OnlinePayment_TXT.text;
         NSString *cashtotal=self.CashPayment_TXT.text;
-        float cashNonlineTotal=[Onlinetotal floatValue]+[cashtotal floatValue];
+        NSString *creditTotal=self.CreaditTXT.text;
+        float cashNonlineCreditTotal=[Onlinetotal floatValue]+[cashtotal floatValue]+[creditTotal floatValue];
+        
         NSString *grantTotalLBL=self.GrandTotalLBL.text;
         grantTotalLBL = [grantTotalLBL stringByReplacingOccurrencesOfString:@"$ " withString:@""];
         //SEND enble
@@ -503,6 +505,10 @@
         {
              [AppDelegate showErrorMessageWithTitle:@"" message:@"Please enter online payment." delegate:nil];
         }
+        else if ([self.CreaditTXT.text isEqualToString:@""]&& self.CreditBTN.selected)
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please enter Credit payment." delegate:nil];
+        }
         else if ([Onlinetotal floatValue]>[grantTotalLBL floatValue] && self.OnlineBTN.selected)
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Online payment is greater then grand total." delegate:nil];
@@ -511,12 +517,15 @@
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment is greater then grand total." delegate:nil];
         }
-       
-        else if (cashNonlineTotal>[grantTotalLBL floatValue])
+        else if ([creditTotal floatValue]>[grantTotalLBL floatValue] && self.CreditBTN.selected)
         {
-            [AppDelegate showErrorMessageWithTitle:@"" message:@"Cash payment and Online payment is greater then grand total." delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Credit payment is greater then grand total." delegate:nil];
         }
-        else if (cashNonlineTotal<[grantTotalLBL floatValue])
+        else if (cashNonlineCreditTotal>[grantTotalLBL floatValue])
+        {
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Payment is greater then grand total." delegate:nil];
+        }
+        else if (cashNonlineCreditTotal<[grantTotalLBL floatValue])
         {
             [AppDelegate showErrorMessageWithTitle:@"" message:@"Payment is lesser then grand total." delegate:nil];
         }
@@ -775,7 +784,13 @@
     self.TotalTop.constant=10;
     self.TotalTitle_LBL.text=@"Total";
      self.totalDotLBL.text=@":";
-     self.Total_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_total_hour_charge"]];
+    
+    NSInteger MinHour=[[DetailTaskDic valueForKey:@"quotation_minimum_hour"]integerValue];
+    NSInteger PerHourCHR=[[DetailTaskDic valueForKey:@"price_per_rate"]integerValue];
+    NSInteger TotalValue=MinHour*PerHourCHR;
+    
+     //self.Total_LBL.text=[NSString stringWithFormat:@"$ %@",[DetailTaskDic valueForKey:@"quotation_total_hour_charge"]];
+    self.Total_LBL.text=[NSString stringWithFormat:@"$ %ld",(long)TotalValue];
     
     // self.DurationHour_LBL.text=[NSString stringWithFormat:@"%@",[DetailTaskDic valueForKey:@"task_duration"]];
      self.DurationHour_LBL.text=[NSString stringWithFormat:@": %@",[DetailTaskDic valueForKey:@"task_actual_hour"]];
@@ -849,7 +864,11 @@
     }
     else
     {
-         self.SendCaseViewHight.constant=150.0f;
+        self.CreaditTXT.hidden=NO;
+        self.CreditePayLINE.hidden=NO;
+        self.CreditBTN.hidden=NO;
+        self.creditTitleLBL.hidden=NO;
+        self.SendCaseViewHight.constant=150.0f;
     }
    
     self.SendViewTop.constant=12;
@@ -999,6 +1018,8 @@
 }
 - (IBAction)RefreshBtn_Click:(id)sender
 {
+    self.OnlineBTN.selected=NO;
+     self.CreditBTN.selected=NO;
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
         [self GetDetailTask];
