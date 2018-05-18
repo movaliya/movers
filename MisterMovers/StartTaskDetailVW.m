@@ -844,7 +844,11 @@
         self.Extra3Top.constant=0;
         self.ExtraTitle3_LBL.text=@"";
     }
-     ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] floatValue];
+   // NSInteger MinHour=[[DetailTaskDic valueForKey:@"quotation_minimum_hour"]integerValue];
+   // NSInteger PerHourCHR=[[DetailTaskDic valueForKey:@"price_per_rate"]integerValue];
+   // NSInteger TotalValue=MinHour*PerHourCHR;
+    
+     ExtraitemTotal=ExtraitemTotal+TotalValue;
      grandTotl=tempExtraTotal+ExtraitemTotal;
     float discountint=[[DetailTaskDic valueForKey:@"task_discount"] floatValue];
     grandTotl=grandTotl-discountint;

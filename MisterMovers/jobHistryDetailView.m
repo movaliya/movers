@@ -422,7 +422,12 @@
     self.SendView.hidden=NO;
     self.TotalTop.constant=10;
     self.TotalTitle_LBL.text=@"Total";
-    self.Total_LBL.text=[NSString stringWithFormat:@": $ %@",[DetailTaskDic valueForKey:@"quotation_total_hour_charge"]];
+    NSInteger MinHour=[[DetailTaskDic valueForKey:@"quotation_minimum_hour"]integerValue];
+    NSInteger PerHourCHR=[[DetailTaskDic valueForKey:@"price_per_rate"]integerValue];
+    NSInteger TotalValue=MinHour*PerHourCHR;
+
+    
+    self.Total_LBL.text=[NSString stringWithFormat:@": $ %ld",(long)TotalValue];
     
     NSString *Extraitem1=[DetailTaskDic valueForKey:@"quotation_extra_charge_title1"];
     NSString *Extraitem2=[DetailTaskDic valueForKey:@"quotation_extra_charge_title2"];
@@ -466,7 +471,7 @@
         self.Extra3Top.constant=0;
         self.ExtraTitle3_LBL.text=@"";
     }
-    ExtraitemTotal=ExtraitemTotal+[[DetailTaskDic valueForKey:@"quotation_total_hour_charge"] integerValue];
+    ExtraitemTotal=ExtraitemTotal+TotalValue;
     
     self.GrandTotalLBL.text=[NSString stringWithFormat:@": $ %ld",(long)ExtraitemTotal];
     self.SendViewTop.constant=12;
