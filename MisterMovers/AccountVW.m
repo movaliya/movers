@@ -181,7 +181,8 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     }
-    cell.SRNo_LBL.text=[[sortedArray valueForKey:@"accountid"]objectAtIndex:indexPath.section];
+    //cell.SRNo_LBL.text=[[sortedArray valueForKey:@"accountid"]objectAtIndex:indexPath.section];
+    cell.SRNo_LBL.text=[NSString stringWithFormat:@"%ld",indexPath.section+1];
     cell.Date_LBL.text=[[sortedArray valueForKey:@"created_date"]objectAtIndex:indexPath.section];
     cell.Description_LBL.text=[[sortedArray valueForKey:@"details"]objectAtIndex:indexPath.section];
     cell.debitamount_LBL.text=[[sortedArray valueForKey:@"debit"]objectAtIndex:indexPath.section];
