@@ -643,19 +643,61 @@
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:task_items options:NSJSONWritingPrettyPrinted error:&error];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers  error:&error];
-    
-    
-    
+
     
     NSDictionary *UserSaveData=[[NSUserDefaults standardUserDefaults]objectForKey:@"LoginUserDic"];
     //task_items=[{"title":"task1","amount":"500"},{"title":"task2","amount":"600"}]
+    NSString *cashSTR,*onlineSTR,*CrediteSTR;
+    NSString *Onlinetotal;
+    NSString *cashtotal;
+    NSString *creditTotal;
+    if ( self.CashBTN.selected)
+    {
+        cashSTR=@"cash";
+        cashtotal=self.CashPayment_TXT.text;
+    }
+    else
+    {
+        cashSTR=@"";
+        cashtotal=@"";
+    }
+    if ( self.OnlineBTN.selected)
+    {
+        onlineSTR=@"online";
+        Onlinetotal=self.OnlinePayment_TXT.text;
+    }
+    else
+    {
+        onlineSTR=@"";
+        Onlinetotal=@"";
+    }
+    
+    if ( self.CreditBTN.selected)
+    {
+        CrediteSTR=@"credit";
+        creditTotal=self.CreaditTXT.text;
+    }
+    else
+    {
+        CrediteSTR=@"";
+        creditTotal=@"";
+    }
     
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:Base_Key  forKey:@"key"];
     [dictParams setObject:Send_Task  forKey:@"s"];
     [dictParams setObject:[DetailTaskDic valueForKey:@"id"] forKey:@"tid"];
     [dictParams setObject:[UserSaveData valueForKey:@"id"]  forKey:@"eid"];
-    [dictParams setObject:@"cash"  forKey:@"payment_type"];
+    
+    [dictParams setObject:cashSTR  forKey:@"cash_slug"];
+    [dictParams setObject: cashtotal  forKey:@"cash_amount"];
+    
+    [dictParams setObject:onlineSTR  forKey:@"online_slug"];
+    [dictParams setObject:Onlinetotal  forKey:@"online_amount"];
+    
+    [dictParams setObject:CrediteSTR  forKey:@"credit_slug"];
+    [dictParams setObject:creditTotal  forKey:@"credit_amount"];
+    
     [dictParams setObject:json  forKey:@"task_items"];
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",BaseUrl] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
